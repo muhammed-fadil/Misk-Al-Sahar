@@ -9,10 +9,19 @@ import { clearWishlist } from "../redux/slices/wishlistSlice";
 
 function Navbar() {
   const user = useSelector((state) => state.auth.user);
+  const cartItems = useSelector((state) => state.cart.items);
+  const wishlistItems = useSelector((state) => state.wishlist.items);
 
   const dispatch = useDispatch();
 
   const [showMenu, setShowMenu] = useState(false);
+
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  const wishlistCount = wishlistItems.length;
 
   const handleLogout = () => {
     dispatch(clearCart());
@@ -31,10 +40,31 @@ function Navbar() {
       </div>
 
       <div className="nav-links">
+
         <Link to="/">Home</Link>
+
         <Link to="/shop">Shop</Link>
-        <Link to="/cart">Cart</Link>
-        <Link to="/wishlist">Wishlist</Link>
+
+        <Link to="/cart" className="nav-notification">
+          Cart
+
+          {cartCount > 0 && (
+            <span className="notification-badge">
+              {cartCount}
+            </span>
+          )}
+        </Link>
+
+        <Link to="/wishlist" className="nav-notification">
+          Wishlist
+
+          {wishlistCount > 0 && (
+            <span className="notification-badge">
+              {wishlistCount}
+            </span>
+          )}
+        </Link>
+
         <Link to="/about">About</Link>
 
         <div className="user-menu">

@@ -11,9 +11,21 @@ function Checkout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
+  const savedDetails =
+    JSON.parse(localStorage.getItem(`checkout_${user.id}`)) || {};
+
+  const [name, setName] = useState(
+    savedDetails.name || user.name || ""
+  );
+
+  const [address, setAddress] = useState(
+    savedDetails.address || ""
+  );
+
+  const [phone, setPhone] = useState(
+    savedDetails.phone || ""
+  );
+
   const [error, setError] = useState("");
 
   const total = cartItems.reduce(
@@ -55,6 +67,16 @@ function Checkout() {
     try {
       await createOrder(order);
 
+      // Save delivery details for next order
+      localStorage.setItem(
+        `checkout_${user.id}`,
+        JSON.stringify({
+          name,
+          address,
+          phone,
+        })
+      );
+
       dispatch(clearCart());
 
       navigate("/orders");
@@ -70,13 +92,14 @@ function Checkout() {
       {error && <p className="error">{error}</p>}
 
       <div className="checkout-content">
+
         <div className="check">
           <h2>Order Summary</h2>
 
           {cartItems.map((item) => (
             <p key={item.id}>
               {item.name} * {item.quantity} = ₹
-               {item.price * item.quantity}
+              {item.price * item.quantity}
             </p>
           ))}
 
@@ -113,6 +136,7 @@ function Checkout() {
             </button>
           </form>
         </div>
+
       </div>
     </main>
   );

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrders } from "../services/orderService";
+
+import { getOrders, cancelOrder } from "../services/orderService";
 import { setOrders } from "../redux/slices/orderSlice";
 
 function Orders() {
@@ -9,7 +10,11 @@ function Orders() {
 
   const dispatch = useDispatch();
 
-  const { isLoading, isError } = useQuery({
+  const {
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
     queryKey: ["orders", user.id],
 
     queryFn: async () => {
@@ -20,6 +25,21 @@ function Orders() {
       return response.data;
     },
   });
+
+  const handleCancelOrder = async (orderId) => {
+    const confirmCancel = window.confirm(
+      "Are you sure you want to cancel this order?"
+    );
+
+    if (!confirmCancel) return;
+
+    try {
+      await cancelOrder(orderId);
+      await refetch();
+    } catch (error) {
+      alert("Failed to cancel order. Please try again.");
+    }
+  };
 
   if (isLoading) {
     return <h2>Loading orders...</h2>;
@@ -48,6 +68,13 @@ function Orders() {
           ))}
 
           <h3>Total: ₹{order.total}</h3>
+
+          <button
+            className="cancel-order-btn"
+            onClick={() => handleCancelOrder(order.id)}
+          >
+            Cancel Order
+          </button>
         </div>
       ))}
     </main>

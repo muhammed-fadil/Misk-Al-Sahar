@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:3001";;
+const API = "http://localhost:3001";
 
 export const createOrder = (order) => {
   return axios.post(`${API}/orders`, order);
@@ -8,4 +8,8 @@ export const createOrder = (order) => {
 
 export const getOrders = (userId) => {
   return axios.get(`${API}/orders?userId=${userId}`);
+};
+
+export const cancelOrder = (orderId) => {
+  return axios.delete(`${API}/orders/${orderId}`);
 };
