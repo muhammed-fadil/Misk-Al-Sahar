@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import { login } from "../redux/slices/authSlice";
+import {
+  loadCart,
+} from "../redux/slices/cartSlice";
+import {
+  loadWishlist,
+} from "../redux/slices/wishlistSlice";
+
 import { getUsers } from "../services/userService";
 
 function Login() {
@@ -36,6 +44,20 @@ function Login() {
       }
 
       dispatch(login(user));
+
+      const cart =
+        JSON.parse(
+          localStorage.getItem(`cart_${user.id}`)
+        ) || [];
+
+      const wishlist =
+        JSON.parse(
+          localStorage.getItem(`wishlist_${user.id}`)
+        ) || [];
+
+      dispatch(loadCart(cart));
+      dispatch(loadWishlist(wishlist));
+
       navigate("/");
     } catch (error) {
       setError("Something went wrong. Please try again.");
@@ -63,7 +85,9 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit">Login</button>
+        <button type="submit">
+          Login
+        </button>
       </form>
     </main>
   );

@@ -1,13 +1,23 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../services/productService";
 import { addToCart } from "../redux/slices/cartSlice";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../redux/slices/wishlistSlice";
 
 function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  const wishlist = useSelector(
+    (state) => state.wishlist.items
+  );
+  const cart = useSelector((state) => state.cart.items);
+
 
   const [quantity, setQuantity] = useState(1);
 
@@ -31,6 +41,22 @@ function ProductDetails() {
   if (isError) {
     return <h2>Product not found</h2>;
   }
+
+  const isWishlisted = wishlist.some(
+    (item) => item.id === product.id
+  );
+  const isInCart = cart.some(
+  (item) => item.id === product.id
+);
+   
+  
+  const handleWishlist = () => {
+    if (isWishlisted) {
+      dispatch(removeFromWishlist(product.id));
+    } else {
+      dispatch(addToWishlist(product));
+    }
+  };
 
   const handleAddToCart = () => {
     dispatch(
@@ -101,6 +127,15 @@ function ProductDetails() {
           </p>
         </div>
 
+        <button
+          className="wishlist-btn"
+          onClick={handleWishlist}
+        >
+          {isWishlisted
+            ? "♥ Remove from Wishlist"
+            : "♡ Add to Wishlist"}
+        </button>
+
         {product.stock > 0 ? (
           <>
             <div className="quantity">
@@ -131,7 +166,7 @@ function ProductDetails() {
               className="add-cart-btn"
               onClick={handleAddToCart}
             >
-              Add to Cart
+              {isInCart?"Added to cart":"Add to cart"}
             </button>
           </>
         ) : (

@@ -13,16 +13,14 @@ body {
   color: #1c1c1c;
 }
 
-.navbar {
-  height: 80px;
-  padding: 0 60px;
+ .navbar {
   display: flex;
   align-items: center;
-  justify-content:space-around;
-  background: #f8f5ef;
+  justify-content: space-between;
+  padding: 15px 50px;
+  min-height: 60px;
+  box-sizing: border-box;
 }
-
-
 
 .logo a {
   font-family: "Amiri", serif;
@@ -30,21 +28,28 @@ body {
   color: #744b4b;
   direction: rtl;
   text-decoration: none;
+  line-height: 1;
 }
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 30px;
 }
 
 .nav-links a {
-  text-decoration: none;
   color: #9a7b24;
-  font-size: 16px;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 .nav-links a:hover {
   color: #744b4b;
+}
+
+.nav-links button {
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 .perfume {
@@ -97,37 +102,103 @@ body {
 .perfume-button:hover {
   background: #9a7b24;
 }
-
+/* 
 .a{
   margin-bottom: 150px;
   text-align: center;
-}
-
-.royal {
-  width: 150px;
-  height: 175px;
-  /* background:  #9a7b24; */
-  padding: 10px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
+} */
+/* 
+ 
+/* 
 .b {
   display: flex;
   justify-content: space-around;
-}
-
+} */
+/* 
 .preview {
   padding: 110px 60px;
+  background: #f8f5ef;
+  text-align: center;
+} */
+/* 
+.content {
+  max-width: 750px;
+  margin: auto;
+} */
+
+.preview {
+  padding: 80px 60px;
   background: #f8f5ef;
   text-align: center;
 }
 
 .content {
-  max-width: 750px;
+  max-width: 1100px;
   margin: auto;
 }
 
+.content > p:first-child {
+  color: #9a7b24;
+  font-size: 14px;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+
+.a {
+  color: #744b4b;
+  font-family: "Amiri", serif;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.b {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.royal {
+  width: auto;
+  min-height: 330px;
+  padding: 25px;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #e4dccf;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: 0.3s ease;
+}
+
+.royal:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(116, 75, 75, 0.15);
+}
+
+.royal img {
+  width: 160px;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.royal h3 {
+  color: #744b4b;
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.royal p {
+  color: #777;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.royal h3:last-child {
+  color: #9a7b24;
+  font-size: 18px;
+  margin-top: 15px;
+}
 .label {
   color: #9a7b24;
   font-size: 13px;
@@ -193,14 +264,7 @@ body {
   font-size: 16px;
 }
 
-/* .products-grid {
-  max-width: 1200px;
-  margin: auto;
 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-} */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -504,4 +568,83 @@ body {
 .error {
   color: #b00020;
   margin-bottom: 10px;
+}
+
+.wishlist-btn {
+  padding: 10px 18px;
+  margin: 10px 0;
+  border: 1px solid #744b4b;
+  background: transparent;
+  color: #744b4b;
+  cursor: pointer;
+}
+
+.wishlist-btn:hover {
+  background: #744b4b;
+  color: white;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  color: #744b4b;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.user-icon {
+  font-size: 20px;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 240px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.user-welcome {
+  padding: 12px 18px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-welcome small {
+  color: #777;
+}
+
+.user-dropdown a,
+.dropdown-logout {
+  display: block;
+  width: 100%;
+  padding: 12px 18px;
+  box-sizing: border-box;
+  text-align: left;
+  text-decoration: none;
+  color: #444;
+  background: white;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.user-dropdown a:hover,
+.dropdown-logout:hover {
+  background: #f8f5ef;
+  color: #744b4b;
 }
