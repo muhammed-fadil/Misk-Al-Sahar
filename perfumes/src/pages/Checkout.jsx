@@ -70,17 +70,17 @@ function Checkout() {
       {error && <p className="error">{error}</p>}
 
       <div className="checkout-content">
-        <div>
+        <div className="check">
           <h2>Order Summary</h2>
 
           {cartItems.map((item) => (
             <p key={item.id}>
-              {item.name} × {item.quantity} — ₹
-              {item.price * item.quantity}
+              {item.name} * {item.quantity} = ₹
+               {item.price * item.quantity}
             </p>
           ))}
 
-          <h2>Total: ₹{total}</h2>
+          <h2>Total: ₹ {total}</h2>
         </div>
 
         <div>

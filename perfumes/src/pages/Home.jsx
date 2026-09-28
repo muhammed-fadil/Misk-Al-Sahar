@@ -53,13 +53,17 @@ function Home() {
           )}
 
           {!isLoading && !isError && (
-           <div className="b">
+         <div className="b">
   {products
     .filter((product) =>
       ["White Musk", "One", "Desert Rose"].includes(product.name)
     )
     .map((product) => (
-      <div className="royal" key={product.id}>
+      <Link
+        to={`/product/${product.id}`}
+        className="royal"
+        key={product.id}
+      >
         <img
           src={product.image}
           alt={product.name}
@@ -70,7 +74,7 @@ function Home() {
         <p>{product.category}</p>
 
         <h3>₹{product.price}</h3>
-      </div>
+      </Link>
     ))}
 </div>
           )}

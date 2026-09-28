@@ -6,7 +6,7 @@
       "category": "Oud",
       "price": 2499,
       "rating": 4.8,
-      "stock": 15,
+      "stock": 8,
       "brand": "Misk Al-Sahar",
       "image": "/images/royal-oud.png",
       "shortDescription": "A rich Arabian fragrance with saffron, oud and warm amber.",
@@ -39,7 +39,7 @@
       "category": "Musk",
       "price": 1999,
       "rating": 4.6,
-      "stock": 20,
+      "stock": 7,
       "brand": "Misk Al-Sahar",
       "image": "/images/white-musk.png",
       "shortDescription": "A soft and elegant fragrance with white musk and delicate florals.",
@@ -71,7 +71,7 @@
       "category": "Amber",
       "price": 2299,
       "rating": 4.7,
-      "stock": 12,
+      "stock": 6,
       "brand": "Misk Al-Sahar",
       "image": "/images/golden-amber.png",
       "shortDescription": "A warm oriental fragrance with amber, saffron and vanilla.",
@@ -104,7 +104,7 @@
       "category": "Floral",
       "price": 2699,
       "rating": 4.9,
-      "stock": 10,
+      "stock": 9,
       "brand": "Misk Al-Sahar",
       "image": "/images/desert-rose.png",
       "shortDescription": "A luxurious floral fragrance featuring rose, oud and saffron.",
@@ -137,7 +137,7 @@
       "category": "Musk",
       "price": 2199,
       "rating": 4.5,
-      "stock": 18,
+      "stock": 7,
       "brand": "Misk Al-Sahar",
       "image": "/images/midnight-musk.png",
       "shortDescription": "A mysterious evening scent with black musk, vanilla and amber.",
@@ -204,6 +204,12 @@
       "email": "fadil1234@gmail.com",
       "password": "fadil123",
       "id": "gFPhiYk1Pug"
+    },
+    {
+      "name": "riswan",
+      "email": "riswan1234@gmail.com",
+      "password": "riswan123",
+      "id": "Hn8iVeBhR0o"
     }
   ],
   "orders": [
@@ -371,6 +377,408 @@
       ],
       "total": 5798,
       "id": "PDrjGzepYEc"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": "vjjjhh",
+      "address": "gjj",
+      "phone": "qwertyuiop",
+      "items": [
+        {
+          "id": "2",
+          "name": "White Musk",
+          "category": "Musk",
+          "price": 1999,
+          "rating": 4.6,
+          "stock": 20,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/white-musk.png",
+          "shortDescription": "A soft and elegant fragrance with white musk and delicate florals.",
+          "description": "A soft and elegant fragrance combining fresh fruits and delicate florals with a clean, creamy musk base.",
+          "notes": {
+            "top": [
+              "Bergamot",
+              "Pear",
+              "Aldehydes"
+            ],
+            "heart": [
+              "White Rose",
+              "Jasmine",
+              "Orange Blossom"
+            ],
+            "base": [
+              "White Musk",
+              "Vanilla",
+              "Sandalwood"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Daily Wear",
+          "quantity": 20
+        },
+        {
+          "id": "3",
+          "name": "Golden Amber",
+          "category": "Amber",
+          "price": 2299,
+          "rating": 4.7,
+          "stock": 12,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/golden-amber.png",
+          "shortDescription": "A warm oriental fragrance with amber, saffron and vanilla.",
+          "description": "A warm oriental fragrance with a spicy citrus opening, rich amber heart, and smooth vanilla-woody finish.",
+          "notes": {
+            "top": [
+              "Saffron",
+              "Mandarin",
+              "Cardamom"
+            ],
+            "heart": [
+              "Amber",
+              "Cinnamon",
+              "Rose"
+            ],
+            "base": [
+              "Benzoin",
+              "Vanilla",
+              "Sandalwood",
+              "Musk"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Evening",
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "name": "One",
+          "category": "Oriental",
+          "price": 2899,
+          "rating": 4.9,
+          "stock": 8,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/one.png",
+          "shortDescription": "An opulent oriental fragrance built around saffron and oud.",
+          "description": "An opulent oriental fragrance built around saffron and oud, enriched with rose and leather before finishing with warm sandalwood and amber.",
+          "notes": {
+            "top": [
+              "Saffron",
+              "Bergamot",
+              "Pink Pepper"
+            ],
+            "heart": [
+              "Oud",
+              "Geranium",
+              "Rose"
+            ],
+            "base": [
+              "Sandalwood",
+              "Leather",
+              "Amber",
+              "Musk"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Special Occasion",
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "name": "Desert Rose",
+          "category": "Floral",
+          "price": 2699,
+          "rating": 4.9,
+          "stock": 10,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/desert-rose.png",
+          "shortDescription": "A luxurious floral fragrance featuring rose, oud and saffron.",
+          "description": "A luxurious rose fragrance where fresh spices and saffron lead into a rich floral heart before resting on deep oud and warm woods.",
+          "notes": {
+            "top": [
+              "Pink Pepper",
+              "Bergamot",
+              "Saffron"
+            ],
+            "heart": [
+              "Damask Rose",
+              "Turkish Rose",
+              "Jasmine"
+            ],
+            "base": [
+              "Oud",
+              "Patchouli",
+              "Amber",
+              "Sandalwood"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Women",
+          "occasion": "Special Occasion",
+          "quantity": 1
+        }
+      ],
+      "total": 47877,
+      "id": "u6b9KPitbA0"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": " fadil",
+      "address": "fghjjjj",
+      "phone": "12345678jh",
+      "items": [
+        {
+          "id": "5",
+          "name": "Midnight Musk",
+          "category": "Musk",
+          "price": 2199,
+          "rating": 4.5,
+          "stock": 7,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/midnight-musk.png",
+          "shortDescription": "A mysterious evening scent with black musk, vanilla and amber.",
+          "description": "A mysterious evening fragrance combining dark fruity and spicy notes with floral musk and a warm, sweet woody base.",
+          "notes": {
+            "top": [
+              "Black Pepper",
+              "Bergamot",
+              "Plum"
+            ],
+            "heart": [
+              "Black Musk",
+              "Rose",
+              "Jasmine"
+            ],
+            "base": [
+              "Vanilla",
+              "Amber",
+              "Tonka Bean",
+              "Cedarwood"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Men",
+          "occasion": "Night",
+          "quantity": 3
+        },
+        {
+          "id": "2",
+          "name": "White Musk",
+          "category": "Musk",
+          "price": 1999,
+          "rating": 4.6,
+          "stock": 7,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/white-musk.png",
+          "shortDescription": "A soft and elegant fragrance with white musk and delicate florals.",
+          "description": "A soft and elegant fragrance combining fresh fruits and delicate florals with a clean, creamy musk base.",
+          "notes": {
+            "top": [
+              "Bergamot",
+              "Pear",
+              "Aldehydes"
+            ],
+            "heart": [
+              "White Rose",
+              "Jasmine",
+              "Orange Blossom"
+            ],
+            "base": [
+              "White Musk",
+              "Vanilla",
+              "Sandalwood"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Daily Wear",
+          "quantity": 2
+        },
+        {
+          "id": "3",
+          "name": "Golden Amber",
+          "category": "Amber",
+          "price": 2299,
+          "rating": 4.7,
+          "stock": 6,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/golden-amber.png",
+          "shortDescription": "A warm oriental fragrance with amber, saffron and vanilla.",
+          "description": "A warm oriental fragrance with a spicy citrus opening, rich amber heart, and smooth vanilla-woody finish.",
+          "notes": {
+            "top": [
+              "Saffron",
+              "Mandarin",
+              "Cardamom"
+            ],
+            "heart": [
+              "Amber",
+              "Cinnamon",
+              "Rose"
+            ],
+            "base": [
+              "Benzoin",
+              "Vanilla",
+              "Sandalwood",
+              "Musk"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Evening",
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "name": "One",
+          "category": "Oriental",
+          "price": 2899,
+          "rating": 4.9,
+          "stock": 8,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/one.png",
+          "shortDescription": "An opulent oriental fragrance built around saffron and oud.",
+          "description": "An opulent oriental fragrance built around saffron and oud, enriched with rose and leather before finishing with warm sandalwood and amber.",
+          "notes": {
+            "top": [
+              "Saffron",
+              "Bergamot",
+              "Pink Pepper"
+            ],
+            "heart": [
+              "Oud",
+              "Geranium",
+              "Rose"
+            ],
+            "base": [
+              "Sandalwood",
+              "Leather",
+              "Amber",
+              "Musk"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Special Occasion",
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "name": "Desert Rose",
+          "category": "Floral",
+          "price": 2699,
+          "rating": 4.9,
+          "stock": 9,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/desert-rose.png",
+          "shortDescription": "A luxurious floral fragrance featuring rose, oud and saffron.",
+          "description": "A luxurious rose fragrance where fresh spices and saffron lead into a rich floral heart before resting on deep oud and warm woods.",
+          "notes": {
+            "top": [
+              "Pink Pepper",
+              "Bergamot",
+              "Saffron"
+            ],
+            "heart": [
+              "Damask Rose",
+              "Turkish Rose",
+              "Jasmine"
+            ],
+            "base": [
+              "Oud",
+              "Patchouli",
+              "Amber",
+              "Sandalwood"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Women",
+          "occasion": "Special Occasion",
+          "quantity": 1
+        },
+        {
+          "id": "1",
+          "name": "Royal Oud",
+          "category": "Oud",
+          "price": 2499,
+          "rating": 4.8,
+          "stock": 8,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/royal-oud.png",
+          "shortDescription": "A rich Arabian fragrance with saffron, oud and warm amber.",
+          "description": "A rich Arabian fragrance opening with spicy saffron and cardamom, developing into floral oud before settling into a warm, woody base.",
+          "notes": {
+            "top": [
+              "Saffron",
+              "Cardamom",
+              "Bergamot"
+            ],
+            "heart": [
+              "Rose",
+              "Jasmine",
+              "Oud"
+            ],
+            "base": [
+              "Agarwood",
+              "Amber",
+              "Sandalwood",
+              "Musk"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Evening",
+          "quantity": 1
+        }
+      ],
+      "total": 20991,
+      "id": "4D444jhctCg"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": "Muhammed fadil",
+      "address": "erytyuiooiuyudsfhuk",
+      "phone": "1234567890",
+      "items": [
+        {
+          "id": "5",
+          "name": "Midnight Musk",
+          "category": "Musk",
+          "price": 2199,
+          "rating": 4.5,
+          "stock": 7,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/midnight-musk.png",
+          "shortDescription": "A mysterious evening scent with black musk, vanilla and amber.",
+          "description": "A mysterious evening fragrance combining dark fruity and spicy notes with floral musk and a warm, sweet woody base.",
+          "notes": {
+            "top": [
+              "Black Pepper",
+              "Bergamot",
+              "Plum"
+            ],
+            "heart": [
+              "Black Musk",
+              "Rose",
+              "Jasmine"
+            ],
+            "base": [
+              "Vanilla",
+              "Amber",
+              "Tonka Bean",
+              "Cedarwood"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Men",
+          "occasion": "Night",
+          "quantity": 2
+        }
+      ],
+      "total": 4398,
+      "id": "l9XopHlIWbs"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

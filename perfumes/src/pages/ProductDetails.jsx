@@ -4,12 +4,11 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../services/productService";
 import { addToCart } from "../redux/slices/cartSlice";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../redux/slices/wishlistSlice";
+import {addToWishlist,removeFromWishlist,} from "../redux/slices/wishlistSlice";
+import { useNavigate } from "react-router-dom";
 
 function ProductDetails() {
+  const navigate = useNavigate()
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -68,7 +67,8 @@ function ProductDetails() {
   };
 
   return (
-    <main className="product-details">
+    <div className="pro">
+    <div className="product-details">
       <div className="product-details-image">
         <img src={product.image} alt={product.name} />
       </div>
@@ -132,8 +132,8 @@ function ProductDetails() {
           onClick={handleWishlist}
         >
           {isWishlisted
-            ? "♥ Remove from Wishlist"
-            : "♡ Add to Wishlist"}
+            ? " Remove from Wishlist"
+            : " Add to Wishlist"}
         </button>
 
         {product.stock > 0 ? (
@@ -173,7 +173,8 @@ function ProductDetails() {
           <p>Out of Stock</p>
         )}
       </div>
-    </main>
+      </div>
+    </div>
   );
 }
 

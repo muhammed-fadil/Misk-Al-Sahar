@@ -22,7 +22,7 @@ function Wishlist() {
 
   if (wishlist.length === 0) {
     return (
-      <main className="wishlist">
+      <main className="wishlist-h2">
         <h2>Your wishlist is empty</h2>
       </main>
     );

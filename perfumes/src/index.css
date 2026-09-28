@@ -13,15 +13,19 @@ body {
   color: #1c1c1c;
 }
 
- .navbar {
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 50px;
   min-height: 60px;
   box-sizing: border-box;
-}
 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #f8f5ef;
+}
 .logo a {
   font-family: "Amiri", serif;
   font-size: 30px;
@@ -168,6 +172,8 @@ body {
   border-radius: 8px;
   box-sizing: border-box;
   transition: 0.3s ease;
+   text-decoration: none;
+  color: inherit;
 }
 
 .royal:hover {
@@ -352,15 +358,17 @@ body {
   border-color: #9a7b24;
 }
 
-
+.pro{
+  height: 800px;
+}
 .product-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   max-width: 1100px;
   margin-left: 60px;
-  padding: 20px;
-  min-height: 600px;
+  padding: 10px;
+  height: 700px;
   background: #f3eee6;
   align-items: center;
 }
@@ -454,6 +462,7 @@ body {
 }
 
 .cart {
+   color: #744b4b;
   max-width: 900px;
   margin: 50px auto;
   padding: 20px;
@@ -494,6 +503,19 @@ body {
   margin-bottom: 40px;
 }
 
+.check{
+  background-color: #eae6e1;
+  padding-left: 80px;
+  align-content: center;
+  min-height: 200px;
+}
+
+.check p{
+   color: #9a7b24;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
 .checkout-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -502,6 +524,7 @@ body {
 
 .checkout-content h2 {
   color: #744b4b;
+  margin: 30px;
 }
 
 .checkout input {
@@ -531,6 +554,11 @@ body {
   max-width: 900px;
   margin: 50px auto;
   padding: 20px;
+ 
+}
+.orders h1{
+    color: #744b4b;
+    margin: 20px;
 }
 
 .order {
@@ -568,6 +596,20 @@ body {
 .error {
   color: #b00020;
   margin-bottom: 10px;
+}
+.wishlist h1{
+   color: #744b4b;
+   margin-left: 150px;
+   margin-bottom: 60px;
+   margin-top: 60px;
+}
+
+.wishlist-h2{
+  
+   color: #744b4b;
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
 .wishlist-btn {
@@ -648,3 +690,69 @@ body {
   background: #f8f5ef;
   color: #744b4b;
 }
+
+.about-page {
+  width: 100%;
+}
+
+.about-hero,
+.about-section,
+.about-final {
+  padding: 80px 10%;
+}
+
+.about-content {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.about-hero {
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: 48px;
+  margin: 20px 0;
+   color: #744b4b;
+
+}
+
+.about-section h2,
+.about-final h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+   color: #744b4b;
+}
+
+.about-section p,
+.about-final p {
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.label {
+  letter-spacing: 4px;
+  font-size: 13px;
+}
+
+.fragrance-notes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.note {
+  padding: 25px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.note h3 {
+  font-size: 24px;
+}
+
+.about-final {
+  text-align: center;
+}
+

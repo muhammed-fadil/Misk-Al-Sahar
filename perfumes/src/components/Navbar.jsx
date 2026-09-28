@@ -37,55 +37,90 @@ function Navbar() {
         <Link to="/wishlist">Wishlist</Link>
         <Link to="/about">About</Link>
 
-        {user ? (
-          <div className="user-menu">
+        <div className="user-menu">
 
-            <button
-              className="user-button"
-              onClick={() => setShowMenu(!showMenu)}
-            >
-              <span className="user-icon"></span>
-              {user.name} 
-              <span></span>
-            </button>
+          <button
+            className="user-button"
+            onClick={() => setShowMenu(!showMenu)}
+          >
+            <span className="user-icon"></span>
 
-            {showMenu && (
-              <div className="user-dropdown">
+            {user ? user.name : "Profile"}
 
-                <div className="user-welcome">
-                  <strong>Hello, {user.name}</strong>
-                  <small>{user.email}</small>
-                </div>
+            <span>👤</span>
+          </button>
 
-                <Link to="/orders" onClick={() => setShowMenu(false)}>
-                  My Orders
-                </Link>
+          {showMenu && (
+            <div className="user-dropdown">
 
-                <Link to="/wishlist" onClick={() => setShowMenu(false)}>
-                  Wishlist
-                </Link>
+              {user ? (
+                <>
+                  <div className="user-welcome">
+                    <strong>Hello, {user.name}</strong>
+                    <small>{user.email}</small>
+                  </div>
 
-                <Link to="/cart" onClick={() => setShowMenu(false)}>
-                  My Cart
-                </Link>
+                  <Link
+                    to="/orders"
+                    onClick={() => setShowMenu(false)}
+                  >
+                    My Orders
+                  </Link>
 
-                <button
-                  className="dropdown-logout"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
+                  <Link
+                    to="/wishlist"
+                    onClick={() => setShowMenu(false)}
+                  >
+                    Wishlist
+                  </Link>
 
-              </div>
-            )}
+                  <Link
+                    to="/cart"
+                    onClick={() => setShowMenu(false)}
+                  >
+                    My Cart
+                  </Link>
 
-          </div>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
-        )}
+                  <button
+                    className="dropdown-logout"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className="new-customer">
+                    <span>New customer?</span>
+                  </div>
+
+                  <Link
+                    to="/login"
+                    onClick={() => setShowMenu(false)}
+                  >
+                    Login
+                  </Link>
+
+                  <Link
+                    to="/register"
+                    onClick={() => setShowMenu(false)}
+                  >
+                    Register
+                  </Link>
+
+                  <Link
+                    to="/wishlist"
+                    onClick={() => setShowMenu(false)}
+                  >
+                    Wishlist
+                  </Link>
+                </>
+              )}
+
+            </div>
+          )}
+
+        </div>
       </div>
 
     </nav>
