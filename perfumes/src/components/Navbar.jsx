@@ -16,10 +16,7 @@ function Navbar() {
 
   const [showMenu, setShowMenu] = useState(false);
 
-  const cartCount = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const cartCount = cartItems.length;
 
   const wishlistCount = wishlistItems.length;
 
