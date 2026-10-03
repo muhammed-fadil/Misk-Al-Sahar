@@ -24,11 +24,37 @@ function Shop() {
   });
 
   if (isLoading) {
-    return <h2>Loading products...</h2>;
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-5">
+        <div className="text-center">
+          <p className="mb-3 text-sm tracking-[3px] text-[#9a7b24]">
+            MISK AL-SAHAR
+          </p>
+
+          <h2 className="text-xl text-[#744b4b]">
+            Loading our collection...
+          </h2>
+        </div>
+      </main>
+    );
   }
 
   if (isError) {
-    return <h2>Failed to load products. Please try again.</h2>;
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-5">
+        <div className="rounded-xl bg-white p-8 text-center shadow-sm">
+          <p className="mb-3 text-3xl">!</p>
+
+          <h2 className="text-xl font-medium text-red-600">
+            Failed to load products
+          </h2>
+
+          <p className="mt-2 text-sm text-gray-500">
+            Please try again later.
+          </p>
+        </div>
+      </main>
+    );
   }
 
   const categories = [
@@ -56,49 +82,155 @@ function Shop() {
   }
 
   return (
-    <main className="shop">
-      <h1>Our Collection</h1>
-  <div className="input-div">
-      <input className="input-box"
-        type="text"
-        placeholder="Search perfumes..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <main className="min-h-screen bg-[#f8f5ef] px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
 
-      <select className="input-box"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      >
-        {categories.map((item) => (
-          <option key={item} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
+      {/* Page Heading */}
+      <section className="mx-auto max-w-3xl text-center">
 
-      <select className="input-box"
-        value={sort}
-        onChange={(e) => setSort(e.target.value)}
-      >
-        <option value="">Sort by Price</option>
-        <option value="low">Low to High</option>
-        <option value="high">High to Low</option>
-      </select>
+        <p className="mb-3 text-xs font-medium tracking-[3px] text-[#9a7b24] sm:text-sm">
+          DISCOVER
+        </p>
+
+        <h1 className="text-4xl font-semibold text-[#744b4b] sm:text-5xl">
+          Our Collection
+        </h1>
+
+        <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#777] sm:text-base">
+          Explore our collection of carefully selected fragrances
+          inspired by the beauty and tradition of the Middle East.
+        </p>
+
+      </section>
+
+
+      {/* Filters */}
+      <section className="mx-auto mt-10 max-w-6xl rounded-xl bg-white p-4 shadow-sm sm:p-5">
+
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+
+          {/* Search */}
+          <div className="md:col-span-1">
+
+            <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-[#9a7b24]">
+              Search
+            </label>
+
+            <input
+              type="text"
+              placeholder="Search perfumes..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+            />
+
+          </div>
+
+
+          {/* Category */}
+          <div>
+
+            <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-[#9a7b24]">
+              Category
+            </label>
+
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+            >
+              {categories.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+
+          </div>
+
+
+          {/* Sort */}
+          <div>
+
+            <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-[#9a7b24]">
+              Sort
+            </label>
+
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value)}
+              className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+            >
+              <option value="">Sort by Price</option>
+              <option value="low">Price: Low to High</option>
+              <option value="high">Price: High to Low</option>
+            </select>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* Results Count */}
+      <div className="mx-auto mt-8 flex max-w-6xl items-center justify-between">
+
+        <p className="text-sm text-[#777]">
+          {filteredProducts.length}{" "}
+          {filteredProducts.length === 1 ? "fragrance" : "fragrances"}
+        </p>
+
+        {search && (
+          <button
+            onClick={() => setSearch("")}
+            className="text-sm text-[#9a7b24] hover:underline"
+          >
+            Clear search
+          </button>
+        )}
+
       </div>
 
+
+      {/* Products */}
       {filteredProducts.length === 0 ? (
-        <h2>No products found</h2>
+        <section className="mx-auto mt-8 max-w-6xl rounded-xl bg-white px-5 py-16 text-center shadow-sm">
+
+          <p className="text-4xl">✦</p>
+
+          <h2 className="mt-4 text-2xl font-medium text-[#744b4b]">
+            No fragrances found
+          </h2>
+
+          <p className="mt-2 text-sm text-[#777]">
+            Try changing your search or category.
+          </p>
+
+          <button
+            onClick={() => {
+              setSearch("");
+              setCategory("All");
+              setSort("");
+            }}
+            className="mt-6 rounded-lg bg-[#744b4b] px-6 py-3 text-sm text-white transition hover:bg-[#9a7b24]"
+          >
+            Clear Filters
+          </button>
+
+        </section>
       ) : (
-        <div className="product-grid">
+        <section className="mx-auto mt-8 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
             />
           ))}
-        </div>
+
+        </section>
       )}
+
     </main>
   );
 }

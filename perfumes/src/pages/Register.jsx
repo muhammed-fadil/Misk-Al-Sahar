@@ -1,6 +1,7 @@
+
 import { useState } from "react";
 import { registerUser, getUsers } from "../services/userService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState("");
@@ -28,7 +29,7 @@ function Register() {
       const response = await getUsers();
 
       const exists = response.data.some(
-        (user) => user.email === email
+        (user) => user.email.toLowerCase() === email.toLowerCase()
       );
 
       if (exists) {
@@ -44,42 +45,132 @@ function Register() {
 
       navigate("/login");
     } catch (error) {
-      setError("Registration failed. Please try again.");
+      console.error(error);
+      setError("Registration failed. Please check JSON Server.");
     }
   };
 
   return (
-    <main className="auth">
-      <h1>Register</h1>
+    <main className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-5 py-12">
+      <div className="w-full max-w-md">
 
-      {error && <p className="error">{error}</p>}
+        {/* Header */}
+        <div className="mb-8 text-center">
+          <p className="font-['Amiri'] text-3xl text-[#744b4b]">
+            مِسْك السَّحَر
+          </p>
 
-      <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+          <p className="mt-4 text-xs tracking-[3px] text-[#9a7b24]">
+            JOIN MISK AL-SAHAR
+          </p>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <h1 className="mt-2 text-3xl font-semibold text-[#744b4b] sm:text-4xl">
+            Create Account
+          </h1>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <p className="mt-3 text-sm text-[#777]">
+            Create an account and discover your signature scent.
+          </p>
+        </div>
 
-        <button type="submit">Register</button>
-      </form>
+        {/* Register Card */}
+        <div className="rounded-xl bg-white p-6 shadow-sm sm:p-8">
+
+          {/* Error */}
+          {error && (
+            <div className="mb-5 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleRegister} className="space-y-5">
+
+            {/* Name */}
+            <div>
+              <label className="mb-2 block text-sm font-medium text-[#744b4b]">
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your name"
+                className="w-full rounded-lg border border-[#e4dccf] bg-[#fffdf9] px-4 py-3 text-sm outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="mb-2 block text-sm font-medium text-[#744b4b]">
+                Email
+              </label>
+
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="w-full rounded-lg border border-[#e4dccf] bg-[#fffdf9] px-4 py-3 text-sm outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+              />
+            </div>
+
+            {/* Password */}
+            <div>
+              <label className="mb-2 block text-sm font-medium text-[#744b4b]">
+                Password
+              </label>
+
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Create a password"
+                className="w-full rounded-lg border border-[#e4dccf] bg-[#fffdf9] px-4 py-3 text-sm outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+              />
+
+              <p className="mt-2 text-xs text-gray-400">
+                Password must contain at least 6 characters.
+              </p>
+            </div>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#9a7b24]"
+            >
+              Create Account
+            </button>
+
+          </form>
+
+          {/* Divider */}
+          <div className="my-6 flex items-center gap-3">
+            <div className="h-px flex-1 bg-[#e4dccf]" />
+
+            <span className="text-xs text-gray-400">
+              OR
+            </span>
+
+            <div className="h-px flex-1 bg-[#e4dccf]" />
+          </div>
+
+          {/* Login */}
+          <p className="text-center text-sm text-[#777]">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="font-medium text-[#9a7b24] hover:underline"
+            >
+              Login
+            </Link>
+          </p>
+
+        </div>
+      </div>
     </main>
   );
 }
 
 export default Register;
+

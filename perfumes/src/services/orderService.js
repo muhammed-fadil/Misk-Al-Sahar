@@ -11,5 +11,7 @@ export const getOrders = (userId) => {
 };
 
 export const cancelOrder = (orderId) => {
-  return axios.delete(`${API}/orders/${orderId}`);
+  return axios.patch(`${API}/orders/${orderId}`, {
+    status: "Cancelled",
+  });
 };
