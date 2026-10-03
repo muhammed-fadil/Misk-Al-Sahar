@@ -8,21 +8,20 @@ import { loadCart } from "../redux/slices/cartSlice";
 import { loadWishlist } from "../redux/slices/wishlistSlice";
 
 import { getUsers } from "../services/userService";
+import { toast } from "react-toastify";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError("");
 
     if (!email || !password) {
-      setError("Email and password are required");
+    toast.error("Email and password are required"); 
       return;
     }
 
@@ -36,11 +35,12 @@ function Login() {
       );
 
       if (!user) {
-        setError("Invalid email or password");
+        toast.error("Invalid email or password");
         return;
       }
 
-      dispatch(login(user));
+      dispatch(login(user))
+      toast.success("Login successful!");;
 
       const cart =
         JSON.parse(localStorage.getItem(`cart_${user.id}`)) || [];
@@ -54,7 +54,7 @@ function Login() {
       navigate("/");
     } catch (error) {
       console.error(error);
-      setError("Unable to connect to the server.");
+     toast.error("Unable to connect to the server.");
     }
   };
 
@@ -84,12 +84,7 @@ function Login() {
         {/* Login Card */}
         <div className="rounded-xl bg-white p-6 shadow-sm sm:p-8">
 
-          {/* Error */}
-          {error && (
-            <div className="mb-5 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
-              {error}
-            </div>
-          )}
+        
 
           <form onSubmit={handleLogin} className="space-y-5">
 

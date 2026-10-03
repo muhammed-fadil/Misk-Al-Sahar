@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { logout } from "../redux/slices/authSlice";
 import { clearOrders } from "../redux/slices/orderSlice";
-import { clearCart } from "../redux/slices/cartSlice";
 import { clearWishlist } from "../redux/slices/wishlistSlice";
 
 function Navbar() {

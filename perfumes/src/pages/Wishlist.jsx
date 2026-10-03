@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeFromWishlist } from "../redux/slices/wishlistSlice";
 import { addToCart } from "../redux/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Wishlist() {
   const dispatch = useDispatch();
@@ -10,6 +11,11 @@ function Wishlist() {
   const wishlist = useSelector(
     (state) => state.wishlist.items
   );
+
+  const handleRemove = (product) => {
+    dispatch(removeFromWishlist(product.id));
+    toast.success(`${product.name} removed from wishlist`);
+  };
 
   const handleMoveToCart = (product) => {
     dispatch(
@@ -20,15 +26,15 @@ function Wishlist() {
     );
 
     dispatch(removeFromWishlist(product.id));
+
+    toast.success(`${product.name} moved to cart`);
   };
 
   // Empty Wishlist
   if (wishlist.length === 0) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-5">
-
         <div className="text-center">
-
           <div className="mb-5 text-5xl">
             ♡
           </div>
@@ -47,21 +53,17 @@ function Wishlist() {
           >
             Explore Collection
           </button>
-
         </div>
-
       </main>
     );
   }
 
   return (
     <main className="min-h-screen bg-[#f8f5ef] px-4 py-10 sm:px-6 lg:px-10">
-
       <div className="mx-auto max-w-6xl">
 
         {/* Heading */}
         <div className="mb-12 text-center">
-
           <p className="mb-2 text-sm tracking-[3px] text-[#9a7b24]">
             SAVED FOR YOU
           </p>
@@ -69,12 +71,10 @@ function Wishlist() {
           <h1 className="font-serif text-4xl text-[#744b4b] sm:text-5xl">
             My Wishlist
           </h1>
-
         </div>
 
         {/* Wishlist Products */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
           {wishlist.map((product) => (
             <div
               className="overflow-hidden bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-lg"
@@ -92,7 +92,6 @@ function Wishlist() {
 
               {/* Product Details */}
               <div className="p-6">
-
                 <h2 className="font-serif text-2xl text-[#744b4b]">
                   {product.name}
                 </h2>
@@ -105,9 +104,7 @@ function Wishlist() {
                 <div className="mt-5 flex flex-col gap-3">
 
                   <button
-                    onClick={() =>
-                      dispatch(removeFromWishlist(product.id))
-                    }
+                    onClick={() => handleRemove(product)}
                     className="w-full border border-[#744b4b] px-4 py-3 text-[#744b4b] transition hover:bg-[#744b4b] hover:text-white"
                   >
                     Remove
@@ -121,16 +118,12 @@ function Wishlist() {
                   </button>
 
                 </div>
-
               </div>
-
             </div>
           ))}
-
         </div>
 
       </div>
-
     </main>
   );
 }

@@ -9,6 +9,7 @@ import {
   addToWishlist,
   removeFromWishlist,
 } from "../redux/slices/wishlistSlice";
+import { toast } from "react-toastify";
 
 function ProductDetails() {
   const navigate = useNavigate();
@@ -82,33 +83,38 @@ function ProductDetails() {
     (item) => item.id === product.id
   );
 
-  const handleWishlist = () => {
-    if (isWishlisted) {
-      dispatch(removeFromWishlist(product.id));
-    } else {
-      dispatch(addToWishlist(product));
-    }
-  };
+ 
+const handleWishlist = () => {
+  if (isWishlisted) {
+    dispatch(removeFromWishlist(product.id));
+    toast.success("Removed from wishlist");
+  } else {
+    dispatch(addToWishlist(product));
+    toast.success("Added to wishlist");
+  }
+};
 
-  const handleAddToCart = () => {
-    dispatch(
-      addToCart({
-        ...product,
-        quantity,
-      })
-    );
-  };
+const handleAddToCart = () => {
+  dispatch(
+    addToCart({
+      ...product,
+      quantity,
+    })
+  );
 
-  const handleBuyNow = () => {
-    dispatch(
-      addToCart({
-        ...product,
-        quantity,
-      })
-    );
+  toast.success("Added to cart");
+};
 
-    navigate("/checkout");
-  };
+const handleBuyNow = () => {
+  dispatch(
+    addToCart({
+      ...product,
+      quantity,
+    })
+  );
+
+  navigate("/checkout");
+};
 
   return (
 <main className="min-h-[calc(100dvh-70px)] bg-[#f8f5ef] p-3 sm:p-4 lg:h-[calc(100dvh-70px)] lg:overflow-hidden lg:p-5">

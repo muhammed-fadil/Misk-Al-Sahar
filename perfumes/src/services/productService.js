@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:3001";
+const API = import.meta.env.VITE_API_URL;
 
 export const getProducts = () => {
   return axios.get(`${API}/products`);
@@ -9,7 +9,3 @@ export const getProducts = () => {
 export const getProductById = (id) => {
   return axios.get(`${API}/products/${id}`);
 };
-
-
-
-

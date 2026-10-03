@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "../redux/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -13,7 +14,11 @@ function Cart() {
     0
   );
 
-  // Empty Cart
+  const handleRemove = (id, name) => {
+    dispatch(removeFromCart(id));
+    toast.success(`${name} removed from cart`);
+  };
+
   if (cartItems.length === 0) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-5">
@@ -41,10 +46,8 @@ function Cart() {
 
   return (
     <main className="min-h-screen bg-[#f8f5ef] px-4 py-10 sm:px-6 lg:px-10">
-
       <div className="mx-auto max-w-5xl">
 
-        {/* Heading */}
         <div className="mb-10 text-center">
           <p className="mb-2 text-sm tracking-[3px] text-[#9a7b24]">
             YOUR SELECTION
@@ -55,25 +58,19 @@ function Cart() {
           </h1>
         </div>
 
-        {/* Cart Items */}
         <div className="space-y-5">
-
           {cartItems.map((item) => (
             <div
               className="flex flex-col gap-5 border-b border-[#ddd] bg-white p-5 sm:flex-row sm:items-center"
               key={item.id}
             >
-
-              {/* Product Image */}
               <img
                 src={item.image}
                 alt={item.name}
                 className="mx-auto h-32 w-32 object-contain sm:mx-0"
               />
 
-              {/* Product Details */}
               <div className="flex-1 text-center sm:text-left">
-
                 <h2 className="font-serif text-2xl text-[#744b4b]">
                   {item.name}
                 </h2>
@@ -82,9 +79,7 @@ function Cart() {
                   ₹{item.price}
                 </p>
 
-                {/* Quantity */}
                 <div className="mt-4 flex items-center justify-center gap-3 sm:justify-start">
-
                   <button
                     onClick={() =>
                       dispatch(
@@ -118,22 +113,16 @@ function Cart() {
                   >
                     +
                   </button>
-
                 </div>
 
-                {/* Remove */}
                 <button
-                  onClick={() =>
-                    dispatch(removeFromCart(item.id))
-                  }
+                  onClick={() => handleRemove(item.id, item.name)}
                   className="mt-4 text-sm text-red-600 hover:underline"
                 >
                   Remove
                 </button>
-
               </div>
 
-              {/* Item Total */}
               <div className="text-center sm:text-right">
                 <p className="text-sm text-[#777]">
                   Item Total
@@ -143,15 +132,11 @@ function Cart() {
                   ₹{item.price * item.quantity}
                 </p>
               </div>
-
             </div>
           ))}
-
         </div>
 
-        {/* Cart Summary */}
         <div className="mt-8 ml-auto max-w-md border-t border-[#ddd] pt-6">
-
           <div className="flex items-center justify-between">
             <span className="text-lg text-[#555]">
               Total
@@ -175,7 +160,6 @@ function Cart() {
           >
             Continue Shopping
           </button>
-
         </div>
 
       </div>

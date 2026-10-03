@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:3001";
+const API = import.meta.env.VITE_API_URL;
 
 export const createOrder = (order) => {
   return axios.post(`${API}/orders`, order);

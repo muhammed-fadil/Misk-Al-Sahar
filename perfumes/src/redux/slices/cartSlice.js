@@ -1,13 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const user = JSON.parse(localStorage.getItem("user"));
+const getUser = () => {
+  return JSON.parse(localStorage.getItem("user"));
+};
 
 const getCart = () => {
+  const user = getUser();
+
   if (!user) return [];
 
   return JSON.parse(
     localStorage.getItem(`cart_${user.id}`)
   ) || [];
+};
+
+const saveCart = (items) => {
+  const user = getUser();
+
+  if (user) {
+    localStorage.setItem(
+      `cart_${user.id}`,
+      JSON.stringify(items)
+    );
+  }
 };
 
 const cartSlice = createSlice({
@@ -36,12 +51,7 @@ const cartSlice = createSlice({
         state.items.push(action.payload);
       }
 
-      if (user) {
-        localStorage.setItem(
-          `cart_${user.id}`,
-          JSON.stringify(state.items)
-        );
-      }
+      saveCart(state.items);
     },
 
     removeFromCart: (state, action) => {
@@ -49,12 +59,7 @@ const cartSlice = createSlice({
         (item) => item.id !== action.payload
       );
 
-      if (user) {
-        localStorage.setItem(
-          `cart_${user.id}`,
-          JSON.stringify(state.items)
-        );
-      }
+      saveCart(state.items);
     },
 
     updateQuantity: (state, action) => {
@@ -69,16 +74,12 @@ const cartSlice = createSlice({
         );
       }
 
-      if (user) {
-        localStorage.setItem(
-          `cart_${user.id}`,
-          JSON.stringify(state.items)
-        );
-      }
+      saveCart(state.items);
     },
 
     clearCart: (state) => {
       state.items = [];
+      saveCart([]);
     },
   },
 });

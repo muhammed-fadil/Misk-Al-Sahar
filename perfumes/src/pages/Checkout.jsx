@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { createOrder } from "../services/orderService";
 import { clearCart } from "../redux/slices/cartSlice";
@@ -27,8 +28,6 @@ function Checkout() {
     savedDetails.phone || ""
   );
 
-  const [error, setError] = useState("");
-
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -38,7 +37,6 @@ function Checkout() {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-5">
         <div className="text-center">
-
           <div className="mb-5 text-5xl">
             🛍️
           </div>
@@ -57,7 +55,6 @@ function Checkout() {
           >
             Continue Shopping
           </button>
-
         </div>
       </main>
     );
@@ -65,15 +62,14 @@ function Checkout() {
 
   const handleOrder = async (e) => {
     e.preventDefault();
-    setError("");
 
     if (!name || !address || !phone) {
-      setError("All delivery details are required");
+      toast.error("All delivery details are required");
       return;
     }
 
     if (phone.length !== 10) {
-      setError("Phone number must be 10 digits");
+      toast.error("Phone number must be 10 digits");
       return;
     }
 
@@ -102,20 +98,20 @@ function Checkout() {
 
       dispatch(clearCart());
 
+      toast.success("Order placed successfully!");
+
       navigate("/orders");
     } catch (error) {
-      setError("Failed to place order. Please try again.");
+      console.error(error);
+      toast.error("Failed to place order. Please try again.");
     }
   };
 
   return (
     <main className="min-h-screen bg-[#f8f5ef] px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
-
       <div className="mx-auto max-w-6xl">
 
-        {/* Header */}
         <div className="mb-10 text-center">
-
           <p className="mb-2 text-sm tracking-[3px] text-[#9a7b24]">
             COMPLETE YOUR PURCHASE
           </p>
@@ -123,22 +119,12 @@ function Checkout() {
           <h1 className="font-serif text-4xl text-[#744b4b] sm:text-5xl">
             Checkout
           </h1>
-
         </div>
 
-        {/* Error */}
-        {error && (
-          <div className="mx-auto mb-6 max-w-3xl rounded-lg border border-red-200 bg-red-50 px-5 py-4 text-center text-red-600">
-            {error}
-          </div>
-        )}
-
-        {/* Checkout Content */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
 
           {/* Order Summary */}
           <div className="bg-[#eae6e1] p-6 sm:p-8">
-
             <p className="mb-2 text-sm tracking-[2px] text-[#9a7b24]">
               YOUR ORDER
             </p>
@@ -148,7 +134,6 @@ function Checkout() {
             </h2>
 
             <div className="space-y-5">
-
               {cartItems.map((item) => (
                 <div
                   key={item.id}
@@ -169,10 +154,8 @@ function Checkout() {
                   </p>
                 </div>
               ))}
-
             </div>
 
-            {/* Total */}
             <div className="mt-7 flex items-center justify-between border-t border-[#cfc8c0] pt-5">
               <span className="text-lg text-[#555]">
                 Total
@@ -182,12 +165,10 @@ function Checkout() {
                 ₹{total}
               </span>
             </div>
-
           </div>
 
           {/* Delivery Details */}
           <div className="bg-white p-6 sm:p-8">
-
             <p className="mb-2 text-sm tracking-[2px] text-[#9a7b24]">
               DELIVERY
             </p>
@@ -200,8 +181,6 @@ function Checkout() {
               onSubmit={handleOrder}
               className="space-y-5"
             >
-
-              {/* Name */}
               <div>
                 <label className="mb-2 block text-sm text-[#555]">
                   Full Name
@@ -216,7 +195,6 @@ function Checkout() {
                 />
               </div>
 
-              {/* Address */}
               <div>
                 <label className="mb-2 block text-sm text-[#555]">
                   Delivery Address
@@ -231,7 +209,6 @@ function Checkout() {
                 />
               </div>
 
-              {/* Phone */}
               <div>
                 <label className="mb-2 block text-sm text-[#555]">
                   Phone Number
@@ -247,22 +224,17 @@ function Checkout() {
                 />
               </div>
 
-              {/* Submit */}
               <button
                 type="submit"
                 className="w-full bg-[#744b4b] px-6 py-4 text-white transition hover:bg-[#9a7b24]"
               >
                 Place Order
               </button>
-
             </form>
-
           </div>
 
         </div>
-
       </div>
-
     </main>
   );
 }

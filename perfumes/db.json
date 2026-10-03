@@ -210,6 +210,18 @@
       "email": "riswan1234@gmail.com",
       "password": "riswan123",
       "id": "Hn8iVeBhR0o"
+    },
+    {
+      "name": "laan",
+      "email": "laan123@gmail.com",
+      "password": "laan123",
+      "id": "Bjl2lfNI2PU"
+    },
+    {
+      "name": "erl",
+      "email": "erl123@gmail.com",
+      "password": "erl123",
+      "id": "xCpT2SoGaZM"
     }
   ],
   "orders": [
@@ -371,6 +383,96 @@
       "status": "Pending",
       "date": "2026-09-30T05:11:54.515Z",
       "id": "F6mSgKlCxt0"
+    },
+    {
+      "userId": "Bjl2lfNI2PU",
+      "name": "laan",
+      "address": "laaan house, mumbai",
+      "phone": "9876543210",
+      "items": [
+        {
+          "id": "2",
+          "name": "White Musk",
+          "category": "Musk",
+          "price": 1999,
+          "rating": 4.6,
+          "stock": 7,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/white-musk.png",
+          "shortDescription": "A soft and elegant fragrance with white musk and delicate florals.",
+          "description": "A soft and elegant fragrance combining fresh fruits and delicate florals with a clean, creamy musk base.",
+          "notes": {
+            "top": [
+              "Bergamot",
+              "Pear",
+              "Aldehydes"
+            ],
+            "heart": [
+              "White Rose",
+              "Jasmine",
+              "Orange Blossom"
+            ],
+            "base": [
+              "White Musk",
+              "Vanilla",
+              "Sandalwood"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Daily Wear",
+          "quantity": 7
+        }
+      ],
+      "total": 13993,
+      "status": "Pending",
+      "date": "2026-10-03T05:11:56.654Z",
+      "id": "3TkalMfqKZ8"
+    },
+    {
+      "userId": "Bjl2lfNI2PU",
+      "name": "laan",
+      "address": "laan house,mumbai",
+      "phone": "9876543210",
+      "items": [
+        {
+          "id": "2",
+          "name": "White Musk",
+          "category": "Musk",
+          "price": 1999,
+          "rating": 4.6,
+          "stock": 7,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/white-musk.png",
+          "shortDescription": "A soft and elegant fragrance with white musk and delicate florals.",
+          "description": "A soft and elegant fragrance combining fresh fruits and delicate florals with a clean, creamy musk base.",
+          "notes": {
+            "top": [
+              "Bergamot",
+              "Pear",
+              "Aldehydes"
+            ],
+            "heart": [
+              "White Rose",
+              "Jasmine",
+              "Orange Blossom"
+            ],
+            "base": [
+              "White Musk",
+              "Vanilla",
+              "Sandalwood"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Daily Wear",
+          "quantity": 1
+        }
+      ],
+      "total": 1999,
+      "status": "Cancelled",
+      "date": "2026-10-03T07:22:51.560Z",
+      "id": "4aqq1crsA1E"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

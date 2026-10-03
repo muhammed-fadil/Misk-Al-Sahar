@@ -1,6 +1,6 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import { getOrders, cancelOrder } from "../services/orderService";
 import { setOrders } from "../redux/slices/orderSlice";
@@ -38,9 +38,11 @@ function Orders() {
     try {
       await cancelOrder(orderId);
       await refetch();
+
+      toast.success("Order cancelled successfully");
     } catch (error) {
       console.error(error);
-      alert("Failed to cancel order. Please try again.");
+      toast.error("Failed to cancel order. Please try again.");
     }
   };
 
@@ -92,7 +94,6 @@ function Orders() {
     <main className="min-h-screen bg-[#f8f5ef] px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
       <div className="mx-auto max-w-5xl">
 
-        {/* Header */}
         <div className="mb-10 text-center">
           <p className="mb-2 text-sm tracking-[3px] text-[#9a7b24]">
             YOUR PURCHASES
@@ -103,7 +104,6 @@ function Orders() {
           </h1>
         </div>
 
-        {/* Orders */}
         <div className="space-y-6">
           {orders.map((order) => {
             const status = order.status || "Pending";
@@ -113,10 +113,7 @@ function Orders() {
                 key={order.id}
                 className="rounded-lg bg-white p-5 shadow-sm sm:p-7"
               >
-
-                {/* Order Header */}
                 <div className="flex flex-col gap-3 border-b border-[#e5e0da] pb-5 sm:flex-row sm:items-center sm:justify-between">
-
                   <div>
                     <p className="text-sm tracking-wide text-[#9a7b24]">
                       ORDER
@@ -127,7 +124,6 @@ function Orders() {
                     </h3>
                   </div>
 
-                  {/* Status */}
                   <span
                     className={`w-fit rounded-full px-4 py-2 text-sm font-medium ${
                       status === "Cancelled"
@@ -141,7 +137,6 @@ function Orders() {
                   </span>
                 </div>
 
-                {/* Date */}
                 {order.date && (
                   <p className="mt-5 text-sm text-[#777]">
                     <strong className="text-[#555]">
@@ -151,7 +146,6 @@ function Orders() {
                   </p>
                 )}
 
-                {/* Products */}
                 <div className="mt-5 space-y-3">
                   <h4 className="text-sm font-semibold uppercase tracking-wide text-[#744b4b]">
                     Items
@@ -179,9 +173,7 @@ function Orders() {
                   ))}
                 </div>
 
-                {/* Bottom */}
                 <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-
                   <div>
                     <p className="text-sm text-[#777]">
                       Order Total
@@ -192,7 +184,6 @@ function Orders() {
                     </h3>
                   </div>
 
-                  {/* Cancel */}
                   {status === "Pending" && (
                     <button
                       onClick={() => handleCancelOrder(order.id)}
@@ -201,7 +192,6 @@ function Orders() {
                       Cancel Order
                     </button>
                   )}
-
                 </div>
               </div>
             );
@@ -213,4 +203,3 @@ function Orders() {
 }
 
 export default Orders;
-
