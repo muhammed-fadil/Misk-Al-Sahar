@@ -3,8 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { logout } from "../redux/slices/authSlice";
-import { clearOrders } from "../redux/slices/orderSlice";
-import { clearWishlist } from "../redux/slices/wishlistSlice";
 
 function Navbar() {
   const user = useSelector((state) => state.auth.user);
@@ -31,11 +29,7 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    dispatch(clearCart());
-    dispatch(clearWishlist());
-    dispatch(clearOrders());
     dispatch(logout());
-
     closeMobileMenu();
   };
 
@@ -47,25 +41,24 @@ function Navbar() {
         <Link
           to="/"
           onClick={closeMobileMenu}
-          className="font-['Amiri'] text-2xl text-[#744b4b] transition hover:text-[#9a7b24] sm:text-3xl"
-        >
+          className="font-['Amiri'] text-2xl text-[#744b4b] transition hover:text-[#9a7b24] sm:text-3xl">
           مِسْك السَّحَر
         </Link>
 
-        {/* Authentication page */}
+        {/* Authentication Pages */}
         {isAuthPage ? (
           <Link
             to={location.pathname === "/login" ? "/register" : "/login"}
-            className="rounded-lg border border-[#744b4b] px-4 py-2 text-sm text-[#744b4b] transition hover:bg-[#744b4b] hover:text-white sm:px-5"
+        className="rounded-lg border border-[#744b4b] px-4 py-2 text-sm text-[#744b4b] transition hover:bg-[#744b4b] hover:text-white sm:px-5"
           >
             {location.pathname === "/login"
-              ? "Create Account"
+       ? "Create Account"
               : "Login"}
           </Link>
         ) : (
           <>
             {/* Desktop Navigation */}
-            <div className="hidden items-center gap-7 md:flex">
+    <div className="hidden items-center gap-7 md:flex">
 
               <Link
                 to="/"
@@ -198,11 +191,10 @@ function Navbar() {
 
                   </div>
                 )}
-
               </div>
             </div>
 
-            {/* Mobile button */}
+            {/* Mobile Button */}
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
               className="text-2xl text-[#744b4b] md:hidden"
@@ -211,7 +203,6 @@ function Navbar() {
             </button>
           </>
         )}
-
       </div>
 
       {/* Mobile Shopping Menu */}
@@ -278,7 +269,10 @@ function Navbar() {
                 onClick={() => setShowMenu(!showMenu)}
                 className="flex w-full justify-between rounded px-3 py-3 text-[#744b4b] hover:bg-white"
               >
-                <span>👤 {user ? user.name : "Profile"}</span>
+                <span>
+                  👤 {user ? user.name : "Profile"}
+                </span>
+
                 <span>▼</span>
               </button>
 
@@ -320,30 +314,20 @@ function Navbar() {
                     </>
                   ) : (
                     <>
-                      <Link
-                        to="/login"
-                        onClick={closeMobileMenu}
-                        className="block px-3 py-3 text-sm text-gray-600"
-                      >
-                        Login
-                      </Link>
+        <Link to="/login"
+         onClick={closeMobileMenu}
+    className="block px-3 py-3 text-sm text-gray-600">Login</Link>
 
                       <Link
                         to="/register"
                         onClick={closeMobileMenu}
-                        className="block px-3 py-3 text-sm text-gray-600"
-                      >
-                        Register
-                      </Link>
+                        className="block px-3 py-3 text-sm text-gray-600"> Register </Link>
                     </>
-                  )}
-
+       )}
                 </div>
-              )}
-
+       )}
             </div>
-
-          </div>
+    </div>
         </div>
       )}
     </nav>

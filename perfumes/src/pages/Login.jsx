@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 
 function Login() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

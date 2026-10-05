@@ -10,10 +10,15 @@ import Wishlist from "./pages/Wishlist";
 import Orders from "./pages/Orders";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-
+import AdminLayout from "./layouts/AdminLayout";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminProducts from "./pages/admin/AdminProducts";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./routes/ProtectedRoute";
-
+import AdminProtectedRoute from "./routes/AdminProtectedRoute";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminOrders from "./pages/admin/AdminOrders";
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +39,44 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        <Route path="/admin/login" element={<AdminLogin />} />
+
+   <Route element={<AdminProtectedRoute />}>
+  <Route
+    path="/admin/dashboard"
+    element={
+      <AdminLayout>
+        <AdminDashboard />
+      </AdminLayout>
+    }
+  />
+
+  <Route
+    path="/admin/products"
+    element={
+      <AdminLayout>
+        <AdminProducts />
+      </AdminLayout>
+    }
+  />
+  <Route
+  path="/admin/users"
+  element={
+    <AdminLayout>
+      <AdminUsers />
+    </AdminLayout>
+  }
+/>
+<Route
+  path="/admin/orders"
+  element={
+    <AdminLayout>
+      <AdminOrders />
+    </AdminLayout>
+  }
+/>
+</Route>
       </Routes>
     </BrowserRouter>
   );
