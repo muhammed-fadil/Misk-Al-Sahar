@@ -9,3 +9,9 @@ export const getProducts = () => {
 export const getProductById = (id) => {
   return axios.get(`${API}/products/${id}`);
 };
+
+export const updateProductStock = (id, stock) => {
+  return axios.patch(`${API}/products/${id}`, {
+    stock,
+  });
+};

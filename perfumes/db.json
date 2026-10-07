@@ -2,44 +2,44 @@
   "products": [
     {
       "id": "1",
-      "name": "Royal Oud",
-      "category": "Oud",
-      "price": 2499,
-      "rating": 4.8,
-      "stock": 8,
+      "name": "TSUKI",
+      "slug": "tsuki",
+      "category": "Oriental",
+      "price": 2999,
+      "rating": 4.9,
+      "stock": 22,
       "brand": "Misk Al-Sahar",
-      "image": "/images/royal-oud.png",
-      "shortDescription": "A rich Arabian fragrance with saffron, oud and warm amber.",
-      "description": "A rich Arabian fragrance opening with spicy saffron and cardamom, developing into floral oud before settling into a warm, woody base.",
+      "image": "/images/tsuki.png",
+      "shortDescription": "A bold and luxurious extrait featuring oud, leather, saffron, amber and warm woods.",
+      "description": "A bold oriental fragrance with saffron and pink pepper, developing into oud, leather and amber for a rich woody finish.",
       "notes": {
         "top": [
           "Saffron",
-          "Cardamom",
-          "Bergamot"
+          "Pink Pepper"
         ],
         "heart": [
-          "Rose",
-          "Jasmine",
-          "Oud"
+          "Geranium",
+          "Praline"
         ],
         "base": [
-          "Agarwood",
-          "Amber",
-          "Sandalwood",
-          "Musk"
+          "Oud",
+          "Leather",
+          "Akigalawood",
+          "Amber"
         ]
       },
-      "size": "100ml",
+      "size": "50ml",
       "gender": "Unisex",
-      "occasion": "Evening"
+      "occasion": "Special Occasion"
     },
     {
       "id": "2",
       "name": "White Musk",
+      "slug": "white-musk",
       "category": "Musk",
       "price": 1999,
       "rating": 4.6,
-      "stock": 7,
+      "stock": 24,
       "brand": "Misk Al-Sahar",
       "image": "/images/white-musk.png",
       "shortDescription": "A soft and elegant fragrance with white musk and delicate florals.",
@@ -67,29 +67,88 @@
     },
     {
       "id": "3",
-      "name": "Golden Amber",
+      "name": "ESPANIO",
+      "slug": "espanio",
       "category": "Amber",
-      "price": 2299,
-      "rating": 4.7,
-      "stock": 6,
+      "price": 2599,
+      "rating": 4.8,
+      "stock": 23,
       "brand": "Misk Al-Sahar",
-      "image": "/images/golden-amber.png",
-      "shortDescription": "A warm oriental fragrance with amber, saffron and vanilla.",
-      "description": "A warm oriental fragrance with a spicy citrus opening, rich amber heart, and smooth vanilla-woody finish.",
+      "image": "/images/espanio.png",
+      "shortDescription": "A sophisticated fragrance blending warm amber, sensual musk and deep patchouli.",
+      "description": "A warm and refined fragrance blending rich amber, smooth musk and earthy patchouli for a sensual and timeless finish.",
+      "notes": {
+        "top": [
+          "Amber"
+        ],
+        "heart": [
+          "Musk"
+        ],
+        "base": [
+          "Patchouli"
+        ]
+      },
+      "size": "100ml",
+      "gender": "Unisex",
+      "occasion": "Evening"
+    },
+    {
+      "id": "4",
+      "name": "BLUE",
+      "slug": "blue",
+      "category": "Floral",
+      "price": 1999,
+      "rating": 4.7,
+      "stock": 23,
+      "brand": "Misk Al-Sahar",
+      "image": "/images/blue.png",
+      "shortDescription": "A fresh fruity fragrance with bergamot, apple, cinnamon and a clean musky finish.",
+      "description": "A fresh fruity fragrance opening with bergamot, apple and cinnamon, followed by plum and orange blossom, and finishing with clean ambergris and musk.",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Apple",
+          "Cinnamon"
+        ],
+        "heart": [
+          "Plum",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Ambergris",
+          "Musk"
+        ]
+      },
+      "size": "100ml",
+      "gender": "Men",
+      "occasion": "Casual & Summer"
+    },
+    {
+      "id": "5",
+      "name": "Royal Oud",
+      "slug": "royal-oud",
+      "category": "Oud",
+      "price": 2499,
+      "rating": 4.8,
+      "stock": 25,
+      "brand": "Misk Al-Sahar",
+      "image": "/images/royal-oud.png",
+      "shortDescription": "A rich Arabian fragrance with saffron, oud and warm amber.",
+      "description": "A rich Arabian fragrance opening with spicy saffron and cardamom, developing into floral oud before settling into a warm, woody base.",
       "notes": {
         "top": [
           "Saffron",
-          "Mandarin",
-          "Cardamom"
+          "Cardamom",
+          "Bergamot"
         ],
         "heart": [
-          "Amber",
-          "Cinnamon",
-          "Rose"
+          "Rose",
+          "Jasmine",
+          "Oud"
         ],
         "base": [
-          "Benzoin",
-          "Vanilla",
+          "Agarwood",
+          "Amber",
           "Sandalwood",
           "Musk"
         ]
@@ -99,78 +158,13 @@
       "occasion": "Evening"
     },
     {
-      "id": "4",
-      "name": "Desert Rose",
-      "category": "Floral",
-      "price": 2699,
-      "rating": 4.9,
-      "stock": 9,
-      "brand": "Misk Al-Sahar",
-      "image": "/images/desert-rose.png",
-      "shortDescription": "A luxurious floral fragrance featuring rose, oud and saffron.",
-      "description": "A luxurious rose fragrance where fresh spices and saffron lead into a rich floral heart before resting on deep oud and warm woods.",
-      "notes": {
-        "top": [
-          "Pink Pepper",
-          "Bergamot",
-          "Saffron"
-        ],
-        "heart": [
-          "Damask Rose",
-          "Turkish Rose",
-          "Jasmine"
-        ],
-        "base": [
-          "Oud",
-          "Patchouli",
-          "Amber",
-          "Sandalwood"
-        ]
-      },
-      "size": "100ml",
-      "gender": "Women",
-      "occasion": "Special Occasion"
-    },
-    {
-      "id": "5",
-      "name": "Midnight Musk",
-      "category": "Musk",
-      "price": 2199,
-      "rating": 4.5,
-      "stock": 7,
-      "brand": "Misk Al-Sahar",
-      "image": "/images/midnight-musk.png",
-      "shortDescription": "A mysterious evening scent with black musk, vanilla and amber.",
-      "description": "A mysterious evening fragrance combining dark fruity and spicy notes with floral musk and a warm, sweet woody base.",
-      "notes": {
-        "top": [
-          "Black Pepper",
-          "Bergamot",
-          "Plum"
-        ],
-        "heart": [
-          "Black Musk",
-          "Rose",
-          "Jasmine"
-        ],
-        "base": [
-          "Vanilla",
-          "Amber",
-          "Tonka Bean",
-          "Cedarwood"
-        ]
-      },
-      "size": "100ml",
-      "gender": "Men",
-      "occasion": "Night"
-    },
-    {
       "id": "6",
       "name": "One",
+      "slug": "one",
       "category": "Oriental",
       "price": 2899,
       "rating": 4.9,
-      "stock": 8,
+      "stock": 25,
       "brand": "Misk Al-Sahar",
       "image": "/images/one.png",
       "shortDescription": "An opulent oriental fragrance built around saffron and oud.",
@@ -199,54 +193,66 @@
     },
     {
       "id": "7",
-      "name": "BLUE",
+      "name": "Desert Rose",
+      "slug": "desert-rose",
       "category": "Floral",
-      "price": 1999,
-      "rating": 4.7,
-      "stock": 10,
+      "price": 2699,
+      "rating": 4.9,
+      "stock": 25,
       "brand": "Misk Al-Sahar",
-      "image": "/images/blue.png",
-      "shortDescription": "A fresh fruity fragrance with bergamot, apple, cinnamon and a clean musky finish.",
-      "description": "A fresh fruity fragrance opening with bergamot, apple and cinnamon, followed by plum and orange blossom, and finishing with clean ambergris and musk.",
+      "image": "/images/desert-rose.png",
+      "shortDescription": "A luxurious floral fragrance featuring rose, oud and saffron.",
+      "description": "A luxurious rose fragrance where fresh spices and saffron lead into a rich floral heart before resting on deep oud and warm woods.",
       "notes": {
         "top": [
+          "Pink Pepper",
           "Bergamot",
-          "Apple",
-          "Cinnamon"
+          "Saffron"
         ],
         "heart": [
-          "Plum",
-          "Orange Blossom"
+          "Damask Rose",
+          "Turkish Rose",
+          "Jasmine"
         ],
         "base": [
-          "Ambergris",
-          "Musk"
+          "Oud",
+          "Patchouli",
+          "Amber",
+          "Sandalwood"
         ]
       },
       "size": "100ml",
-      "gender": "Men",
-      "occasion": "Casual & Summer"
+      "gender": "Women",
+      "occasion": "Special Occasion"
     },
     {
       "id": "8",
-      "name": "ESPANIO",
+      "name": "Golden Amber",
+      "slug": "golden-amber",
       "category": "Amber",
-      "price": 2599,
-      "rating": 4.8,
-      "stock": 8,
+      "price": 2299,
+      "rating": 4.7,
+      "stock": 25,
       "brand": "Misk Al-Sahar",
-      "image": "/images/espanio.png",
-      "shortDescription": "A sophisticated fragrance blending warm amber, sensual musk and deep patchouli.",
-      "description": "A warm and refined fragrance blending rich amber, smooth musk and earthy patchouli for a sensual and timeless finish.",
+      "image": "/images/golden-amber.png",
+      "shortDescription": "A warm oriental fragrance with amber, saffron and vanilla.",
+      "description": "A warm oriental fragrance with a spicy citrus opening, rich amber heart, and smooth vanilla-woody finish.",
       "notes": {
         "top": [
-          "Amber"
+          "Saffron",
+          "Mandarin",
+          "Cardamom"
         ],
         "heart": [
-          "Musk"
+          "Amber",
+          "Cinnamon",
+          "Rose"
         ],
         "base": [
-          "Patchouli"
+          "Benzoin",
+          "Vanilla",
+          "Sandalwood",
+          "Musk"
         ]
       },
       "size": "100ml",
@@ -256,10 +262,11 @@
     {
       "id": "9",
       "name": "Musk Silk Supreme",
+      "slug": "musk-silk",
       "category": "Musk",
       "price": 2199,
       "rating": 4.7,
-      "stock": 8,
+      "stock": 25,
       "brand": "Misk Al-Sahar",
       "image": "/images/musk-silk.png",
       "shortDescription": "A clean and delicate floral musk fragrance with lily of the valley, white florals and amber.",
@@ -284,10 +291,11 @@
     {
       "id": "10",
       "name": "WAFA",
+      "slug": "wafa",
       "category": "Oud",
       "price": 2499,
       "rating": 4.8,
-      "stock": 8,
+      "stock": 25,
       "brand": "Misk Al-Sahar",
       "image": "/images/wafa.png",
       "shortDescription": "A woody oud fragrance with a bright citrus opening of mandarin and saffron.",
@@ -313,34 +321,37 @@
     },
     {
       "id": "11",
-      "name": "TSUKI",
-      "category": "Oriental",
-      "price": 2999,
-      "rating": 4.9,
-      "stock": 8,
+      "name": "Midnight Musk",
+      "slug": "midnight-musk",
+      "category": "Musk",
+      "price": 2199,
+      "rating": 4.5,
+      "stock": 25,
       "brand": "Misk Al-Sahar",
-      "image": "/images/tsuki.png",
-      "shortDescription": "A bold and luxurious extrait featuring oud, leather, saffron, amber and warm woods.",
-      "description": "A bold oriental fragrance with saffron and pink pepper, developing into oud, leather and amber for a rich woody finish.",
+      "image": "/images/midnight-musk.png",
+      "shortDescription": "A mysterious evening scent with black musk, vanilla and amber.",
+      "description": "A mysterious evening fragrance combining dark fruity and spicy notes with floral musk and a warm, sweet woody base.",
       "notes": {
         "top": [
-          "Saffron",
-          "Pink Pepper"
+          "Black Pepper",
+          "Bergamot",
+          "Plum"
         ],
         "heart": [
-          "Geranium",
-          "Praline"
+          "Black Musk",
+          "Rose",
+          "Jasmine"
         ],
         "base": [
-          "Oud",
-          "Leather",
-          "Akigalawood",
-          "Amber"
+          "Vanilla",
+          "Amber",
+          "Tonka Bean",
+          "Cedarwood"
         ]
       },
-      "size": "50ml",
-      "gender": "Unisex",
-      "occasion": "Special Occasion"
+      "size": "100ml",
+      "gender": "Men",
+      "occasion": "Night"
     }
   ],
   "users": [
@@ -505,7 +516,7 @@
         }
       ],
       "total": 2899,
-      "status": "Pending",
+      "status": "Cancelled",
       "date": "2026-10-06T06:20:23.849Z",
       "id": "zjTZem0uiu4"
     },
@@ -544,7 +555,7 @@
         }
       ],
       "total": 2599,
-      "status": "Pending",
+      "status": "Delivered",
       "date": "2026-10-06T06:21:01.595Z",
       "id": "UwDlS1AZmFM"
     },
@@ -622,9 +633,346 @@
         }
       ],
       "total": 15494,
-      "status": "Pending",
+      "status": "Shipped",
       "date": "2026-10-06T06:35:26.285Z",
       "id": "KLsu4LEvIK0"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": "fadil",
+      "address": "home,mumbai",
+      "phone": "9876543210",
+      "items": [
+        {
+          "id": "1",
+          "name": "TSUKI",
+          "slug": "tsuki",
+          "category": "Oriental",
+          "price": 2999,
+          "rating": 4.9,
+          "stock": 25,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/tsuki.png",
+          "shortDescription": "A bold and luxurious extrait featuring oud, leather, saffron, amber and warm woods.",
+          "description": "A bold oriental fragrance with saffron and pink pepper, developing into oud, leather and amber for a rich woody finish.",
+          "notes": {
+            "top": [
+              "Saffron",
+              "Pink Pepper"
+            ],
+            "heart": [
+              "Geranium",
+              "Praline"
+            ],
+            "base": [
+              "Oud",
+              "Leather",
+              "Akigalawood",
+              "Amber"
+            ]
+          },
+          "size": "50ml",
+          "gender": "Unisex",
+          "occasion": "Special Occasion",
+          "quantity": 2
+        }
+      ],
+      "total": 5998,
+      "status": "Delivered",
+      "date": "2026-10-07T05:31:31.222Z",
+      "id": "0iQv1mqBu0Q"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": "fadil",
+      "address": "home,mumbai",
+      "phone": "9876543210",
+      "items": [
+        {
+          "id": "1",
+          "name": "TSUKI",
+          "slug": "tsuki",
+          "category": "Oriental",
+          "price": 2999,
+          "rating": 4.9,
+          "stock": 25,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/tsuki.png",
+          "shortDescription": "A bold and luxurious extrait featuring oud, leather, saffron, amber and warm woods.",
+          "description": "A bold oriental fragrance with saffron and pink pepper, developing into oud, leather and amber for a rich woody finish.",
+          "notes": {
+            "top": [
+              "Saffron",
+              "Pink Pepper"
+            ],
+            "heart": [
+              "Geranium",
+              "Praline"
+            ],
+            "base": [
+              "Oud",
+              "Leather",
+              "Akigalawood",
+              "Amber"
+            ]
+          },
+          "size": "50ml",
+          "gender": "Unisex",
+          "occasion": "Special Occasion",
+          "quantity": 2
+        }
+      ],
+      "total": 5998,
+      "status": "Delivered",
+      "date": "2026-10-07T05:31:35.207Z",
+      "id": "CPbzprmvKLI"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": "fadil",
+      "address": "home,mumbai",
+      "phone": "9876543210",
+      "items": [
+        {
+          "id": "2",
+          "name": "White Musk",
+          "slug": "white-musk",
+          "category": "Musk",
+          "price": 1999,
+          "rating": 4.6,
+          "stock": 25,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/white-musk.png",
+          "shortDescription": "A soft and elegant fragrance with white musk and delicate florals.",
+          "description": "A soft and elegant fragrance combining fresh fruits and delicate florals with a clean, creamy musk base.",
+          "notes": {
+            "top": [
+              "Bergamot",
+              "Pear",
+              "Aldehydes"
+            ],
+            "heart": [
+              "White Rose",
+              "Jasmine",
+              "Orange Blossom"
+            ],
+            "base": [
+              "White Musk",
+              "Vanilla",
+              "Sandalwood"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Daily Wear",
+          "quantity": 1
+        }
+      ],
+      "total": 1999,
+      "status": "Delivered",
+      "date": "2026-10-07T06:25:57.762Z",
+      "id": "pApy7JhvxyU"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": "fadil",
+      "address": "home,mumbai",
+      "phone": "9876543210",
+      "items": [
+        {
+          "id": "1",
+          "name": "TSUKI",
+          "slug": "tsuki",
+          "category": "Oriental",
+          "price": 2999,
+          "rating": 4.9,
+          "stock": 23,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/tsuki.png",
+          "shortDescription": "A bold and luxurious extrait featuring oud, leather, saffron, amber and warm woods.",
+          "description": "A bold oriental fragrance with saffron and pink pepper, developing into oud, leather and amber for a rich woody finish.",
+          "notes": {
+            "top": [
+              "Saffron",
+              "Pink Pepper"
+            ],
+            "heart": [
+              "Geranium",
+              "Praline"
+            ],
+            "base": [
+              "Oud",
+              "Leather",
+              "Akigalawood",
+              "Amber"
+            ]
+          },
+          "size": "50ml",
+          "gender": "Unisex",
+          "occasion": "Special Occasion",
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "name": "BLUE",
+          "slug": "blue",
+          "category": "Floral",
+          "price": 1999,
+          "rating": 4.7,
+          "stock": 25,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/blue.png",
+          "shortDescription": "A fresh fruity fragrance with bergamot, apple, cinnamon and a clean musky finish.",
+          "description": "A fresh fruity fragrance opening with bergamot, apple and cinnamon, followed by plum and orange blossom, and finishing with clean ambergris and musk.",
+          "notes": {
+            "top": [
+              "Bergamot",
+              "Apple",
+              "Cinnamon"
+            ],
+            "heart": [
+              "Plum",
+              "Orange Blossom"
+            ],
+            "base": [
+              "Ambergris",
+              "Musk"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Men",
+          "occasion": "Casual & Summer",
+          "quantity": 1
+        }
+      ],
+      "total": 4998,
+      "status": "Shipped",
+      "date": "2026-10-07T06:47:09.176Z",
+      "id": "pQWfG7HrO3c"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": "fadil",
+      "address": "home,mumbai",
+      "phone": "9876543210",
+      "items": [
+        {
+          "id": "3",
+          "name": "ESPANIO",
+          "slug": "espanio",
+          "category": "Amber",
+          "price": 2599,
+          "rating": 4.8,
+          "stock": 25,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/espanio.png",
+          "shortDescription": "A sophisticated fragrance blending warm amber, sensual musk and deep patchouli.",
+          "description": "A warm and refined fragrance blending rich amber, smooth musk and earthy patchouli for a sensual and timeless finish.",
+          "notes": {
+            "top": [
+              "Amber"
+            ],
+            "heart": [
+              "Musk"
+            ],
+            "base": [
+              "Patchouli"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Evening",
+          "quantity": 1
+        }
+      ],
+      "total": 2599,
+      "status": "Shipped",
+      "date": "2026-10-07T06:48:42.003Z",
+      "id": "8wIs7LUUWFs"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": "fadil",
+      "address": "home,mumbai",
+      "phone": "9876543210",
+      "items": [
+        {
+          "id": "4",
+          "name": "BLUE",
+          "slug": "blue",
+          "category": "Floral",
+          "price": 1999,
+          "rating": 4.7,
+          "stock": 24,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/blue.png",
+          "shortDescription": "A fresh fruity fragrance with bergamot, apple, cinnamon and a clean musky finish.",
+          "description": "A fresh fruity fragrance opening with bergamot, apple and cinnamon, followed by plum and orange blossom, and finishing with clean ambergris and musk.",
+          "notes": {
+            "top": [
+              "Bergamot",
+              "Apple",
+              "Cinnamon"
+            ],
+            "heart": [
+              "Plum",
+              "Orange Blossom"
+            ],
+            "base": [
+              "Ambergris",
+              "Musk"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Men",
+          "occasion": "Casual & Summer",
+          "quantity": 1
+        }
+      ],
+      "total": 1999,
+      "status": "Processing",
+      "date": "2026-10-07T06:48:59.142Z",
+      "id": "96Q0RRW3jeQ"
+    },
+    {
+      "userId": "gFPhiYk1Pug",
+      "name": "fadil",
+      "address": "home,mumbai",
+      "phone": "9876543210",
+      "items": [
+        {
+          "id": "3",
+          "name": "ESPANIO",
+          "slug": "espanio",
+          "category": "Amber",
+          "price": 2599,
+          "rating": 4.8,
+          "stock": 24,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/espanio.png",
+          "shortDescription": "A sophisticated fragrance blending warm amber, sensual musk and deep patchouli.",
+          "description": "A warm and refined fragrance blending rich amber, smooth musk and earthy patchouli for a sensual and timeless finish.",
+          "notes": {
+            "top": [
+              "Amber"
+            ],
+            "heart": [
+              "Musk"
+            ],
+            "base": [
+              "Patchouli"
+            ]
+          },
+          "size": "100ml",
+          "gender": "Unisex",
+          "occasion": "Evening",
+          "quantity": 1
+        }
+      ],
+      "total": 2599,
+      "status": "Processing",
+      "date": "2026-10-07T07:13:37.556Z",
+      "id": "nEDwg3IW22Y"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

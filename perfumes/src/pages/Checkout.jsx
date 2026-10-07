@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { createOrder } from "../services/orderService";
+import { updateProductStock } from "../services/productService";
 import { clearCart } from "../redux/slices/cartSlice";
 
 function Checkout() {
@@ -11,7 +12,14 @@ function Checkout() {
   const user = useSelector((state) => state.auth.user);
 
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
+
+  const buyNowItem = location.state?.buyNowItem;
+
+  const checkoutItems = buyNowItem
+    ? [buyNowItem]
+    : cartItems;
 
   const savedDetails =
     JSON.parse(localStorage.getItem(`checkout_${user.id}`)) || {};
@@ -28,12 +36,12 @@ function Checkout() {
     savedDetails.phone || ""
   );
 
-  const total = cartItems.reduce(
+  const total = checkoutItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
 
-  if (cartItems.length === 0) {
+  if (checkoutItems.length === 0) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-5">
         <div className="text-center">
@@ -73,18 +81,31 @@ function Checkout() {
       return;
     }
 
-    const order = {
-      userId: user.id,
-      name,
-      address,
-      phone,
-      items: cartItems,
-      total,
-      status: "Pending",
-      date: new Date().toISOString(),
-    };
-
     try {
+      for (const item of checkoutItems) {
+        const newStock = item.stock - item.quantity;
+
+        if (newStock < 0) {
+          toast.error(
+            `${item.name} does not have enough stock`
+          );
+          return;
+        }
+
+        await updateProductStock(item.id, newStock);
+      }
+
+      const order = {
+        userId: user.id,
+        name,
+        address,
+        phone,
+        items: checkoutItems,
+        total,
+        status: "Pending",
+        date: new Date().toISOString(),
+      };
+
       await createOrder(order);
 
       localStorage.setItem(
@@ -96,14 +117,19 @@ function Checkout() {
         })
       );
 
-      dispatch(clearCart());
+      // Only clear cart when normal cart checkout is used
+      if (!buyNowItem) {
+        dispatch(clearCart());
+      }
 
       toast.success("Order placed successfully!");
 
       navigate("/orders");
     } catch (error) {
       console.error(error);
-      toast.error("Failed to place order. Please try again.");
+      toast.error(
+        "Failed to place order. Please try again."
+      );
     }
   };
 
@@ -134,7 +160,7 @@ function Checkout() {
             </h2>
 
             <div className="space-y-5">
-              {cartItems.map((item) => (
+              {checkoutItems.map((item) => (
                 <div
                   key={item.id}
                   className="flex items-center justify-between gap-4 border-b border-[#d4cec7] pb-4"

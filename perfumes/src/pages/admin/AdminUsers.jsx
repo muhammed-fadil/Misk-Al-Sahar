@@ -27,76 +27,89 @@ function AdminUsers() {
 
   if (loading) {
     return (
-      <div className="p-8">
-        <p className="text-gray-500">
-          Loading users...
-        </p>
+      <div className="flex min-h-[60vh] items-center justify-center p-6">
+        <p className="text-gray-500">Loading users...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="p-8">
-        <h1 className="mb-2 text-3xl font-bold text-[#744b4b]">
-          Users
-        </h1>
+      <div className="p-4 sm:p-6">
+        <div className="rounded-lg bg-white p-6 shadow">
+          <h1 className="mb-2 text-2xl font-bold text-[#744b4b] sm:text-3xl">
+            Users
+          </h1>
 
-        <p className="text-red-600">
-          Unable to load users.
-        </p>
+          <p className="text-red-600">Unable to load users.</p>
 
-        <p className="mt-2 text-gray-500">
-          Make sure JSON Server is running on port 3001.
-        </p>
+          <p className="mt-2 text-sm text-gray-500">
+            Make sure JSON Server is running on port 3001.
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="p-6">
-      <h1 className="mb-6 text-3xl font-bold text-[#744b4b]">
-        Users
-      </h1>
+    <div className="min-h-screen p-4 sm:p-6">
+      {/* Header */}
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-[#744b4b] sm:text-3xl">
+          Users
+        </h1>
+
+        <p className="mt-1 text-sm text-gray-500">
+          Manage registered users
+        </p>
+      </div>
 
       {users.length === 0 ? (
         <div className="rounded-lg bg-white p-8 text-center shadow">
-          <p className="text-gray-500">
-            No users found.
-          </p>
+          <p className="text-gray-500">No users found.</p>
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-lg bg-white shadow">
-          <table className="w-full min-w-[600px]">
-            <thead className="bg-[#744b4b] text-white">
-              <tr>
-                <th className="p-4 text-left">Name</th>
-                <th className="p-4 text-left">Email</th>
-                <th className="p-4 text-left">User ID</th>
-              </tr>
-            </thead>
+        <div className="overflow-hidden rounded-lg bg-white shadow">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[600px]">
+              <thead className="bg-[#744b4b] text-white">
+                <tr>
+                  <th className="px-4 py-4 text-left text-sm font-medium">
+                    Name
+                  </th>
 
-            <tbody>
-              {users.map((user) => (
-                <tr
-                  key={user.id}
-                  className="border-b"
-                >
-                  <td className="p-4">
-                    {user.name}
-                  </td>
+                  <th className="px-4 py-4 text-left text-sm font-medium">
+                    Email
+                  </th>
 
-                  <td className="p-4">
-                    {user.email}
-                  </td>
-
-                  <td className="p-4">
-                    {user.id}
-                  </td>
+                  <th className="px-4 py-4 text-left text-sm font-medium">
+                    User ID
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                {users.map((user) => (
+                  <tr
+                    key={user.id}
+                    className="border-b last:border-b-0 hover:bg-[#fffdf8]"
+                  >
+                    <td className="px-4 py-4 text-sm font-medium text-[#744b4b]">
+                      {user.name}
+                    </td>
+
+                    <td className="px-4 py-4 text-sm text-gray-600">
+                      {user.email}
+                    </td>
+
+                    <td className="px-4 py-4 text-sm text-gray-500">
+                      {user.id}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>

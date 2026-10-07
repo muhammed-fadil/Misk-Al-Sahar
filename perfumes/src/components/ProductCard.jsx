@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
   return (
-    <div className="bg-[#fffdf8] transition duration-300 hover:-translate-y-2">
-
+    <Link
+      to={`/product/${product.slug}`}
+      className="block bg-[#fffdf8] transition duration-300 hover:-translate-y-2"
+    >
       {/* Product Image */}
-      <Link to={`/product/${product.id}`} className="block">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="h-[400px] w-full object-cover"
-        />
-      </Link>
+      <img
+        src={product.image}
+        alt={product.name}
+        className="h-64 w-full object-cover sm:h-80 lg:h-[400px]"
+      />
 
       {/* Product Information */}
       <div className="p-6">
@@ -40,7 +40,7 @@ function ProductCard({ product }) {
         </div>
 
       </div>
-    </div>
+    </Link>
   );
 }
 

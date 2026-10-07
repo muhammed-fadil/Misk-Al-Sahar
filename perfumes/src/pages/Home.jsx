@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../services/productService";
@@ -18,7 +17,7 @@ function Home() {
 
   const featuredProducts = products
     .filter((product) =>
-      ["White Musk", "One", "Desert Rose"].includes(product.name)
+      ["tsuki", "one", "espanio"].includes(product.slug)
     )
     .slice(0, 3);
 
@@ -94,21 +93,19 @@ function Home() {
 
               {featuredProducts.map((product) => (
                 <Link
-                  to={`/product/${product.id}`}
+                  to={`/product/${product.slug}`}
                   key={product.id}
                   className="group overflow-hidden rounded-lg border border-[#e4dccf] bg-white transition duration-300 hover:-translate-y-2 hover:shadow-lg"
                 >
 
-                  {/* Image */}
-                  <div className="flex h-64 items-center justify-center overflow-hidden bg-[#f3eee6] p-6">
+                  <div className="overflow-hidden bg-[#f3eee6]">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="h-full w-full object-contain transition duration-500 group-hover:scale-105"
+                      className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-80 lg:h-[400px]"
                     />
                   </div>
 
-                  {/* Details */}
                   <div className="p-5 text-center">
 
                     <p className="text-[10px] font-medium uppercase tracking-[2px] text-[#9a7b24]">
@@ -178,4 +175,3 @@ function Home() {
 }
 
 export default Home;
-

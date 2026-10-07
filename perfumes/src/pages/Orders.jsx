@@ -22,9 +22,13 @@ function Orders() {
     queryFn: async () => {
       const response = await getOrders(user.id);
 
-      dispatch(setOrders(response.data));
+      const sortedOrders = [...response.data].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      );
 
-      return response.data;
+      dispatch(setOrders(sortedOrders));
+
+      return sortedOrders;
     },
   });
 
@@ -93,7 +97,6 @@ function Orders() {
   return (
     <main className="min-h-screen bg-[#f8f5ef] px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
       <div className="mx-auto max-w-5xl">
-
         <div className="mb-10 text-center">
           <p className="mb-2 text-sm tracking-[3px] text-[#9a7b24]">
             YOUR PURCHASES

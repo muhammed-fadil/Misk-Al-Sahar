@@ -2,10 +2,10 @@ import AdminSidebar from "../components/admin/AdminSidebar";
 
 function AdminLayout({ children }) {
   return (
-    <div className="flex min-h-screen bg-[#f8f5ef]">
+    <div className="min-h-screen bg-[#f8f5ef] lg:flex">
       <AdminSidebar />
 
-      <main className="flex-1">
+      <main className="min-w-0 flex-1">
         {children}
       </main>
     </div>

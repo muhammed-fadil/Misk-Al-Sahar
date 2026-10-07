@@ -13,6 +13,9 @@ function Shop() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [sort, setSort] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const productsPerPage = 6;
 
   const { isLoading, isError } = useQuery({
     queryKey: ["products"],
@@ -81,6 +84,33 @@ function Shop() {
     filteredProducts.sort((a, b) => b.price - a.price);
   }
 
+  const totalPages = Math.ceil(
+    filteredProducts.length / productsPerPage
+  );
+
+  const startIndex =
+    (currentPage - 1) * productsPerPage;
+
+  const currentProducts = filteredProducts.slice(
+    startIndex,
+    startIndex + productsPerPage
+  );
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleSort = (e) => {
+    setSort(e.target.value);
+    setCurrentPage(1);
+  };
+
   return (
     <main className="min-h-screen bg-[#f8f5ef] px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
 
@@ -102,14 +132,13 @@ function Shop() {
 
       </section>
 
-
       {/* Filters */}
       <section className="mx-auto mt-10 max-w-6xl rounded-xl bg-white p-4 shadow-sm sm:p-5">
 
         <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
 
           {/* Search */}
-          <div className="md:col-span-1">
+          <div>
 
             <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-[#9a7b24]">
               Search
@@ -119,12 +148,11 @@ function Shop() {
               type="text"
               placeholder="Search perfumes..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={handleSearch}
               className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
             />
 
           </div>
-
 
           {/* Category */}
           <div>
@@ -135,7 +163,7 @@ function Shop() {
 
             <select
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={handleCategory}
               className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
             >
               {categories.map((item) => (
@@ -147,7 +175,6 @@ function Shop() {
 
           </div>
 
-
           {/* Sort */}
           <div>
 
@@ -157,7 +184,7 @@ function Shop() {
 
             <select
               value={sort}
-              onChange={(e) => setSort(e.target.value)}
+              onChange={handleSort}
               className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
             >
               <option value="">Sort by Price</option>
@@ -171,18 +198,22 @@ function Shop() {
 
       </section>
 
-
       {/* Results Count */}
       <div className="mx-auto mt-8 flex max-w-6xl items-center justify-between">
 
         <p className="text-sm text-[#777]">
           {filteredProducts.length}{" "}
-          {filteredProducts.length === 1 ? "fragrance" : "fragrances"}
+          {filteredProducts.length === 1
+            ? "fragrance"
+            : "fragrances"}
         </p>
 
         {search && (
           <button
-            onClick={() => setSearch("")}
+            onClick={() => {
+              setSearch("");
+              setCurrentPage(1);
+            }}
             className="text-sm text-[#9a7b24] hover:underline"
           >
             Clear search
@@ -190,7 +221,6 @@ function Shop() {
         )}
 
       </div>
-
 
       {/* Products */}
       {filteredProducts.length === 0 ? (
@@ -211,6 +241,7 @@ function Shop() {
               setSearch("");
               setCategory("All");
               setSort("");
+              setCurrentPage(1);
             }}
             className="mt-6 rounded-lg bg-[#744b4b] px-6 py-3 text-sm text-white transition hover:bg-[#9a7b24]"
           >
@@ -219,16 +250,62 @@ function Shop() {
 
         </section>
       ) : (
-        <section className="mx-auto mt-8 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <>
+          <section className="mx-auto mt-8 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
-          ))}
+            {currentProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+              />
+            ))}
 
-        </section>
+          </section>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-2">
+
+              <button
+                onClick={() =>
+                  setCurrentPage((page) => page - 1)
+                }
+                disabled={currentPage === 1}
+                className="rounded-lg border border-[#e1d9cd] bg-white px-4 py-2 text-sm text-[#744b4b] transition hover:bg-[#744b4b] hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                Previous
+              </button>
+
+              {Array.from(
+                { length: totalPages },
+                (_, index) => index + 1
+              ).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`h-10 w-10 rounded-lg text-sm transition ${
+                    currentPage === page
+                      ? "bg-[#744b4b] text-white"
+                      : "border border-[#e1d9cd] bg-white text-[#744b4b] hover:bg-[#744b4b] hover:text-white"
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+
+              <button
+                onClick={() =>
+                  setCurrentPage((page) => page + 1)
+                }
+                disabled={currentPage === totalPages}
+                className="rounded-lg border border-[#e1d9cd] bg-white px-4 py-2 text-sm text-[#744b4b] transition hover:bg-[#744b4b] hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                Next
+              </button>
+
+            </div>
+          )}
+        </>
       )}
 
     </main>

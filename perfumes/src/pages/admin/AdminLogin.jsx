@@ -43,38 +43,54 @@ function AdminLogin() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-4 py-8">
       <form
         onSubmit={handleLogin}
-        className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg"
+        className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg sm:p-8"
       >
-        <h1 className="mb-2 text-center text-3xl font-bold text-[#744b4b]">
-          Admin Login
-        </h1>
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl font-bold text-[#744b4b] sm:text-3xl">
+            Admin Login
+          </h1>
 
-        <p className="mb-6 text-center text-gray-500">
-          Misk Al-Sahar
-        </p>
+          <p className="mt-2 text-sm text-gray-500">
+            Misk Al-Sahar
+          </p>
+        </div>
 
-        <input
-          type="email"
-          placeholder="Admin Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="mb-4 w-full rounded border px-4 py-3 outline-none focus:border-[#9a7b24]"
-        />
+        <div className="mb-4">
+          <label className="mb-2 block text-sm font-medium text-gray-700">
+            Email
+          </label>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="mb-6 w-full rounded border px-4 py-3 outline-none focus:border-[#9a7b24]"
-        />
+          <input
+            type="email"
+            placeholder="Admin Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full rounded border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
+          />
+        </div>
+
+        <div className="mb-6">
+          <label className="mb-2 block text-sm font-medium text-gray-700">
+            Password
+          </label>
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="w-full rounded border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
+          />
+        </div>
 
         <button
           type="submit"
-          className="w-full rounded bg-[#744b4b] py-3 text-white transition hover:bg-[#5f3c3c]"
+          className="w-full rounded bg-[#744b4b] py-3 font-medium text-white transition hover:bg-[#5f3c3c]"
         >
           Login
         </button>

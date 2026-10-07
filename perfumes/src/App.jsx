@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 
 import About from "./pages/About";
 import Cart from "./pages/Cart";
@@ -28,6 +34,10 @@ function AppContent() {
 
   const isAdminPage = location.pathname.startsWith("/admin");
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <>
       {!isAdminPage && <Navbar />}
@@ -36,7 +46,7 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/product/:slug" element={<ProductDetails />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/cart" element={<Cart />} />
