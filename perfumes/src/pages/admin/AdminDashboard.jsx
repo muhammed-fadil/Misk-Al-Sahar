@@ -58,6 +58,7 @@ function AdminDashboard() {
     loadDashboard();
   }, []);
 
+  // Total revenue
   const revenue = orders.reduce(
     (total, order) => total + Number(order.total || 0),
     0
@@ -77,31 +78,34 @@ function AdminDashboard() {
     orders: orders.filter((order) => order.status === status).length,
   }));
 
-  // Revenue by day
-  const revenueByDay = {};
+  // Daily revenue
+  // All orders from the same day are merged together
+  const dailyRevenue = {};
 
   orders.forEach((order) => {
     if (!order.date) return;
 
-    const date = new Date(order.date);
-
-    if (Number.isNaN(date.getTime())) return;
-
-    const day = date.toLocaleDateString("en-IN", {
+    const date = new Date(order.date).toLocaleDateString("en-IN", {
       day: "2-digit",
       month: "short",
+      year: "numeric",
     });
 
-    revenueByDay[day] =
-      (revenueByDay[day] || 0) + Number(order.total || 0);
+    dailyRevenue[date] =
+      (dailyRevenue[date] || 0) + Number(order.total || 0);
   });
 
-  const revenueChartData = Object.entries(revenueByDay).map(
-    ([day, revenue]) => ({
-      day,
+  const revenueChartData = Object.entries(dailyRevenue)
+    .map(([date, revenue]) => ({
+      date,
       revenue,
-    })
-  );
+      sortDate: new Date(date),
+    }))
+    .sort((a, b) => a.sortDate - b.sortDate)
+    .map(({ date, revenue }) => ({
+      date,
+      revenue,
+    }));
 
   // Recent orders
   const recentOrders = [...orders]
@@ -149,7 +153,7 @@ function AdminDashboard() {
         </p>
       </div>
 
-      {/* Summary Cards */}
+      {/* Stats */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {/* Products */}
         <div className="rounded-xl bg-white p-5 shadow-sm sm:p-6">
@@ -196,14 +200,14 @@ function AdminDashboard() {
           </h2>
         </div>
 
-        {/* Revenue */}
+        {/* Total Revenue */}
         <div className="rounded-xl bg-white p-5 shadow-sm sm:p-6">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#eee5d5]">
             <IndianRupee className="text-[#9a7b24]" size={24} />
           </div>
 
           <p className="mt-5 text-sm text-gray-500">
-            Revenue
+            Total Revenue
           </p>
 
           <h2 className="mt-1 text-3xl font-bold text-[#9a7b24]">
@@ -213,18 +217,80 @@ function AdminDashboard() {
       </div>
 
       {/* Charts */}
-      <div className="mt-6 grid gap-6 xl:grid-cols-2">
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        {/* Daily Revenue */}
+        <div className="rounded-xl bg-white p-5 shadow-sm sm:p-6">
+          <div className="mb-5">
+            <h2 className="text-xl font-semibold text-[#744b4b]">
+              Daily Revenue
+            </h2>
+
+            <p className="mt-1 text-sm text-gray-500">
+              Total revenue generated each day
+            </p>
+          </div>
+
+          <div className="h-[350px] w-full">
+            {revenueChartData.length > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={revenueChartData}>
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    vertical={false}
+                  />
+
+                  <XAxis
+                    dataKey="date"
+                    tick={{ fontSize: 12 }}
+                  />
+
+                  <YAxis
+                    tick={{ fontSize: 12 }}
+                    tickFormatter={(value) =>
+                      `₹${value.toLocaleString("en-IN")}`
+                    }
+                  />
+
+                  <Tooltip
+                    formatter={(value) => [
+                      `₹${Number(value).toLocaleString("en-IN")}`,
+                      "Daily Revenue",
+                    ]}
+                  />
+
+                  <Line
+                    type="monotone"
+                    dataKey="revenue"
+                    stroke="#744b4b"
+                    strokeWidth={3}
+                    dot={{ r: 5 }}
+                    activeDot={{ r: 7 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex h-full items-center justify-center">
+                <p className="text-sm text-gray-500">
+                  No revenue data available
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Orders by Status */}
         <div className="rounded-xl bg-white p-5 shadow-sm sm:p-6">
-          <h2 className="text-xl font-semibold text-[#744b4b]">
-            Orders by Status
-          </h2>
+          <div className="mb-5">
+            <h2 className="text-xl font-semibold text-[#744b4b]">
+              Orders by Status
+            </h2>
 
-          <p className="mt-1 text-sm text-gray-500">
-            Overview of current order statuses
-          </p>
+            <p className="mt-1 text-sm text-gray-500">
+              Overview of current order statuses
+            </p>
+          </div>
 
-          <div className="mt-6 h-[300px] w-full">
+          <div className="h-[350px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={orderChartData}>
                 <CartesianGrid
@@ -251,60 +317,6 @@ function AdminDashboard() {
                 />
               </BarChart>
             </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Revenue Overview */}
-        <div className="rounded-xl bg-white p-5 shadow-sm sm:p-6">
-          <h2 className="text-xl font-semibold text-[#744b4b]">
-            Revenue Overview
-          </h2>
-
-          <p className="mt-1 text-sm text-gray-500">
-            Daily revenue from orders
-          </p>
-
-          <div className="mt-6 h-[300px] w-full">
-            {revenueChartData.length > 0 ? (
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={revenueChartData}>
-                  <CartesianGrid
-                    strokeDasharray="3 3"
-                    vertical={false}
-                  />
-
-                  <XAxis
-                    dataKey="day"
-                    tick={{ fontSize: 12 }}
-                  />
-
-                  <YAxis
-                    tick={{ fontSize: 12 }}
-                  />
-
-                  <Tooltip
-                    formatter={(value) => [
-                      `₹${Number(value).toLocaleString("en-IN")}`,
-                      "Revenue",
-                    ]}
-                  />
-
-                  <Line
-                    type="monotone"
-                    dataKey="revenue"
-                    stroke="#744b4b"
-                    strokeWidth={3}
-                    dot={{ r: 5 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            ) : (
-              <div className="flex h-full items-center justify-center">
-                <p className="text-sm text-gray-500">
-                  No revenue data available
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </div>
