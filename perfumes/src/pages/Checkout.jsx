@@ -4,7 +4,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { createOrder } from "../services/orderService";
-import { updateProductStock } from "../services/productService";
+import {
+  getProductById,
+  updateProductStock,
+} from "../services/productService";
 import { clearCart } from "../redux/slices/cartSlice";
 
 function Checkout() {
@@ -17,15 +20,26 @@ function Checkout() {
 
   const buyNowItem = location.state?.buyNowItem;
 
-  const checkoutItems = buyNowItem
-    ? [buyNowItem]
-    : cartItems;
+  const checkoutItems = buyNowItem ? [buyNowItem] : cartItems;
 
-  const savedDetails =
-    JSON.parse(localStorage.getItem(`checkout_${user.id}`)) || {};
+  const getSavedDetails = () => {
+    if (!user?.id) return {};
+
+    try {
+      return (
+        JSON.parse(
+          localStorage.getItem(`checkout_${user.id}`)
+        ) || {}
+      );
+    } catch {
+      return {};
+    }
+  };
+
+  const savedDetails = getSavedDetails();
 
   const [name, setName] = useState(
-    savedDetails.name || user.name || ""
+    savedDetails.name || user?.name || ""
   );
 
   const [address, setAddress] = useState(
@@ -36,8 +50,10 @@ function Checkout() {
     savedDetails.phone || ""
   );
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const total = checkoutItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + Number(item.price) * Number(item.quantity),
     0
   );
 
@@ -45,9 +61,7 @@ function Checkout() {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-5">
         <div className="text-center">
-          <div className="mb-5 text-5xl">
-            🛍️
-          </div>
+          <div className="mb-5 text-5xl">🛍️</div>
 
           <h2 className="mb-3 font-serif text-3xl text-[#744b4b]">
             Your Cart is Empty
@@ -71,72 +85,208 @@ function Checkout() {
   const handleOrder = async (e) => {
     e.preventDefault();
 
-    if (!name || !address || !phone) {
+    if (isSubmitting) return;
+
+    const trimmedName = name.trim();
+    const trimmedAddress = address.trim();
+    const trimmedPhone = phone.trim();
+
+    if (!trimmedName || !trimmedAddress || !trimmedPhone) {
       toast.error("All delivery details are required");
       return;
     }
 
-    if (phone.length !== 10) {
-      toast.error("Phone number must be 10 digits");
+    if (!/^\d{10}$/.test(trimmedPhone)) {
+      toast.error("Enter a valid 10-digit phone number");
       return;
     }
 
-    try {
-      for (const item of checkoutItems) {
-        const newStock = item.stock - item.quantity;
+    if (!checkoutItems.length) {
+      toast.error("Your order has no products");
+      return;
+    }
 
-        if (newStock < 0) {
-          toast.error(
-            `${item.name} does not have enough stock`
+    const invalidItem = checkoutItems.find(
+      (item) =>
+        !item.id ||
+        !Number.isInteger(Number(item.quantity)) ||
+        Number(item.quantity) <= 0
+    );
+
+    if (invalidItem) {
+      toast.error("One or more products have an invalid quantity");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      /*
+       * Step 1: Fetch the latest product data and validate
+       * every item before making any stock changes.
+       */
+      const validatedItems = [];
+
+      for (const item of checkoutItems) {
+        const response = await getProductById(item.id);
+        const product = response.data;
+
+        const quantity = Number(item.quantity);
+        const stock = Number(product.stock);
+        const price = Number(product.price);
+
+        if (!Number.isFinite(stock) || stock < 0) {
+          throw new Error(
+            `Stock information is invalid for ${item.name}`
           );
-          return;
         }
 
-        await updateProductStock(item.id, newStock);
+        if (quantity > stock) {
+          throw new Error(
+            `${product.name} is out of stock`
+          );
+        }
+
+        if (!Number.isFinite(price) || price < 0) {
+          throw new Error(
+            `Invalid price for ${product.name}`
+          );
+        }
+
+        validatedItems.push({
+          ...product,
+          quantity,
+          price,
+          stock,
+          subtotal: price * quantity,
+        });
       }
+
+      /*
+       * Step 2: Prepare the order using current API prices.
+       */
+      const orderTotal = validatedItems.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+      );
 
       const order = {
         userId: user.id,
-        name,
-        address,
-        phone,
-        items: checkoutItems,
-        total,
+        name: trimmedName,
+        address: trimmedAddress,
+        phone: trimmedPhone,
+        items: validatedItems.map((item) => {
+          const orderItem = { ...item };
+          delete orderItem.subtotal;
+          delete orderItem.stock;
+          return orderItem;
+        }),
+        total: orderTotal,
         status: "Pending",
         date: new Date().toISOString(),
       };
 
-      await createOrder(order);
+      /*
+       * Step 3: Update stock.
+       *
+       * If a later update fails, attempt to restore stock
+       * already changed by this checkout.
+       */
+      const stockChanges = [];
 
+      try {
+        for (const item of validatedItems) {
+          const newStock = item.stock - item.quantity;
+
+          await updateProductStock(item.id, newStock);
+
+          stockChanges.push({
+            id: item.id,
+            previousStock: item.stock,
+          });
+        }
+      } catch (stockError) {
+        // Best-effort rollback of successful stock updates.
+        for (const changedItem of [...stockChanges].reverse()) {
+          try {
+            await updateProductStock(
+              changedItem.id,
+              changedItem.previousStock
+            );
+          } catch (rollbackError) {
+            console.error(
+              "Stock rollback failed:",
+              rollbackError
+            );
+          }
+        }
+
+        throw stockError;
+      }
+
+      /*
+       * Step 4: Create the order.
+       *
+       * If order creation fails, attempt to restore stock.
+       */
+      try {
+        await createOrder(order);
+      } catch (orderError) {
+        for (const item of [...validatedItems].reverse()) {
+          try {
+            await updateProductStock(
+              item.id,
+              item.stock
+            );
+          } catch (rollbackError) {
+            console.error(
+              "Stock rollback failed:",
+              rollbackError
+            );
+          }
+        }
+
+        throw orderError;
+      }
+
+      /*
+       * Step 5: Save details and finish checkout.
+       */
       localStorage.setItem(
         `checkout_${user.id}`,
         JSON.stringify({
-          name,
-          address,
-          phone,
+          name: trimmedName,
+          address: trimmedAddress,
+          phone: trimmedPhone,
         })
       );
 
-      // Only clear cart when normal cart checkout is used
+      // Keep the cart unchanged when using Buy Now.
       if (!buyNowItem) {
         dispatch(clearCart());
       }
 
       toast.success("Order placed successfully!");
 
-      navigate("/orders");
+      navigate("/orders", { replace: true });
     } catch (error) {
-      console.error(error);
+      console.error("Checkout error:", error);
+
       toast.error(
-        "Failed to place order. Please try again."
+        error.response?.status === 404
+          ? "A product in your order could not be found."
+          : error.message ||
+              "Failed to place order. Please try again."
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <main className="min-h-screen bg-[#f8f5ef] px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
       <div className="mx-auto max-w-6xl">
-
+        {/* Page Heading */}
         <div className="mb-10 text-center">
           <p className="mb-2 text-sm tracking-[3px] text-[#9a7b24]">
             COMPLETE YOUR PURCHASE
@@ -148,7 +298,6 @@ function Checkout() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-
           {/* Order Summary */}
           <div className="bg-[#eae6e1] p-6 sm:p-8">
             <p className="mb-2 text-sm tracking-[2px] text-[#9a7b24]">
@@ -176,7 +325,11 @@ function Checkout() {
                   </div>
 
                   <p className="whitespace-nowrap text-[#9a7b24]">
-                    ₹{item.price * item.quantity}
+                    ₹
+                    {(
+                      Number(item.price) *
+                      Number(item.quantity)
+                    ).toLocaleString("en-IN")}
                   </p>
                 </div>
               ))}
@@ -188,7 +341,8 @@ function Checkout() {
               </span>
 
               <span className="text-2xl font-semibold text-[#744b4b]">
-                ₹{total}
+                ₹
+                {total.toLocaleString("en-IN")}
               </span>
             </div>
           </div>
@@ -208,57 +362,83 @@ function Checkout() {
               className="space-y-5"
             >
               <div>
-                <label className="mb-2 block text-sm text-[#555]">
+                <label
+                  htmlFor="checkout-name"
+                  className="mb-2 block text-sm text-[#555]"
+                >
                   Full Name
                 </label>
 
                 <input
+                  id="checkout-name"
                   type="text"
                   placeholder="Enter your full name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  autoComplete="name"
+                  required
                   className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-sm text-[#555]">
+                <label
+                  htmlFor="checkout-address"
+                  className="mb-2 block text-sm text-[#555]"
+                >
                   Delivery Address
                 </label>
 
                 <textarea
+                  id="checkout-address"
                   placeholder="Enter your delivery address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  rows="4"
+                  autoComplete="street-address"
+                  rows={4}
+                  required
                   className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-sm text-[#555]">
+                <label
+                  htmlFor="checkout-phone"
+                  className="mb-2 block text-sm text-[#555]"
+                >
                   Phone Number
                 </label>
 
                 <input
+                  id="checkout-phone"
                   type="tel"
                   placeholder="10 digit phone number"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  maxLength="10"
+                  onChange={(e) =>
+                    setPhone(
+                      e.target.value.replace(/\D/g, "").slice(0, 10)
+                    )
+                  }
+                  autoComplete="tel-national"
+                  inputMode="numeric"
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  required
                   className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#744b4b] px-6 py-4 text-white transition hover:bg-[#9a7b24]"
+                disabled={isSubmitting}
+                className="w-full bg-[#744b4b] px-6 py-4 text-white transition hover:bg-[#9a7b24] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Place Order
+                {isSubmitting
+                  ? "Processing Order..."
+                  : "Place Order"}
               </button>
             </form>
           </div>
-
         </div>
       </div>
     </main>

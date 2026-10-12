@@ -8,7 +8,7 @@ function Home() {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["featuredProducts"],
     queryFn: async () => {
       const response = await getProducts();
       return response.data;
@@ -23,40 +23,25 @@ function Home() {
 
   return (
     <main className="bg-[#f8f5ef]">
-
-      {/* Hero Section */}
-      <section className="flex min-h-[calc(100vh-70px)] items-center justify-center px-5 py-16 text-center sm:px-8">
-        <div className="max-w-3xl">
-
-          <p className="mb-5 text-xs font-medium tracking-[5px] text-[#9a7b24] sm:text-sm">
-            M U S K &nbsp; O F &nbsp; T H E &nbsp; D A W N
-          </p>
-
-          <h1 className="font-['Amiri'] text-5xl leading-tight text-[#744b4b] sm:text-6xl md:text-7xl">
-            Misk Al-Sahar
-          </h1>
-
-          <div className="mx-auto my-7 h-px w-20 bg-[#9a7b24]" />
-
-          <p className="mx-auto max-w-2xl text-base leading-7 text-[#777] sm:text-lg sm:leading-8">
-            Discover the timeless beauty of Middle Eastern perfumes,
-            crafted with elegance, tradition, and unforgettable character.
-          </p>
-
-          <Link
-            to="/shop"
-            className="mt-9 inline-block rounded-sm bg-[#744b4b] px-8 py-3.5 text-sm font-medium text-white transition duration-300 hover:bg-[#9a7b24] sm:px-10"
-          >
-            Explore Collection
-          </Link>
-
-        </div>
+      {/* Hero Banner */}
+      <section className="w-full overflow-hidden bg-[#392016] ">
+        <Link
+          to="/shop"
+          className="block"
+          aria-label="Explore Misk Al-Sahar perfumes"
+        >
+          <img
+            src="/misk-hero.png"
+            alt="Misk Al-Sahar luxury perfume collection"
+            fetchPriority="high"
+            className="block h-auto w-full"
+          />
+        </Link>
       </section>
 
       {/* Collection Section */}
       <section className="border-t border-[#e4dccf] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
         <div className="mx-auto max-w-6xl">
-
           <div className="mb-10 text-center">
             <p className="mb-3 text-xs font-medium tracking-[4px] text-[#9a7b24] sm:text-sm">
               OUR COLLECTION
@@ -90,14 +75,12 @@ function Home() {
 
           {!isLoading && !isError && (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
               {featuredProducts.map((product) => (
                 <Link
                   to={`/product/${product.slug}`}
                   key={product.id}
                   className="group overflow-hidden rounded-lg border border-[#e4dccf] bg-white transition duration-300 hover:-translate-y-2 hover:shadow-lg"
                 >
-
                   <div className="overflow-hidden bg-[#f3eee6]">
                     <img
                       src={product.image}
@@ -107,7 +90,6 @@ function Home() {
                   </div>
 
                   <div className="p-5 text-center">
-
                     <p className="text-[10px] font-medium uppercase tracking-[2px] text-[#9a7b24]">
                       {product.category}
                     </p>
@@ -121,11 +103,9 @@ function Home() {
                     <p className="text-lg font-medium text-[#9a7b24]">
                       ₹{product.price}
                     </p>
-
                   </div>
                 </Link>
               ))}
-
             </div>
           )}
 
@@ -137,14 +117,12 @@ function Home() {
               View All Perfumes
             </Link>
           </div>
-
         </div>
       </section>
 
       {/* Story Section */}
       <section className="border-t border-[#e4dccf] px-5 py-16 text-center sm:px-8 sm:py-24">
         <div className="mx-auto max-w-4xl">
-
           <p className="mb-4 text-xs font-medium tracking-[4px] text-[#9a7b24] sm:text-sm">
             OUR STORY
           </p>
@@ -166,10 +144,8 @@ function Home() {
           >
             Discover Our Story
           </Link>
-
         </div>
       </section>
-
     </main>
   );
 }

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/slices/authSlice";
+import { toast } from "react-toastify";
 
 function Navbar() {
   const user = useSelector((state) => state.auth.user);
@@ -11,11 +12,14 @@ function Navbar() {
 
   const dispatch = useDispatch();
   const location = useLocation();
-
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  const cartCount = cartItems.length;
+  const cartCount = cartItems.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
   const wishlistCount = wishlistItems.length;
 
   // Hide shopping navigation on authentication pages
@@ -31,6 +35,8 @@ function Navbar() {
   const handleLogout = () => {
     dispatch(logout());
     closeMobileMenu();
+    navigate("/")
+    toast.success("logged out succesfully")
   };
 
   return (

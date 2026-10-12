@@ -170,7 +170,10 @@ function Orders() {
                       </div>
 
                       <p className="whitespace-nowrap text-[#9a7b24]">
-                        ₹{item.price * item.quantity}
+                        ₹
+                        {(item.price * item.quantity).toLocaleString(
+                          "en-IN"
+                        )}
                       </p>
                     </div>
                   ))}
@@ -183,7 +186,10 @@ function Orders() {
                     </p>
 
                     <h3 className="mt-1 text-2xl font-semibold text-[#744b4b]">
-                      ₹{order.total}
+                      ₹
+                      {Number(order.total || 0).toLocaleString(
+                        "en-IN"
+                      )}
                     </h3>
                   </div>
 

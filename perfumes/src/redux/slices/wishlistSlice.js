@@ -1,13 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const user = JSON.parse(localStorage.getItem("user"));
+const getUser = () => {
+  return JSON.parse(localStorage.getItem("user"));
+};
 
 const getWishlist = () => {
+  const user = getUser();
+
   if (!user) return [];
 
   return JSON.parse(
     localStorage.getItem(`wishlist_${user.id}`)
   ) || [];
+};
+
+const saveWishlist = (items) => {
+  const user = getUser();
+
+  if (user) {
+    localStorage.setItem(
+      `wishlist_${user.id}`,
+      JSON.stringify(items)
+    );
+  }
 };
 
 const wishlistSlice = createSlice({
@@ -29,13 +44,7 @@ const wishlistSlice = createSlice({
 
       if (!exists) {
         state.items.push(action.payload);
-
-        if (user) {
-          localStorage.setItem(
-            `wishlist_${user.id}`,
-            JSON.stringify(state.items)
-          );
-        }
+        saveWishlist(state.items);
       }
     },
 
@@ -44,16 +53,7 @@ const wishlistSlice = createSlice({
         (item) => item.id !== action.payload
       );
 
-      if (user) {
-        localStorage.setItem(
-          `wishlist_${user.id}`,
-          JSON.stringify(state.items)
-        );
-      }
-    },
-
-    clearWishlist: (state) => {
-      state.items = [];
+      saveWishlist(state.items);
     },
   },
 });
@@ -62,7 +62,6 @@ export const {
   loadWishlist,
   addToWishlist,
   removeFromWishlist,
-  clearWishlist,
 } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer;

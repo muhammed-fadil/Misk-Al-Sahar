@@ -28,7 +28,7 @@ export const addAdminProduct = (product) => {
 };
 
 export const updateAdminProduct = (id, product) => {
-  return axios.put(`${API}/products/${id}`, product);
+  return axios.patch(`${API}/products/${id}`, product);
 };
 
 export const deleteAdminProduct = (id) => {

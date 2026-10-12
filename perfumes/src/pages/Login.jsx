@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { login } from "../redux/slices/authSlice";
 import { loadCart } from "../redux/slices/cartSlice";
@@ -16,6 +16,7 @@ function Login() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -51,7 +52,11 @@ function Login() {
       dispatch(loadCart(cart));
       dispatch(loadWishlist(wishlist));
 
-      navigate("/");
+      const from = location.state?.from;
+
+      navigate(from?.pathname || "/", {
+        state: from?.state,
+      });
     } catch (error) {
       console.error(error);
      toast.error("Unable to connect to the server.");

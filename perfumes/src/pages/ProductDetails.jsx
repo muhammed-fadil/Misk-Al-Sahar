@@ -221,7 +221,7 @@ function ProductDetails() {
                 </p>
 
                 <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-[#555]">
-                  {product.notes.top.join(", ")}
+                  {product.notes?.top?.join(", ") || "-"}
                 </p>
               </div>
 
@@ -231,7 +231,7 @@ function ProductDetails() {
                 </p>
 
                 <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-[#555]">
-                  {product.notes.heart.join(", ")}
+                  {product.notes?.heart?.join(", ") || "-"}
                 </p>
               </div>
 
@@ -241,7 +241,7 @@ function ProductDetails() {
                 </p>
 
                 <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-[#555]">
-                  {product.notes.base.join(", ")}
+                  {product.notes?.base?.join(", ") || "-"}
                 </p>
               </div>
 
