@@ -259,7 +259,6 @@ function AdminProducts() {
 
   return (
     <div className="min-h-screen min-w-0 bg-[#f8f5ef] p-4 sm:p-6 lg:p-8">
-      {/* Header */}
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-[#744b4b] sm:text-3xl">
@@ -280,7 +279,6 @@ function AdminProducts() {
         </button>
       </div>
 
-      {/* Search */}
       <div className="mb-5">
         <div className="relative">
           <Search
@@ -298,7 +296,6 @@ function AdminProducts() {
         </div>
       </div>
 
-      {/* Products */}
       {filteredProducts.length === 0 ? (
         <div className="rounded-xl bg-white p-8 text-center shadow-sm sm:p-12">
           <Package
@@ -320,7 +317,6 @@ function AdminProducts() {
         </div>
       ) : (
         <>
-          {/* Mobile Product Cards */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:hidden">
             {filteredProducts.map((product) => (
               <div
@@ -400,7 +396,6 @@ function AdminProducts() {
             ))}
           </div>
 
-          {/* Tablet and Desktop Product Table */}
           <div className="hidden overflow-hidden rounded-xl bg-white shadow-sm lg:block">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[850px]">
@@ -504,7 +499,6 @@ function AdminProducts() {
         </>
       )}
 
-      {/* Product Details Modal */}
       {selectedProduct && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 sm:p-5"
@@ -514,7 +508,6 @@ function AdminProducts() {
             className="max-h-[90dvh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white px-4 py-4 sm:px-6">
               <div className="min-w-0 pr-3">
                 <p className="text-xs font-medium uppercase tracking-wide text-gray-400">
@@ -535,9 +528,7 @@ function AdminProducts() {
               </button>
             </div>
 
-            {/* Product Details */}
             <div className="grid min-w-0 grid-cols-1 gap-5 p-4 sm:p-6 md:grid-cols-2">
-              {/* Image */}
               <div className="flex min-w-0 items-center justify-center rounded-xl bg-[#f8f5ef] p-3 sm:p-4">
                 {selectedProduct.image ? (
                   <img
@@ -555,7 +546,6 @@ function AdminProducts() {
                 )}
               </div>
 
-              {/* Basic Information */}
               <div className="min-w-0 space-y-4">
                 <div>
                   <p className="text-xs text-gray-400">
@@ -634,7 +624,6 @@ function AdminProducts() {
                 </div>
               </div>
 
-              {/* Short Description */}
               <div className="min-w-0 md:col-span-2">
                 <p className="text-sm font-semibold text-[#744b4b]">
                   Short Description
@@ -646,7 +635,6 @@ function AdminProducts() {
                 </p>
               </div>
 
-              {/* Description */}
               <div className="min-w-0 md:col-span-2">
                 <p className="text-sm font-semibold text-[#744b4b]">
                   Description
@@ -659,7 +647,6 @@ function AdminProducts() {
               </div>
             </div>
 
-            {/* Modal Actions */}
             <div className="sticky bottom-0 flex flex-col gap-3 border-t border-gray-100 bg-white p-4 sm:flex-row sm:justify-end sm:p-6">
               <button
                 onClick={() => setSelectedProduct(null)}
@@ -683,7 +670,6 @@ function AdminProducts() {
         </div>
       )}
 
-      {/* Add / Edit Product Modal */}
       {showForm && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 sm:p-5"
@@ -693,7 +679,6 @@ function AdminProducts() {
             className="max-h-[90dvh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white px-4 py-4 sm:px-6">
               <div>
                 <h2 className="text-xl font-bold text-[#744b4b]">
@@ -717,7 +702,6 @@ function AdminProducts() {
               </button>
             </div>
 
-            {/* Form */}
             <form onSubmit={handleSubmit} className="p-4 sm:p-6">
               <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
                 <input
@@ -864,7 +848,6 @@ function AdminProducts() {
                 />
               </div>
 
-              {/* Form Buttons */}
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
                 <button
                   type="button"

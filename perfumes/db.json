@@ -7,7 +7,7 @@
       "category": "Oriental",
       "price": 2999,
       "rating": 4.9,
-      "stock": 2,
+      "stock": 1,
       "brand": "Misk Al-Sahar",
       "image": "/images/tsuki.png",
       "shortDescription": "A bold and luxurious extrait featuring oud, leather, saffron, amber and warm woods.",
@@ -1993,6 +1993,50 @@
       "status": "Pending",
       "date": "2026-10-12T06:56:20.473Z",
       "id": "a8maHXHD0So"
+    },
+    {
+      "userId": "uAfRMpmoQGc",
+      "name": "salih",
+      "address": "salih house , malapuram",
+      "phone": "7895460125",
+      "items": [
+        {
+          "id": "1",
+          "name": "TSUKI",
+          "slug": "tsuki",
+          "category": "Oriental",
+          "price": 2999,
+          "rating": 4.9,
+          "brand": "Misk Al-Sahar",
+          "image": "/images/tsuki.png",
+          "shortDescription": "A bold and luxurious extrait featuring oud, leather, saffron, amber and warm woods.",
+          "description": "A bold oriental fragrance with saffron and pink pepper, developing into oud, leather and amber for a rich woody finish.",
+          "notes": {
+            "top": [
+              "Saffron",
+              "Pink Pepper"
+            ],
+            "heart": [
+              "Geranium",
+              "Praline"
+            ],
+            "base": [
+              "Oud",
+              "Leather",
+              "Akigalawood",
+              "Amber"
+            ]
+          },
+          "size": "50ml",
+          "gender": "Unisex",
+          "occasion": "Special Occasion",
+          "quantity": 1
+        }
+      ],
+      "total": 2999,
+      "status": "Pending",
+      "date": "2026-10-13T04:04:33.667Z",
+      "id": "-myxUI3t3oE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -198,7 +198,6 @@ function AdminDashboard() {
 
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-hidden bg-[#f8f5ef] p-3 sm:p-5 lg:p-8">
-      {/* Header */}
       <div className="mb-6 sm:mb-8">
         <h1 className="text-2xl font-bold text-[#744b4b] sm:text-3xl lg:text-4xl">
           Admin Dashboard
@@ -209,9 +208,7 @@ function AdminDashboard() {
         </p>
       </div>
 
-      {/* Main Statistics */}
       <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {/* Products */}
         <div className="min-w-0 rounded-xl bg-white p-5 shadow-sm sm:p-6">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f3dddd]">
             <Package className="text-[#744b4b]" size={24} />
@@ -226,7 +223,6 @@ function AdminDashboard() {
           </h2>
         </div>
 
-        {/* Users */}
         <div className="min-w-0 rounded-xl bg-white p-5 shadow-sm sm:p-6">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#eee5d5]">
             <Users className="text-[#9a7b24]" size={24} />
@@ -241,7 +237,6 @@ function AdminDashboard() {
           </h2>
         </div>
 
-        {/* Orders */}
         <div className="min-w-0 rounded-xl bg-white p-5 shadow-sm sm:p-6">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f3dddd]">
             <ShoppingBag className="text-[#744b4b]" size={24} />
@@ -256,7 +251,6 @@ function AdminDashboard() {
           </h2>
         </div>
 
-        {/* Total Revenue */}
         <div className="min-w-0 rounded-xl bg-white p-5 shadow-sm sm:p-6">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#eee5d5]">
             <IndianRupee className="text-[#9a7b24]" size={24} />
@@ -272,9 +266,7 @@ function AdminDashboard() {
         </div>
       </div>
 
-      {/* Charts */}
       <div className="mt-6 grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* Daily Revenue */}
         <div className="min-w-0 rounded-xl bg-white p-4 shadow-sm sm:p-6">
           <div className="mb-5">
             <h2 className="text-lg font-semibold text-[#744b4b] sm:text-xl">
@@ -349,7 +341,6 @@ function AdminDashboard() {
           </div>
         </div>
 
-        {/* Orders by Status */}
         <div className="min-w-0 rounded-xl bg-white p-4 shadow-sm sm:p-6">
           <div className="mb-5">
             <h2 className="text-lg font-semibold text-[#744b4b] sm:text-xl">
@@ -406,7 +397,6 @@ function AdminDashboard() {
         </div>
       </div>
 
-      {/* Inventory Overview */}
       <section className="mt-6">
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -432,9 +422,7 @@ function AdminDashboard() {
           </Link>
         </div>
 
-        {/* Stock Summary Cards */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {/* In Stock */}
           <div className="rounded-xl border border-green-100 bg-white p-5 shadow-sm sm:p-6">
             <div className="flex items-center justify-between">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
@@ -462,7 +450,6 @@ function AdminDashboard() {
             </p>
           </div>
 
-          {/* Low Stock */}
           <div className="rounded-xl border border-yellow-100 bg-white p-5 shadow-sm sm:p-6">
             <div className="flex items-center justify-between">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100">
@@ -490,7 +477,6 @@ function AdminDashboard() {
             </p>
           </div>
 
-          {/* Out of Stock */}
           <div className="rounded-xl border border-red-100 bg-white p-5 shadow-sm sm:p-6">
             <div className="flex items-center justify-between">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
@@ -519,7 +505,6 @@ function AdminDashboard() {
           </div>
         </div>
 
-        {/* Stock Alert Table */}
         <div className="mt-6 overflow-hidden rounded-xl bg-white shadow-sm">
           <div className="flex flex-col gap-3 border-b border-[#eee7df] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-6">
             <div>
@@ -584,7 +569,6 @@ function AdminDashboard() {
             </div>
           ) : (
             <>
-              {/* Mobile Stock Alert Cards */}
               <div className="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 sm:p-4 lg:hidden">
                 {stockAlertProducts.map((product) => {
                   const stock = getStock(product);
@@ -652,7 +636,6 @@ function AdminDashboard() {
                 })}
               </div>
 
-              {/* Desktop Stock Alert Table */}
               <div className="hidden overflow-x-auto lg:block">
                 <table className="w-full min-w-[720px]">
                   <thead>
@@ -735,7 +718,6 @@ function AdminDashboard() {
         </div>
       </section>
 
-      {/* Recent Orders */}
       <div className="mt-6 min-w-0 rounded-xl bg-white p-4 shadow-sm sm:p-6">
         <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -765,7 +747,6 @@ function AdminDashboard() {
           </div>
         ) : (
           <>
-            {/* Mobile Recent Order Cards */}
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:hidden">
               {recentOrders.map((order) => (
                 <article key={order.id} className="min-w-0 rounded-xl border border-[#eee7df] bg-[#fffdf9] p-4">
@@ -811,7 +792,6 @@ function AdminDashboard() {
               ))}
             </div>
 
-            {/* Desktop Recent Orders Table */}
             <div className="hidden overflow-x-auto lg:block">
             <table className="w-full min-w-[700px]">
               <thead>

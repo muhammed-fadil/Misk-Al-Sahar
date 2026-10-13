@@ -193,7 +193,6 @@ function AdminOrders() {
   return (
     <div className="min-h-screen min-w-0 bg-[#f8f5ef] p-3 sm:p-5 md:p-6 lg:p-8">
     
-      {/* Header */}
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-3">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#744b4b] text-white sm:h-12 sm:w-12">
@@ -211,7 +210,6 @@ function AdminOrders() {
           </div>
         </div>
 
-        {/* Total Orders */}
         <div className="flex items-center justify-between rounded-xl bg-white px-4 py-3 shadow-sm sm:min-w-40 sm:px-5">
           <div>
             <p className="text-xs text-gray-500">
@@ -232,7 +230,6 @@ function AdminOrders() {
         </div>
       </div>
 
-      {/* Orders Content */}
       {orders.length === 0 ? (
         <div className="rounded-2xl bg-white px-4 py-12 text-center shadow-sm sm:p-12">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#f3eee6]">
@@ -252,7 +249,6 @@ function AdminOrders() {
         </div>
       ) : (
         <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
-          {/* Section Header */}
           <div className="border-b border-gray-100 px-4 py-4 sm:px-6">
             <h2 className="font-semibold text-[#744b4b]">
               Customer Orders
@@ -263,14 +259,12 @@ function AdminOrders() {
             </p>
           </div>
 
-          {/* Mobile Order Cards */}
           <div className="grid grid-cols-1 gap-4 p-3 sm:grid-cols-2 sm:p-4 lg:hidden">
             {orders.map((order) => (
               <div
                 key={order.id}
                 className="min-w-0 overflow-hidden rounded-xl border border-gray-100 bg-white transition hover:border-[#e8ddd2]"
               >
-                {/* Card Header */}
                 <button
                   type="button"
                   onClick={() => setSelectedOrder(order)}
@@ -344,7 +338,6 @@ function AdminOrders() {
                   </p>
                 </button>
 
-                {/* Mobile Status Control */}
                 <div
                   className="border-t border-gray-100 p-4"
                   onClick={(e) => e.stopPropagation()}
@@ -381,7 +374,6 @@ function AdminOrders() {
             ))}
           </div>
 
-          {/* Tablet and Desktop Orders Table */}
           <div className="hidden overflow-x-auto lg:block">
             <table className="w-full min-w-[950px]">
               <thead>
@@ -500,7 +492,6 @@ function AdminOrders() {
             </table>
           </div>
 
-          {/* Results Footer */}
           <div className="border-t border-gray-100 px-4 py-3 sm:px-6">
             <p className="text-xs text-gray-500">
               Showing {orders.length} orders
@@ -509,7 +500,6 @@ function AdminOrders() {
         </div>
       )}
 
-      {/* Order Details Modal */}
       {selectedOrder && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 sm:p-5"
@@ -522,7 +512,6 @@ function AdminOrders() {
             className="max-h-[90dvh] w-full max-w-2xl overflow-y-auto overscroll-contain rounded-2xl bg-white shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-gray-100 bg-white px-4 py-4 sm:px-6">
               <div className="min-w-0">
                 <p className="text-xs font-medium uppercase tracking-wide text-gray-400">
@@ -547,7 +536,6 @@ function AdminOrders() {
               </button>
             </div>
 
-            {/* Order Summary */}
             <div className="grid grid-cols-1 gap-3 border-b border-gray-100 p-4 sm:grid-cols-2 sm:p-6 lg:grid-cols-3">
               <div className="min-w-0 rounded-xl bg-[#f8f5ef] p-4">
                 <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -585,7 +573,6 @@ function AdminOrders() {
               </div>
             </div>
 
-            {/* Order Status */}
             <div className="border-b border-gray-100 p-4 sm:p-6">
               <h3 className="mb-3 text-sm font-semibold text-[#744b4b]">
                 Order Status
@@ -635,7 +622,6 @@ function AdminOrders() {
               </div>
             </div>
 
-            {/* Ordered Products */}
             <div className="p-4 sm:p-6">
               <div className="mb-4 flex items-center gap-2">
                 <Package
@@ -691,7 +677,6 @@ function AdminOrders() {
               )}
             </div>
 
-            {/* Modal Footer */}
             <div className="sticky bottom-0 border-t border-gray-100 bg-white p-4 sm:px-6">
               <button
                 type="button"

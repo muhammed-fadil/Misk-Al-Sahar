@@ -62,7 +62,6 @@ function Wishlist() {
     <main className="min-h-screen bg-[#f8f5ef] px-4 py-10 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-6xl">
 
-        {/* Heading */}
         <div className="mb-12 text-center">
           <p className="mb-2 text-sm tracking-[3px] text-[#9a7b24]">
             SAVED FOR YOU
@@ -73,7 +72,6 @@ function Wishlist() {
           </h1>
         </div>
 
-        {/* Wishlist Products */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {wishlist.map((product) => (
             <div
@@ -81,7 +79,6 @@ function Wishlist() {
               key={product.id}
             >
 
-              {/* Product Image */}
               <div className="bg-[#f8f5ef]">
                 <img
                   src={product.image}
@@ -90,7 +87,6 @@ function Wishlist() {
                 />
               </div>
 
-              {/* Product Details */}
               <div className="p-6">
                 <h2 className="font-serif text-2xl text-[#744b4b]">
                   {product.name}
@@ -100,7 +96,6 @@ function Wishlist() {
                   ₹{product.price}
                 </p>
 
-                {/* Buttons */}
                 <div className="mt-5 flex flex-col gap-3">
 
                   <button

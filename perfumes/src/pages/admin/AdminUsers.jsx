@@ -102,7 +102,6 @@ function AdminUsers() {
 
   return (
     <div className="min-h-screen min-w-0 bg-[#f8f5ef] p-3 sm:p-5 md:p-6 lg:p-8">
-      {/* Header */}
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-3">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#744b4b] text-white sm:h-12 sm:w-12">
@@ -120,7 +119,6 @@ function AdminUsers() {
           </div>
         </div>
 
-        {/* Total Users */}
         <div className="flex items-center justify-between rounded-xl bg-white px-4 py-3 shadow-sm sm:min-w-40 sm:px-5">
           <div>
             <p className="text-xs text-gray-500">
@@ -138,9 +136,7 @@ function AdminUsers() {
         </div>
       </div>
 
-      {/* Main Users Section */}
       <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
-        {/* Section Header and Search */}
         <div className="flex flex-col gap-4 border-b border-gray-100 p-4 sm:p-5 lg:flex-row lg:items-center lg:justify-between lg:p-6">
           <div>
             <h2 className="font-semibold text-[#744b4b]">
@@ -152,7 +148,6 @@ function AdminUsers() {
             </p>
           </div>
 
-          {/* Search */}
           <div className="relative w-full lg:max-w-sm">
             <Search
               size={18}
@@ -169,7 +164,6 @@ function AdminUsers() {
           </div>
         </div>
 
-        {/* Empty State */}
         {users.length === 0 ? (
           <div className="px-4 py-12 text-center sm:px-8">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#f3eee6]">
@@ -208,7 +202,6 @@ function AdminUsers() {
           </div>
         ) : (
           <>
-            {/* Mobile User Cards */}
             <div className="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 sm:p-4 lg:hidden">
               {filteredUsers.map((user) => (
                 <button
@@ -260,7 +253,6 @@ function AdminUsers() {
               ))}
             </div>
 
-            {/* Tablet and Desktop Table */}
             <div className="hidden overflow-x-auto lg:block">
               <table className="w-full min-w-[650px]">
                 <thead>
@@ -338,7 +330,6 @@ function AdminUsers() {
               </table>
             </div>
 
-            {/* Results Footer */}
             <div className="border-t border-gray-100 px-4 py-3 sm:px-5">
               <p className="text-xs text-gray-500">
                 Showing {filteredUsers.length} of {users.length} users
@@ -348,7 +339,6 @@ function AdminUsers() {
         )}
       </div>
 
-      {/* User Details Modal */}
       {selectedUser && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 sm:p-5"
@@ -361,7 +351,6 @@ function AdminUsers() {
             className="max-h-[90dvh] w-full max-w-md overflow-y-auto overscroll-contain rounded-2xl bg-white shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-gray-100 bg-white px-4 py-4 sm:px-6">
               <div className="min-w-0">
                 <p className="text-xs font-medium uppercase tracking-wide text-gray-400">
@@ -386,9 +375,7 @@ function AdminUsers() {
               </button>
             </div>
 
-            {/* Modal Content */}
             <div className="space-y-4 p-4 sm:p-6">
-              {/* User Profile */}
               <div className="flex min-w-0 items-center gap-4 rounded-xl bg-[#f8f5ef] p-4">
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#744b4b] text-white">
                   <UserCircle size={30} />
@@ -405,7 +392,6 @@ function AdminUsers() {
                 </div>
               </div>
 
-              {/* User ID */}
               <div className="rounded-xl border border-gray-100 p-4">
                 <p className="text-xs font-medium uppercase tracking-wide text-gray-400">
                   User ID
@@ -416,7 +402,6 @@ function AdminUsers() {
                 </p>
               </div>
 
-              {/* Email */}
               <div className="rounded-xl border border-gray-100 p-4">
                 <div className="flex items-center gap-2">
                   <Mail
@@ -435,7 +420,6 @@ function AdminUsers() {
               </div>
             </div>
 
-            {/* Modal Footer */}
             <div className="sticky bottom-0 border-t border-gray-100 bg-white p-4 sm:p-6">
               <button
                 type="button"

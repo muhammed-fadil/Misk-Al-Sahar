@@ -43,7 +43,6 @@ function Navbar() {
     <nav className="sticky top-0 z-50 border-b border-[#e4dccf] bg-[#f8f5ef]">
       <div className="mx-auto flex min-h-[70px] max-w-7xl items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
 
-        {/* Logo */}
         <Link
           to="/"
           onClick={closeMobileMenu}
@@ -51,7 +50,6 @@ function Navbar() {
           مِسْك السَّحَر
         </Link>
 
-        {/* Authentication Pages */}
         {isAuthPage ? (
           <Link
             to={location.pathname === "/login" ? "/register" : "/login"}
@@ -63,7 +61,6 @@ function Navbar() {
           </Link>
         ) : (
           <>
-            {/* Desktop Navigation */}
     <div className="hidden items-center gap-7 md:flex">
 
               <Link
@@ -113,7 +110,6 @@ function Navbar() {
                 About
               </Link>
 
-              {/* Profile */}
               <div className="relative">
 
                 <button
@@ -200,7 +196,6 @@ function Navbar() {
               </div>
             </div>
 
-            {/* Mobile Button */}
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
               className="text-2xl text-[#744b4b] md:hidden"
@@ -211,7 +206,6 @@ function Navbar() {
         )}
       </div>
 
-      {/* Mobile Shopping Menu */}
       {!isAuthPage && showMobileMenu && (
         <div className="border-t border-[#e4dccf] bg-[#f8f5ef] px-5 py-5 md:hidden">
 

@@ -6,14 +6,12 @@ function ProductCard({ product }) {
       to={`/product/${product.slug}`}
       className="block bg-[#fffdf8] transition duration-300 hover:-translate-y-2"
     >
-      {/* Product Image */}
       <img
         src={product.image}
         alt={product.name}
         className="h-64 w-full object-cover sm:h-80 lg:h-[400px]"
       />
 
-      {/* Product Information */}
       <div className="p-6">
 
         <p className="text-xs uppercase tracking-[2px] text-[#9a7b24]">
@@ -28,7 +26,6 @@ function ProductCard({ product }) {
           {product.description}
         </p>
 
-        {/* Price & Rating */}
         <div className="flex items-center justify-between">
           <h3 className="text-lg text-[#9a7b24]">
             ₹{product.price}

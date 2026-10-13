@@ -2,7 +2,6 @@ function About() {
   return (
     <main className="bg-[#f8f5ef] text-[#1c1c1c]">
 
-      {/* Hero */}
       <section className="flex min-h-[60vh] items-center justify-center px-5 py-20 text-center">
         <div className="w-full max-w-3xl">
 
@@ -23,7 +22,6 @@ function About() {
       </section>
 
 
-      {/* Our Story */}
       <section className="border-t border-[#e5ded2] px-5 py-20 sm:py-24">
         <div className="mx-auto max-w-4xl">
 
@@ -59,7 +57,6 @@ function About() {
       </section>
 
 
-      {/* Our Inspiration */}
       <section className="bg-white px-5 py-20 sm:py-24">
         <div className="mx-auto max-w-4xl">
 
@@ -90,7 +87,6 @@ function About() {
       </section>
 
 
-      {/* Fragrance World */}
       <section className="px-5 py-20 sm:py-24">
         <div className="mx-auto max-w-5xl">
 
@@ -106,7 +102,6 @@ function About() {
 
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
-            {/* Oud */}
             <div className="bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1">
               <h3 className="text-2xl text-[#744b4b]">
                 Oud
@@ -118,7 +113,6 @@ function About() {
               </p>
             </div>
 
-            {/* Musk */}
             <div className="bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1">
               <h3 className="text-2xl text-[#744b4b]">
                 Musk
@@ -130,7 +124,6 @@ function About() {
               </p>
             </div>
 
-            {/* Amber */}
             <div className="bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1">
               <h3 className="text-2xl text-[#744b4b]">
                 Amber
@@ -142,7 +135,6 @@ function About() {
               </p>
             </div>
 
-            {/* Rose */}
             <div className="bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1">
               <h3 className="text-2xl text-[#744b4b]">
                 Rose
@@ -160,7 +152,6 @@ function About() {
       </section>
 
 
-      {/* Our Vision */}
       <section className="bg-white px-5 py-20 sm:py-24">
         <div className="mx-auto max-w-4xl">
 
@@ -189,7 +180,6 @@ function About() {
       </section>
 
 
-      {/* Final Section */}
       <section className="px-5 py-24 text-center sm:py-32">
         <div className="mx-auto max-w-3xl">
 

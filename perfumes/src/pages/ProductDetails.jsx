@@ -126,7 +126,6 @@ function ProductDetails() {
     <main className="min-h-[calc(100dvh-70px)] bg-[#f8f5ef] p-3 sm:p-4 lg:h-[calc(100dvh-70px)] lg:overflow-hidden lg:p-5">
       <div className="mx-auto grid h-full max-w-6xl overflow-hidden rounded-xl bg-white shadow-sm lg:grid-cols-2">
 
-        {/* Image */}
         <div className="flex h-[40vh] items-center justify-center bg-[#f3eee6] p-4 lg:h-full lg:p-6">
           <img
             src={product.image}
@@ -135,7 +134,6 @@ function ProductDetails() {
           />
         </div>
 
-        {/* Product Information */}
         <div className="flex h-full flex-col justify-center overflow-hidden p-4 sm:p-6 lg:p-7">
 
           <p className="text-[11px] font-medium uppercase tracking-[2px] text-[#9a7b24]">
@@ -248,7 +246,6 @@ function ProductDetails() {
             </div>
           </div>
 
-          {/* Wishlist */}
           <button
             onClick={handleWishlist}
             className={`mt-3 w-full rounded-md border px-4 py-2 text-xs transition ${
@@ -264,7 +261,6 @@ function ProductDetails() {
 
           {product.stock > 0 ? (
             <>
-              {/* Quantity */}
               <div className="mt-2 flex items-center gap-3">
                 <span className="text-xs font-medium text-[#744b4b]">
                   Quantity
@@ -303,7 +299,6 @@ function ProductDetails() {
                 </div>
               </div>
 
-              {/* Buttons */}
               <div className="mt-2 grid grid-cols-2 gap-2">
 
                 <button

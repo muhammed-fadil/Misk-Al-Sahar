@@ -67,7 +67,6 @@ function Login() {
     <main className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-5 py-12">
       <div className="w-full max-w-md">
 
-        {/* Header */}
         <div className="mb-8 text-center">
           <p className="font-['Amiri'] text-3xl text-[#744b4b]">
             مِسْك السَّحَر
@@ -86,14 +85,12 @@ function Login() {
           </p>
         </div>
 
-        {/* Login Card */}
         <div className="rounded-xl bg-white p-6 shadow-sm sm:p-8">
 
         
 
           <form onSubmit={handleLogin} className="space-y-5">
 
-            {/* Email */}
             <div>
               <label className="mb-2 block text-sm font-medium text-[#744b4b]">
                 Email
@@ -108,7 +105,6 @@ function Login() {
               />
             </div>
 
-            {/* Password */}
             <div>
               <label className="mb-2 block text-sm font-medium text-[#744b4b]">
                 Password
@@ -123,7 +119,6 @@ function Login() {
               />
             </div>
 
-            {/* Login Button */}
             <button
               type="submit"
               className="w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#9a7b24]"
@@ -133,7 +128,6 @@ function Login() {
 
           </form>
 
-          {/* Divider */}
           <div className="my-6 flex items-center gap-3">
             <div className="h-px flex-1 bg-[#e4dccf]" />
 
@@ -144,7 +138,6 @@ function Login() {
             <div className="h-px flex-1 bg-[#e4dccf]" />
           </div>
 
-          {/* Register */}
           <p className="text-center text-sm text-[#777]">
             Don't have an account?{" "}
             <Link

@@ -114,7 +114,6 @@ function Shop() {
   return (
     <main className="min-h-screen bg-[#f8f5ef] px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
 
-      {/* Page Heading */}
       <section className="mx-auto max-w-3xl text-center">
 
         <p className="mb-3 text-xs font-medium tracking-[3px] text-[#9a7b24] sm:text-sm">
@@ -132,12 +131,10 @@ function Shop() {
 
       </section>
 
-      {/* Filters */}
       <section className="mx-auto mt-10 max-w-6xl rounded-xl bg-white p-4 shadow-sm sm:p-5">
 
         <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
 
-          {/* Search */}
           <div>
 
             <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-[#9a7b24]">
@@ -154,7 +151,6 @@ function Shop() {
 
           </div>
 
-          {/* Category */}
           <div>
 
             <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-[#9a7b24]">
@@ -175,7 +171,6 @@ function Shop() {
 
           </div>
 
-          {/* Sort */}
           <div>
 
             <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-[#9a7b24]">
@@ -187,7 +182,7 @@ function Shop() {
               onChange={handleSort}
               className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
             >
-              <option value="">Sort by Price</option>
+              <option value=""></option>
               <option value="low">Price: Low to High</option>
               <option value="high">Price: High to Low</option>
             </select>
@@ -198,7 +193,6 @@ function Shop() {
 
       </section>
 
-      {/* Results Count */}
       <div className="mx-auto mt-8 flex max-w-6xl items-center justify-between">
 
         <p className="text-sm text-[#777]">
@@ -222,7 +216,6 @@ function Shop() {
 
       </div>
 
-      {/* Products */}
       {filteredProducts.length === 0 ? (
         <section className="mx-auto mt-8 max-w-6xl rounded-xl bg-white px-5 py-16 text-center shadow-sm">
 
@@ -262,7 +255,6 @@ function Shop() {
 
           </section>
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-2">
 

@@ -23,7 +23,6 @@ function Home() {
 
   return (
     <main className="bg-[#f8f5ef]">
-      {/* Hero Banner */}
       <section className="w-full overflow-hidden bg-[#392016] ">
         <Link
           to="/shop"
@@ -39,7 +38,6 @@ function Home() {
         </Link>
       </section>
 
-      {/* Collection Section */}
       <section className="border-t border-[#e4dccf] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 text-center">
@@ -120,7 +118,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Story Section */}
       <section className="border-t border-[#e4dccf] px-5 py-16 text-center sm:px-8 sm:py-24">
         <div className="mx-auto max-w-4xl">
           <p className="mb-4 text-xs font-medium tracking-[4px] text-[#9a7b24] sm:text-sm">

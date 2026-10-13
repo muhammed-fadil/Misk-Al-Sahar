@@ -286,7 +286,6 @@ function Checkout() {
   return (
     <main className="min-h-screen bg-[#f8f5ef] px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
       <div className="mx-auto max-w-6xl">
-        {/* Page Heading */}
         <div className="mb-10 text-center">
           <p className="mb-2 text-sm tracking-[3px] text-[#9a7b24]">
             COMPLETE YOUR PURCHASE
@@ -298,7 +297,6 @@ function Checkout() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {/* Order Summary */}
           <div className="bg-[#eae6e1] p-6 sm:p-8">
             <p className="mb-2 text-sm tracking-[2px] text-[#9a7b24]">
               YOUR ORDER
@@ -347,7 +345,6 @@ function Checkout() {
             </div>
           </div>
 
-          {/* Delivery Details */}
           <div className="bg-white p-6 sm:p-8">
             <p className="mb-2 text-sm tracking-[2px] text-[#9a7b24]">
               DELIVERY
