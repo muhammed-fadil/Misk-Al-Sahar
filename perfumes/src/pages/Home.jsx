@@ -23,19 +23,22 @@ function Home() {
 
   return (
     <main className="bg-[#f8f5ef]">
-      <section className="w-full overflow-hidden bg-[#392016] ">
-        <Link
-          to="/shop"
-          className="block"
-          aria-label="Explore Misk Al-Sahar perfumes"
-        >
-          <img
-            src="/misk-hero.png"
-            alt="Misk Al-Sahar luxury perfume collection"
-            fetchPriority="high"
-            className="block h-auto w-full"
-          />
-        </Link>
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#392016] via-[#4d2a1c] to-[#392016]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(154,123,36,0.15),transparent_70%)]" />
+        <div className="relative">
+          <Link
+            to="/shop"
+            className="group block"
+            aria-label="Explore Misk Al-Sahar perfumes"
+          >
+            <img
+              src="/misk-hero.png"
+              alt="Misk Al-Sahar luxury perfume collection"
+              fetchPriority="high"
+              className="block h-auto w-full scale-100 transition-transform duration-[1500ms] ease-out group-hover:scale-[1.02]"
+            />
+          </Link>
+        </div>
       </section>
 
       <section className="border-t border-[#e4dccf] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
@@ -72,33 +75,35 @@ function Home() {
           )}
 
           {!isLoading && !isError && (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {featuredProducts.map((product) => (
                 <Link
                   to={`/product/${product.slug}`}
                   key={product.id}
-                  className="group overflow-hidden rounded-lg border border-[#e4dccf] bg-white transition duration-300 hover:-translate-y-2 hover:shadow-lg"
+                  className="group relative overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-luxury"
                 >
-                  <div className="overflow-hidden bg-[#f3eee6]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#744b4b]/8 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="overflow-hidden bg-gradient-to-br from-[#f3eee6] to-[#f8f5ef]">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-80 lg:h-[400px]"
+                      className="h-64 w-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-110 sm:h-80 lg:h-[420px]"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   </div>
 
-                  <div className="p-5 text-center">
+                  <div className="relative p-6 text-center">
                     <p className="text-[10px] font-medium uppercase tracking-[2px] text-[#9a7b24]">
                       {product.category}
                     </p>
 
-                    <h3 className="mt-2 text-xl font-semibold text-[#744b4b]">
+                    <h3 className="mt-2 font-serif text-2xl text-[#744b4b] transition-colors duration-300 group-hover:text-[#9a7b24]">
                       {product.name}
                     </h3>
 
-                    <div className="mx-auto my-3 h-px w-8 bg-[#e4dccf]" />
+                    <div className="mx-auto my-3 h-px w-12 bg-gradient-to-r from-transparent via-[#e4dccf] to-transparent" />
 
-                    <p className="text-lg font-medium text-[#9a7b24]">
+                    <p className="text-lg font-semibold text-[#9a7b24]">
                       ₹{product.price}
                     </p>
                   </div>
@@ -110,9 +115,12 @@ function Home() {
           <div className="mt-10 text-center">
             <Link
               to="/shop"
-              className="inline-block border border-[#744b4b] px-7 py-3 text-sm font-medium text-[#744b4b] transition hover:bg-[#744b4b] hover:text-white"
+              className="group inline-flex items-center gap-2 rounded-full border border-[#744b4b]/40 bg-white/90 px-8 py-3 text-sm font-medium text-[#744b4b] shadow-soft backdrop-blur-sm transition-all duration-300 hover:border-[#744b4b] hover:bg-[#744b4b] hover:text-white hover:shadow-luxury"
             >
-              View All Perfumes
+              <span>View All Perfumes</span>
+              <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
         </div>
@@ -137,9 +145,12 @@ function Home() {
 
           <Link
             to="/about"
-            className="mt-8 inline-block border border-[#9a7b24] px-7 py-3 text-sm font-medium text-[#9a7b24] transition hover:bg-[#9a7b24] hover:text-white"
+            className="group mt-8 inline-flex items-center gap-2 rounded-full border border-[#9a7b24]/40 bg-white/90 px-8 py-3 text-sm font-medium text-[#9a7b24] shadow-soft backdrop-blur-sm transition-all duration-300 hover:border-[#9a7b24] hover:bg-[#9a7b24] hover:text-white hover:shadow-luxury"
           >
-            Discover Our Story
+            <span>Discover Our Story</span>
+            <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </Link>
         </div>
       </section>

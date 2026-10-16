@@ -73,7 +73,7 @@ function Checkout() {
 
           <button
             onClick={() => navigate("/shop")}
-            className="bg-[#744b4b] px-7 py-3 text-white transition hover:bg-[#9a7b24]"
+            className="rounded-xl bg-[#744b4b] px-7 py-3 text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
           >
             Continue Shopping
           </button>
@@ -297,7 +297,7 @@ function Checkout() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div className="bg-[#eae6e1] p-6 sm:p-8">
+          <div className="rounded-2xl border border-[#e4dccf]/40 bg-[#eae6e1] p-6 shadow-soft sm:p-8">
             <p className="mb-2 text-sm tracking-[2px] text-[#9a7b24]">
               YOUR ORDER
             </p>
@@ -345,7 +345,7 @@ function Checkout() {
             </div>
           </div>
 
-          <div className="bg-white p-6 sm:p-8">
+          <div className="rounded-2xl border border-[#e4dccf]/30 bg-white p-6 shadow-luxury sm:p-8">
             <p className="mb-2 text-sm tracking-[2px] text-[#9a7b24]">
               DELIVERY
             </p>
@@ -374,7 +374,7 @@ function Checkout() {
                   onChange={(e) => setName(e.target.value)}
                   autoComplete="name"
                   required
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
+                  className="w-full rounded-xl border border-[#e4dccf]/60 bg-[#fffdf9]/80 px-4 py-3 outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
                 />
               </div>
 
@@ -394,7 +394,7 @@ function Checkout() {
                   autoComplete="street-address"
                   rows={4}
                   required
-                  className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
+                  className="w-full resize-none rounded-xl border border-[#e4dccf]/60 bg-[#fffdf9]/80 px-4 py-3 outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
                 />
               </div>
 
@@ -421,14 +421,14 @@ function Checkout() {
                   pattern="[0-9]{10}"
                   maxLength={10}
                   required
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
+                  className="w-full rounded-xl border border-[#e4dccf]/60 bg-[#fffdf9]/80 px-4 py-3 outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#744b4b] px-6 py-4 text-white transition hover:bg-[#9a7b24] disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-xl bg-[#744b4b] px-6 py-4 text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting
                   ? "Processing Order..."

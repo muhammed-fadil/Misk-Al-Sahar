@@ -1,19 +1,24 @@
+import { Link } from "react-router-dom";
+
 function About() {
   return (
     <main className="bg-[#f8f5ef] text-[#1c1c1c]">
 
-      <section className="flex min-h-[60vh] items-center justify-center px-5 py-20 text-center">
-        <div className="w-full max-w-3xl">
+      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-gradient-to-br from-[#f8f5ef] via-[#fffdf8] to-[#f3eee6] px-5 py-24 text-center">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(154,123,36,0.12),transparent_60%)]" />
+        <div className="relative w-full max-w-3xl animate-fade-in">
 
-          <p className="mb-4 text-sm font-medium tracking-[3px] text-[#9a7b24]">
+          <p className="mb-4 text-sm font-medium tracking-[4px] text-[#9a7b24]">
             ABOUT MISK AL-SAHAR
           </p>
 
-          <h1 className="text-4xl font-semibold leading-tight text-[#744b4b] sm:text-5xl lg:text-6xl">
+          <h1 className="font-serif text-4xl font-semibold leading-tight text-[#744b4b] sm:text-5xl lg:text-6xl">
             The Essence of the Middle East
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#666] sm:text-lg">
+          <div className="mx-auto my-6 h-px w-24 bg-gradient-to-r from-transparent via-[#9a7b24] to-transparent" />
+
+          <p className="mx-auto mt-2 max-w-2xl text-base leading-8 text-[#666] sm:text-lg">
             Misk Al-Sahar, meaning "Musk of Dawn", is inspired by
             the rich fragrance traditions of the Middle East.
           </p>
@@ -102,45 +107,53 @@ function About() {
 
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
-            <div className="bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1">
-              <h3 className="text-2xl text-[#744b4b]">
+            <div className="group rounded-2xl border border-[#e4dccf]/30 bg-white p-7 text-center shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-luxury">
+              <h3 className="font-serif text-2xl text-[#744b4b] transition-colors duration-300 group-hover:text-[#9a7b24]">
                 Oud
               </h3>
 
-              <p className="mt-4 text-sm leading-7 text-[#666]">
+              <div className="mx-auto my-4 h-px w-8 bg-gradient-to-r from-transparent via-[#9a7b24]/50 to-transparent" />
+
+              <p className="text-sm leading-7 text-[#666]">
                 Deep, rich, and woody, oud adds a distinctive
                 character to a fragrance.
               </p>
             </div>
 
-            <div className="bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1">
-              <h3 className="text-2xl text-[#744b4b]">
+            <div className="group rounded-2xl border border-[#e4dccf]/30 bg-white p-7 text-center shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-luxury">
+              <h3 className="font-serif text-2xl text-[#744b4b] transition-colors duration-300 group-hover:text-[#9a7b24]">
                 Musk
               </h3>
 
-              <p className="mt-4 text-sm leading-7 text-[#666]">
+              <div className="mx-auto my-4 h-px w-8 bg-gradient-to-r from-transparent via-[#9a7b24]/50 to-transparent" />
+
+              <p className="text-sm leading-7 text-[#666]">
                 Soft and warm, musk creates a smooth and elegant
                 fragrance experience.
               </p>
             </div>
 
-            <div className="bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1">
-              <h3 className="text-2xl text-[#744b4b]">
+            <div className="group rounded-2xl border border-[#e4dccf]/30 bg-white p-7 text-center shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-luxury">
+              <h3 className="font-serif text-2xl text-[#744b4b] transition-colors duration-300 group-hover:text-[#9a7b24]">
                 Amber
               </h3>
 
-              <p className="mt-4 text-sm leading-7 text-[#666]">
+              <div className="mx-auto my-4 h-px w-8 bg-gradient-to-r from-transparent via-[#9a7b24]/50 to-transparent" />
+
+              <p className="text-sm leading-7 text-[#666]">
                 Warm and inviting, amber brings depth and richness
                 to the fragrance.
               </p>
             </div>
 
-            <div className="bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1">
-              <h3 className="text-2xl text-[#744b4b]">
+            <div className="group rounded-2xl border border-[#e4dccf]/30 bg-white p-7 text-center shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-luxury">
+              <h3 className="font-serif text-2xl text-[#744b4b] transition-colors duration-300 group-hover:text-[#9a7b24]">
                 Rose
               </h3>
 
-              <p className="mt-4 text-sm leading-7 text-[#666]">
+              <div className="mx-auto my-4 h-px w-8 bg-gradient-to-r from-transparent via-[#9a7b24]/50 to-transparent" />
+
+              <p className="text-sm leading-7 text-[#666]">
                 Delicate and timeless, rose adds a beautiful floral
                 character to our collection.
               </p>
@@ -180,22 +193,35 @@ function About() {
       </section>
 
 
-      <section className="px-5 py-24 text-center sm:py-32">
-        <div className="mx-auto max-w-3xl">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#392016] via-[#4d2a1c] to-[#392016] px-5 py-24 text-center sm:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(154,123,36,0.2),transparent_70%)]" />
+        <div className="relative mx-auto max-w-3xl">
 
-          <h2 className="text-3xl font-semibold text-[#744b4b] sm:text-4xl lg:text-5xl">
+          <h2 className="font-serif text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">
             Discover Your Scent
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#666] sm:text-lg">
+          <div className="mx-auto my-6 h-px w-24 bg-gradient-to-r from-transparent via-[#9a7b24] to-transparent" />
+
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/70 sm:text-lg">
             Every person has a different style, and every fragrance
             tells a different story.
           </p>
 
-          <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-[#666] sm:text-lg">
+          <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-white/70 sm:text-lg">
             Explore the Misk Al-Sahar collection and find the scent
             that feels like you.
           </p>
+
+          <Link
+            to="/shop"
+            className="group mt-8 inline-flex items-center gap-2 rounded-full border border-[#9a7b24]/60 bg-[#9a7b24]/10 px-8 py-3 text-sm font-medium text-[#e6d5a8] backdrop-blur-sm transition-all duration-300 hover:bg-[#9a7b24] hover:text-white hover:shadow-luxury"
+          >
+            <span>Explore the Collection</span>
+            <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
 
         </div>
       </section>

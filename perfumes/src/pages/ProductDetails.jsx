@@ -124,13 +124,14 @@ function ProductDetails() {
 
   return (
     <main className="min-h-[calc(100dvh-70px)] bg-[#f8f5ef] p-3 sm:p-4 lg:h-[calc(100dvh-70px)] lg:overflow-hidden lg:p-5">
-      <div className="mx-auto grid h-full max-w-6xl overflow-hidden rounded-xl bg-white shadow-sm lg:grid-cols-2">
+      <div className="mx-auto grid h-full max-w-6xl overflow-hidden rounded-2xl bg-white shadow-luxury lg:grid-cols-2 border border-[#e4dccf]/30">
 
-        <div className="flex h-[40vh] items-center justify-center bg-[#f3eee6] p-4 lg:h-full lg:p-6">
+        <div className="flex h-[40vh] items-center justify-center bg-gradient-to-br from-[#f3eee6] to-[#fffdf8] p-4 lg:h-full lg:p-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(154,123,36,0.08),transparent_70%)]" />
           <img
             src={product.image}
             alt={product.name}
-            className="h-full max-h-[500px] w-full object-contain transition duration-500 hover:scale-105"
+            className="h-full max-h-[520px] w-full object-contain transition-all duration-700 ease-out hover:scale-110 relative z-10"
           />
         </div>
 
@@ -248,11 +249,11 @@ function ProductDetails() {
 
           <button
             onClick={handleWishlist}
-            className={`mt-3 w-full rounded-md border px-4 py-2 text-xs transition ${
-              isWishlisted
-                ? "border-[#744b4b] bg-[#744b4b] text-white hover:bg-[#9a7b24]"
-                : "border-[#744b4b] text-[#744b4b] hover:bg-[#744b4b] hover:text-white"
-            }`}
+             className={`mt-3 w-full rounded-xl border px-4 py-2.5 text-xs font-medium transition-all duration-300 ${
+               isWishlisted
+                 ? "border-[#744b4b] bg-[#744b4b] text-white shadow-soft hover:bg-[#9a7b24]"
+                 : "border-[#744b4b]/40 bg-white/90 text-[#744b4b] shadow-soft backdrop-blur-sm hover:border-[#744b4b] hover:bg-[#744b4b] hover:text-white"
+             }`}
           >
             {isWishlisted
               ? "♥ Remove from Wishlist"
@@ -266,8 +267,7 @@ function ProductDetails() {
                   Quantity
                 </span>
 
-                <div className="flex items-center overflow-hidden rounded-md border border-[#d8d0c5] bg-white">
-
+                <div className="flex items-center overflow-hidden rounded-xl border border-[#d8d0c5]/60 bg-white shadow-soft">
                   <button
                     onClick={() =>
                       setQuantity((q) =>
@@ -275,12 +275,12 @@ function ProductDetails() {
                       )
                     }
                     disabled={quantity === 1}
-                    className="h-8 w-8 text-sm text-[#744b4b] hover:bg-[#f3eee6] disabled:opacity-40"
+                    className="h-9 w-9 text-sm text-[#744b4b] transition-all duration-200 hover:bg-[#f3eee6] active:scale-95 disabled:opacity-40"
                   >
                     −
                   </button>
 
-                  <span className="flex h-8 w-8 items-center justify-center border-x border-[#d8d0c5] text-xs">
+                  <span className="flex h-9 w-9 items-center justify-center border-x border-[#d8d0c5]/60 text-xs font-medium">
                     {quantity}
                   </span>
 
@@ -291,30 +291,29 @@ function ProductDetails() {
                       )
                     }
                     disabled={quantity === product.stock}
-                    className="h-8 w-8 text-sm text-[#744b4b] hover:bg-[#f3eee6] disabled:opacity-40"
+                    className="h-9 w-9 text-sm text-[#744b4b] transition-all duration-200 hover:bg-[#f3eee6] active:scale-95 disabled:opacity-40"
                   >
                     +
                   </button>
-
                 </div>
               </div>
 
               <div className="mt-2 grid grid-cols-2 gap-2">
 
-                <button
-                  onClick={handleAddToCart}
-                  disabled={isInCart}
-                  className="rounded-md bg-[#744b4b] px-3 py-2 text-xs font-medium text-white transition hover:bg-[#9a7b24] disabled:cursor-not-allowed disabled:bg-gray-400"
-                >
+                 <button
+                   onClick={handleAddToCart}
+                   disabled={isInCart}
+                   className="rounded-xl bg-[#744b4b] px-4 py-2.5 text-xs font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury disabled:cursor-not-allowed disabled:bg-gray-400"
+                 >
                   {isInCart
                     ? "Added to Cart"
                     : "Add to Cart"}
                 </button>
 
-                <button
-                  onClick={handleBuyNow}
-                  className="rounded-md bg-[#9a7b24] px-3 py-2 text-xs font-medium text-white transition hover:bg-[#744b4b]"
-                >
+                 <button
+                   onClick={handleBuyNow}
+                   className="rounded-xl bg-[#9a7b24] px-4 py-2.5 text-xs font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#744b4b] hover:shadow-luxury"
+                 >
                   Buy Now
                 </button>
 

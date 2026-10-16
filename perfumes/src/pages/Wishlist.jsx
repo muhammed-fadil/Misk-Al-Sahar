@@ -47,12 +47,12 @@ function Wishlist() {
             Save your favorite fragrances here.
           </p>
 
-          <button
-            onClick={() => navigate("/shop")}
-            className="bg-[#744b4b] px-7 py-3 text-white transition hover:bg-[#9a7b24]"
-          >
-            Explore Collection
-          </button>
+              <button
+                onClick={() => navigate("/shop")}
+                className="rounded-xl bg-[#744b4b] px-8 py-3 text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
+              >
+                Explore Collection
+              </button>
         </div>
       </main>
     );
@@ -75,15 +75,15 @@ function Wishlist() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {wishlist.map((product) => (
             <div
-              className="overflow-hidden bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-lg"
+              className="group overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-luxury border border-[#e4dccf]/30"
               key={product.id}
             >
 
-              <div className="bg-[#f8f5ef]">
+              <div className="overflow-hidden bg-gradient-to-br from-[#f3eee6] to-[#fffdf8]">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="h-72 w-full object-contain p-6"
+                  className="h-72 w-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-110"
                 />
               </div>
 
@@ -100,14 +100,14 @@ function Wishlist() {
 
                   <button
                     onClick={() => handleRemove(product)}
-                    className="w-full border border-[#744b4b] px-4 py-3 text-[#744b4b] transition hover:bg-[#744b4b] hover:text-white"
+                    className="w-full rounded-xl border border-[#744b4b]/40 px-4 py-3 text-[#744b4b] shadow-soft transition-all duration-300 hover:border-[#744b4b] hover:bg-[#744b4b] hover:text-white"
                   >
                     Remove
                   </button>
 
                   <button
                     onClick={() => handleMoveToCart(product)}
-                    className="w-full bg-[#744b4b] px-4 py-3 text-white transition hover:bg-[#9a7b24]"
+                    className="w-full rounded-xl bg-[#744b4b] px-4 py-3 text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
                   >
                     Move to Cart
                   </button>

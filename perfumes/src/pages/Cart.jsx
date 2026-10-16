@@ -60,10 +60,10 @@ function Cart() {
 
         <div className="space-y-5">
           {cartItems.map((item) => (
-            <div
-              className="flex flex-col gap-5 border-b border-[#ddd] bg-white p-5 sm:flex-row sm:items-center"
-              key={item.id}
-            >
+              <div
+                className="flex flex-col gap-5 rounded-2xl bg-white p-6 shadow-soft border border-[#e4dccf]/30 transition-all duration-300 hover:shadow-luxury sm:flex-row sm:items-center"
+                key={item.id}
+              >
               <img
                 src={item.image}
                 alt={item.name}
@@ -90,12 +90,12 @@ function Cart() {
                       )
                     }
                     disabled={item.quantity === 1}
-                    className="h-8 w-8 border border-[#744b4b] text-[#744b4b] hover:bg-[#744b4b] hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+                    className="h-9 w-9 rounded-lg border border-[#744b4b]/40 text-[#744b4b] transition-all duration-200 hover:border-[#744b4b] hover:bg-[#744b4b] hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     -
                   </button>
 
-                  <span className="w-8 text-center">
+                  <span className="w-10 text-center font-medium text-[#744b4b]">
                     {item.quantity}
                   </span>
 
@@ -109,7 +109,7 @@ function Cart() {
                       )
                     }
                     disabled={item.quantity === item.stock}
-                    className="h-8 w-8 border border-[#744b4b] text-[#744b4b] hover:bg-[#744b4b] hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+                    className="h-9 w-9 rounded-lg border border-[#744b4b]/40 text-[#744b4b] transition-all duration-200 hover:border-[#744b4b] hover:bg-[#744b4b] hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     +
                   </button>
@@ -136,7 +136,7 @@ function Cart() {
           ))}
         </div>
 
-        <div className="mt-8 ml-auto max-w-md border-t border-[#ddd] pt-6">
+        <div className="mt-8 ml-auto max-w-md rounded-2xl bg-white p-6 shadow-soft border border-[#e4dccf]/30">
           <div className="flex items-center justify-between">
             <span className="text-lg text-[#555]">
               Total
@@ -147,17 +147,17 @@ function Cart() {
             </span>
           </div>
 
-          <button
-            onClick={() => navigate("/checkout")}
-            className="mt-6 w-full bg-[#744b4b] px-6 py-4 text-white transition hover:bg-[#9a7b24]"
-          >
+           <button
+             onClick={() => navigate("/checkout")}
+             className="mt-6 w-full rounded-xl bg-[#744b4b] px-6 py-4 text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
+           >
             Proceed to Checkout
           </button>
 
-          <button
-            onClick={() => navigate("/shop")}
-            className="mt-3 w-full border border-[#744b4b] px-6 py-3 text-[#744b4b] transition hover:bg-[#744b4b] hover:text-white"
-          >
+           <button
+             onClick={() => navigate("/shop")}
+             className="mt-3 w-full rounded-xl border border-[#744b4b]/40 bg-white/90 px-6 py-3 text-[#744b4b] shadow-soft transition-all duration-300 hover:border-[#744b4b] hover:bg-[#744b4b] hover:text-white"
+           >
             Continue Shopping
           </button>
         </div>

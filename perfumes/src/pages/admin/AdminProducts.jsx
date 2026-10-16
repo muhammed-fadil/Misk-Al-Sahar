@@ -208,7 +208,7 @@ function AdminProducts() {
   );
 
   const inputClass =
-    "min-w-0 w-full rounded-lg border border-gray-200 bg-white p-3 text-sm outline-none transition focus:border-[#744b4b] focus:ring-1 focus:ring-[#744b4b]";
+    "min-w-0 w-full rounded-xl border border-[#e4dccf]/60 bg-[#fffdf9]/80 p-3 text-sm outline-none transition-all duration-300 placeholder:text-gray-400 hover:border-[#9a7b24]/40 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20";
 
   const getStockStyle = (stock) =>
     Number(stock) === 0
@@ -248,7 +248,7 @@ function AdminProducts() {
               setLoading(true);
               loadProducts();
             }}
-            className="mt-5 rounded-lg bg-[#744b4b] px-5 py-2.5 text-white transition hover:bg-[#5f3c3c]"
+            className="mt-5 rounded-lg bg-[#744b4b] px-5 py-2.5 text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
           >
             Try Again
           </button>
@@ -261,7 +261,11 @@ function AdminProducts() {
     <div className="min-h-screen min-w-0 bg-[#f8f5ef] p-4 sm:p-6 lg:p-8">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[#744b4b] sm:text-3xl">
+          <p className="text-[10px] font-medium uppercase tracking-[4px] text-[#9a7b24]">
+            Catalog
+          </p>
+
+          <h1 className="mt-2 font-serif text-3xl font-bold text-[#744b4b] sm:text-4xl">
             Products
           </h1>
 
@@ -272,7 +276,7 @@ function AdminProducts() {
 
         <button
           onClick={openAddModal}
-          className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#5f3c3c] sm:w-auto"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#744b4b] px-5 py-3 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury sm:w-auto"
         >
           <Plus size={18} />
           Add Product
@@ -291,13 +295,13 @@ function AdminProducts() {
             placeholder="Search products by name..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-lg border border-gray-200 bg-white py-3 pl-10 pr-4 text-sm outline-none transition focus:border-[#744b4b] focus:ring-1 focus:ring-[#744b4b]"
+            className="w-full rounded-xl border border-[#e4dccf]/60 bg-white/90 py-3 pl-10 pr-4 text-sm outline-none transition-all duration-300 placeholder:text-gray-400 hover:border-[#9a7b24]/40 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 shadow-soft"
           />
         </div>
       </div>
 
       {filteredProducts.length === 0 ? (
-        <div className="rounded-xl bg-white p-8 text-center shadow-sm sm:p-12">
+        <div className="rounded-2xl border border-[#e4dccf]/30 bg-white p-8 text-center shadow-soft sm:p-12">
           <Package
             size={40}
             className="mx-auto text-[#744b4b]"
@@ -321,7 +325,7 @@ function AdminProducts() {
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="overflow-hidden rounded-xl bg-white shadow-sm"
+                className="overflow-hidden rounded-2xl border border-[#e4dccf]/30 bg-white shadow-soft transition-all duration-300 hover:shadow-luxury"
               >
                 <button
                   type="button"
@@ -380,7 +384,7 @@ function AdminProducts() {
                 <div className="flex gap-3 border-t border-gray-100 p-3">
                   <button
                     onClick={() => handleEdit(product)}
-                    className="flex-1 rounded-lg bg-[#744b4b] px-3 py-2.5 text-sm font-medium text-white transition hover:bg-[#5f3c3c]"
+                    className="flex-1 rounded-lg bg-[#744b4b] px-3 py-2.5 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
                   >
                     Edit
                   </button>
@@ -396,10 +400,10 @@ function AdminProducts() {
             ))}
           </div>
 
-          <div className="hidden overflow-hidden rounded-xl bg-white shadow-sm lg:block">
+          <div className="hidden overflow-hidden rounded-2xl border border-[#e4dccf]/30 bg-white shadow-soft lg:block">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[850px]">
-                <thead className="bg-[#f3eee6]">
+                <thead className="bg-gradient-to-r from-[#f3eee6] to-[#f8f5ef]">
                   <tr className="text-left text-sm text-[#744b4b]">
                     <th className="px-4 py-4">Image</th>
                     <th className="px-4 py-4">Name</th>
@@ -477,7 +481,7 @@ function AdminProducts() {
                         <div className="flex gap-2">
                           <button
                             onClick={() => handleEdit(product)}
-                            className="rounded-lg bg-[#744b4b] px-3 py-2 text-xs font-medium text-white transition hover:bg-[#5f3c3c]"
+                            className="rounded-lg bg-[#744b4b] px-3 py-2 text-xs font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
                           >
                             Edit
                           </button>
@@ -505,7 +509,7 @@ function AdminProducts() {
           onClick={() => setSelectedProduct(null)}
         >
           <div
-            className="max-h-[90dvh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white shadow-2xl"
+            className="max-h-[90dvh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-[#e4dccf]/40 bg-white shadow-luxury"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white px-4 py-4 sm:px-6">
@@ -661,7 +665,7 @@ function AdminProducts() {
                   setSelectedProduct(null);
                   handleEdit(product);
                 }}
-                className="w-full rounded-lg bg-[#744b4b] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#5f3c3c] sm:w-auto"
+                className="w-full rounded-lg bg-[#744b4b] px-6 py-3 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury sm:w-auto"
               >
                 Edit Product
               </button>
@@ -676,7 +680,7 @@ function AdminProducts() {
           onClick={resetForm}
         >
           <div
-            className="max-h-[90dvh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white shadow-2xl"
+            className="max-h-[90dvh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-[#e4dccf]/40 bg-white shadow-luxury"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white px-4 py-4 sm:px-6">
@@ -859,7 +863,7 @@ function AdminProducts() {
 
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-[#744b4b] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#5f3c3c] sm:w-auto"
+                  className="w-full rounded-lg bg-[#744b4b] px-6 py-3 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury sm:w-auto"
                 >
                   {editingId ? "Update Product" : "Add Product"}
                 </button>

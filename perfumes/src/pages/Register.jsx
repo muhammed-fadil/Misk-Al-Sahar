@@ -73,7 +73,7 @@ toast.error("Email already registered");
           </p>
         </div>
 
-        <div className="rounded-xl bg-white p-6 shadow-sm sm:p-8">
+        <div className="rounded-2xl bg-white/95 p-6 shadow-luxury border border-[#e4dccf]/30 backdrop-blur-sm sm:p-8">
 
 
           <form onSubmit={handleRegister} className="space-y-5">
@@ -88,7 +88,7 @@ toast.error("Email already registered");
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your name"
-                className="w-full rounded-lg border border-[#e4dccf] bg-[#fffdf9] px-4 py-3 text-sm outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+                className="w-full rounded-xl border border-[#e4dccf]/60 bg-[#fffdf9]/80 px-4 py-3 text-sm outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
               />
             </div>
 
@@ -102,7 +102,7 @@ toast.error("Email already registered");
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full rounded-lg border border-[#e4dccf] bg-[#fffdf9] px-4 py-3 text-sm outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+                className="w-full rounded-xl border border-[#e4dccf]/60 bg-[#fffdf9]/80 px-4 py-3 text-sm outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
               />
             </div>
 
@@ -116,7 +116,7 @@ toast.error("Email already registered");
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Create a password"
-                className="w-full rounded-lg border border-[#e4dccf] bg-[#fffdf9] px-4 py-3 text-sm outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+                className="w-full rounded-xl border border-[#e4dccf]/60 bg-[#fffdf9]/80 px-4 py-3 text-sm outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
               />
 
               <p className="mt-2 text-xs text-gray-400">
@@ -126,7 +126,7 @@ toast.error("Email already registered");
 
             <button
               type="submit"
-              className="w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#9a7b24]"
+              className="w-full rounded-xl bg-[#744b4b] px-5 py-3 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
             >
               Create Account
             </button>

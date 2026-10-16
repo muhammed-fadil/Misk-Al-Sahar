@@ -40,14 +40,16 @@ function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[#e4dccf] bg-[#f8f5ef]">
-      <div className="mx-auto flex min-h-[70px] max-w-7xl items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
+    <nav className="sticky top-0 z-50 border-b border-[#e4dccf]/50 glass shadow-soft">
+      <div className="mx-auto flex min-h-[75px] max-w-7xl items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
 
         <Link
           to="/"
           onClick={closeMobileMenu}
-          className="font-['Amiri'] text-2xl text-[#744b4b] transition hover:text-[#9a7b24] sm:text-3xl">
-          مِسْك السَّحَر
+          className="group flex items-center gap-2">
+          <span className="font-serif text-2xl text-[#744b4b] transition-all duration-300 group-hover:text-[#9a7b24] group-hover:scale-105 sm:text-3xl">
+            مِسْك السَّحَر
+          </span>
         </Link>
 
         {isAuthPage ? (
@@ -65,26 +67,32 @@ function Navbar() {
 
               <Link
                 to="/"
-                className="text-[#9a7b24] transition hover:text-[#744b4b]"
+                className={`relative text-sm font-medium tracking-wide transition-all duration-300 after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-gradient-to-r after:from-[#9a7b24] after:to-[#744b4b] after:transition-all after:duration-300 hover:text-[#744b4b] hover:after:w-full ${
+                  location.pathname === "/" ? "text-[#744b4b] after:w-full" : "text-[#9a7b24]"
+                }`}
               >
                 Home
               </Link>
 
               <Link
                 to="/shop"
-                className="text-[#9a7b24] transition hover:text-[#744b4b]"
+                className={`relative text-sm font-medium tracking-wide transition-all duration-300 after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-gradient-to-r after:from-[#9a7b24] after:to-[#744b4b] after:transition-all after:duration-300 hover:text-[#744b4b] hover:after:w-full ${
+                  location.pathname === "/shop" ? "text-[#744b4b] after:w-full" : "text-[#9a7b24]"
+                }`}
               >
                 Shop
               </Link>
 
               <Link
                 to="/cart"
-                className="relative text-[#9a7b24] transition hover:text-[#744b4b]"
+                className={`group relative text-sm font-medium tracking-wide transition-all duration-300 hover:text-[#744b4b] ${
+                  location.pathname === "/cart" ? "text-[#744b4b]" : "text-[#9a7b24]"
+                }`}
               >
                 Cart
 
                 {cartCount > 0 && (
-                  <span className="absolute -right-3 -top-3 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-xs text-white">
+                  <span className="absolute -right-3 -top-3 flex h-5 min-w-5 animate-float items-center justify-center rounded-full bg-gradient-to-r from-[#744b4b] to-[#9a7b24] px-1 text-xs text-white shadow-soft">
                     {cartCount}
                   </span>
                 )}
@@ -92,12 +100,14 @@ function Navbar() {
 
               <Link
                 to="/wishlist"
-                className="relative text-[#9a7b24] transition hover:text-[#744b4b]"
+                className={`group relative text-sm font-medium tracking-wide transition-all duration-300 hover:text-[#744b4b] ${
+                  location.pathname === "/wishlist" ? "text-[#744b4b]" : "text-[#9a7b24]"
+                }`}
               >
                 Wishlist
 
                 {wishlistCount > 0 && (
-                  <span className="absolute -right-3 -top-3 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-xs text-white">
+                  <span className="absolute -right-3 -top-3 flex h-5 min-w-5 animate-float items-center justify-center rounded-full bg-gradient-to-r from-[#744b4b] to-[#9a7b24] px-1 text-xs text-white shadow-soft">
                     {wishlistCount}
                   </span>
                 )}
@@ -105,7 +115,9 @@ function Navbar() {
 
               <Link
                 to="/about"
-                className="text-[#9a7b24] transition hover:text-[#744b4b]"
+                className={`relative text-sm font-medium tracking-wide transition-all duration-300 after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-gradient-to-r after:from-[#9a7b24] after:to-[#744b4b] after:transition-all after:duration-300 hover:text-[#744b4b] hover:after:w-full ${
+                  location.pathname === "/about" ? "text-[#744b4b] after:w-full" : "text-[#9a7b24]"
+                }`}
               >
                 About
               </Link>

@@ -199,7 +199,11 @@ function AdminDashboard() {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-hidden bg-[#f8f5ef] p-3 sm:p-5 lg:p-8">
       <div className="mb-6 sm:mb-8">
-        <h1 className="text-2xl font-bold text-[#744b4b] sm:text-3xl lg:text-4xl">
+        <p className="text-[10px] font-medium uppercase tracking-[4px] text-[#9a7b24]">
+          Overview
+        </p>
+
+        <h1 className="mt-2 font-serif text-3xl font-bold text-[#744b4b] sm:text-4xl">
           Admin Dashboard
         </h1>
 
@@ -209,9 +213,9 @@ function AdminDashboard() {
       </div>
 
       <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <div className="min-w-0 rounded-xl bg-white p-5 shadow-sm sm:p-6">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f3dddd]">
-            <Package className="text-[#744b4b]" size={24} />
+        <div className="group min-w-0 rounded-2xl border border-[#e4dccf]/30 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury sm:p-6">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#744b4b] to-[#5f3c3c] shadow-soft">
+            <Package className="text-white" size={24} />
           </div>
 
           <p className="mt-5 text-sm text-gray-500">
@@ -223,9 +227,9 @@ function AdminDashboard() {
           </h2>
         </div>
 
-        <div className="min-w-0 rounded-xl bg-white p-5 shadow-sm sm:p-6">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#eee5d5]">
-            <Users className="text-[#9a7b24]" size={24} />
+        <div className="group min-w-0 rounded-2xl border border-[#e4dccf]/30 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury sm:p-6">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#9a7b24] to-[#7d6319] shadow-soft">
+            <Users className="text-white" size={24} />
           </div>
 
           <p className="mt-5 text-sm text-gray-500">
@@ -237,9 +241,9 @@ function AdminDashboard() {
           </h2>
         </div>
 
-        <div className="min-w-0 rounded-xl bg-white p-5 shadow-sm sm:p-6">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f3dddd]">
-            <ShoppingBag className="text-[#744b4b]" size={24} />
+        <div className="group min-w-0 rounded-2xl border border-[#e4dccf]/30 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury sm:p-6">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#744b4b] to-[#5f3c3c] shadow-soft">
+            <ShoppingBag className="text-white" size={24} />
           </div>
 
           <p className="mt-5 text-sm text-gray-500">
@@ -251,9 +255,9 @@ function AdminDashboard() {
           </h2>
         </div>
 
-        <div className="min-w-0 rounded-xl bg-white p-5 shadow-sm sm:p-6">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#eee5d5]">
-            <IndianRupee className="text-[#9a7b24]" size={24} />
+        <div className="group min-w-0 rounded-2xl border border-[#e4dccf]/30 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury sm:p-6">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#9a7b24] to-[#7d6319] shadow-soft">
+            <IndianRupee className="text-white" size={24} />
           </div>
 
           <p className="mt-5 text-sm text-gray-500">
@@ -267,7 +271,7 @@ function AdminDashboard() {
       </div>
 
       <div className="mt-6 grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="min-w-0 rounded-xl bg-white p-4 shadow-sm sm:p-6">
+        <div className="min-w-0 rounded-2xl border border-[#e4dccf]/30 bg-white p-4 shadow-soft sm:p-6">
           <div className="mb-5">
             <h2 className="text-lg font-semibold text-[#744b4b] sm:text-xl">
               Daily Revenue
@@ -341,7 +345,7 @@ function AdminDashboard() {
           </div>
         </div>
 
-        <div className="min-w-0 rounded-xl bg-white p-4 shadow-sm sm:p-6">
+        <div className="min-w-0 rounded-2xl border border-[#e4dccf]/30 bg-white p-4 shadow-soft sm:p-6">
           <div className="mb-5">
             <h2 className="text-lg font-semibold text-[#744b4b] sm:text-xl">
               Orders by Status
@@ -415,7 +419,7 @@ function AdminDashboard() {
 
           <Link
             to="/admin/products"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#744b4b] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#5f3c3c]"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#744b4b] px-4 py-3 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
           >
             Manage Products
             <ArrowRight size={16} />
@@ -423,7 +427,7 @@ function AdminDashboard() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          <div className="rounded-xl border border-green-100 bg-white p-5 shadow-sm sm:p-6">
+          <div className="rounded-2xl border border-green-100 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury sm:p-6">
             <div className="flex items-center justify-between">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <CheckCircle
@@ -450,7 +454,7 @@ function AdminDashboard() {
             </p>
           </div>
 
-          <div className="rounded-xl border border-yellow-100 bg-white p-5 shadow-sm sm:p-6">
+          <div className="rounded-2xl border border-yellow-100 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury sm:p-6">
             <div className="flex items-center justify-between">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100">
                 <AlertTriangle
@@ -477,7 +481,7 @@ function AdminDashboard() {
             </p>
           </div>
 
-          <div className="rounded-xl border border-red-100 bg-white p-5 shadow-sm sm:p-6">
+          <div className="rounded-2xl border border-red-100 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury sm:p-6">
             <div className="flex items-center justify-between">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
                 <XCircle
@@ -505,7 +509,7 @@ function AdminDashboard() {
           </div>
         </div>
 
-        <div className="mt-6 overflow-hidden rounded-xl bg-white shadow-sm">
+        <div className="mt-6 overflow-hidden rounded-2xl border border-[#e4dccf]/30 bg-white shadow-soft">
           <div className="flex flex-col gap-3 border-b border-[#eee7df] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-6">
             <div>
               <div className="flex items-center gap-2">
@@ -627,7 +631,7 @@ function AdminDashboard() {
 
                       <Link
                         to="/admin/products"
-                        className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#744b4b] px-3 py-2.5 text-sm font-medium text-white transition hover:bg-[#5f3c3c]"
+                        className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#744b4b] px-3 py-2.5 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
                       >
                         Manage Product <ArrowRight size={15} />
                       </Link>
@@ -718,7 +722,7 @@ function AdminDashboard() {
         </div>
       </section>
 
-      <div className="mt-6 min-w-0 rounded-xl bg-white p-4 shadow-sm sm:p-6">
+      <div className="mt-6 min-w-0 rounded-2xl border border-[#e4dccf]/30 bg-white p-4 shadow-soft sm:p-6">
         <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-lg font-semibold text-[#744b4b] sm:text-xl">
@@ -732,7 +736,7 @@ function AdminDashboard() {
 
           <Link
             to="/admin/orders"
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#744b4b] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#5f3c3c] sm:w-auto"
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#744b4b] px-4 py-2.5 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury sm:w-auto"
           >
             View All Orders
             <ArrowRight size={16} />

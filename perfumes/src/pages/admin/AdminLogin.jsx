@@ -43,23 +43,31 @@ function AdminLogin() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#f8f5ef] px-4 py-8">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-[#2b1710] via-[#392016] to-[#2b1710] px-4 py-8">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(154,123,36,0.25),transparent_60%)]" />
+
       <form
         onSubmit={handleLogin}
-        className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg sm:p-8"
+        className="relative w-full max-w-md rounded-2xl border border-[#e6d5a8]/15 bg-white/95 p-6 shadow-luxury backdrop-blur-sm sm:p-8"
       >
         <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold text-[#744b4b] sm:text-3xl">
+          <p className="font-serif text-3xl text-[#744b4b]">
+            مِسْك السَّحَر
+          </p>
+
+          <p className="mt-3 text-[10px] font-medium uppercase tracking-[4px] text-[#9a7b24]">
+            Admin Access
+          </p>
+
+          <h1 className="mt-2 text-2xl font-bold text-[#744b4b] sm:text-3xl">
             Admin Login
           </h1>
 
-          <p className="mt-2 text-sm text-gray-500">
-            Misk Al-Sahar
-          </p>
+          <div className="mx-auto my-4 h-px w-16 bg-gradient-to-r from-transparent via-[#9a7b24] to-transparent" />
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block text-sm font-medium text-gray-700">
+          <label className="mb-2 block text-sm font-medium text-[#744b4b]">
             Email
           </label>
 
@@ -69,12 +77,12 @@ function AdminLogin() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full rounded border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
+            className="w-full rounded-xl border border-[#e4dccf]/60 bg-[#fffdf9]/80 px-4 py-3 outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
           />
         </div>
 
         <div className="mb-6">
-          <label className="mb-2 block text-sm font-medium text-gray-700">
+          <label className="mb-2 block text-sm font-medium text-[#744b4b]">
             Password
           </label>
 
@@ -84,13 +92,13 @@ function AdminLogin() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full rounded border border-gray-300 px-4 py-3 outline-none transition focus:border-[#9a7b24]"
+            className="w-full rounded-xl border border-[#e4dccf]/60 bg-[#fffdf9]/80 px-4 py-3 outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full rounded bg-[#744b4b] py-3 font-medium text-white transition hover:bg-[#5f3c3c]"
+          className="w-full rounded-xl bg-[#744b4b] py-3 font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
         >
           Login
         </button>

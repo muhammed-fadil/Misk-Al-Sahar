@@ -24,6 +24,7 @@ import AdminUsers from "./pages/admin/AdminUsers";
 import AdminOrders from "./pages/admin/AdminOrders";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import AdminLayout from "./layouts/AdminLayout";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -33,6 +34,13 @@ function AppContent() {
   const location = useLocation();
 
   const isAdminPage = location.pathname.startsWith("/admin");
+
+  const isAuthPage =
+    location.pathname === "/login" ||
+    location.pathname === "/register" ||
+    location.pathname === "/admin/login";
+
+  const showFooter = !isAdminPage && !isAuthPage;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -98,6 +106,8 @@ function AppContent() {
           />
         </Route>
       </Routes>
+
+      {showFooter && <Footer />}
     </>
   );
 }

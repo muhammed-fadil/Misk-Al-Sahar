@@ -181,7 +181,7 @@ function AdminOrders() {
               setLoading(true);
               loadOrders();
             }}
-            className="mt-5 w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#5f3c3c] sm:w-auto"
+            className="mt-5 w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury sm:w-auto"
           >
             Try Again
           </button>
@@ -195,12 +195,16 @@ function AdminOrders() {
     
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#744b4b] text-white sm:h-12 sm:w-12">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#744b4b] to-[#5f3c3c] text-white shadow-soft sm:h-12 sm:w-12">
             <ShoppingBag size={22} />
           </div>
 
           <div className="min-w-0">
-            <h1 className="text-2xl font-bold text-[#744b4b] sm:text-3xl">
+            <p className="text-[10px] font-medium uppercase tracking-[4px] text-[#9a7b24]">
+              Fulfilment
+            </p>
+
+            <h1 className="mt-1 font-serif text-2xl font-bold text-[#744b4b] sm:text-3xl">
               Orders
             </h1>
 
@@ -210,7 +214,7 @@ function AdminOrders() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between rounded-xl bg-white px-4 py-3 shadow-sm sm:min-w-40 sm:px-5">
+        <div className="flex items-center justify-between rounded-2xl border border-[#e4dccf]/30 bg-white px-4 py-3 shadow-soft sm:min-w-40 sm:px-5">
           <div>
             <p className="text-xs text-gray-500">
               Total Orders
@@ -231,7 +235,7 @@ function AdminOrders() {
       </div>
 
       {orders.length === 0 ? (
-        <div className="rounded-2xl bg-white px-4 py-12 text-center shadow-sm sm:p-12">
+        <div className="rounded-2xl border border-[#e4dccf]/30 bg-white px-4 py-12 text-center shadow-soft sm:p-12">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#f3eee6]">
             <ShoppingBag
               size={28}
@@ -248,7 +252,7 @@ function AdminOrders() {
           </p>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+        <div className="overflow-hidden rounded-2xl border border-[#e4dccf]/30 bg-white shadow-soft">
           <div className="border-b border-gray-100 px-4 py-4 sm:px-6">
             <h2 className="font-semibold text-[#744b4b]">
               Customer Orders
@@ -360,7 +364,7 @@ function AdminOrders() {
                       onChange={(e) =>
                         handleStatusChange(order.id, e.target.value)
                       }
-                      className="w-full rounded-lg border border-gray-200 bg-white px-3 py-3 text-sm text-gray-700 outline-none transition focus:border-[#744b4b] focus:ring-1 focus:ring-[#744b4b]"
+                      className="w-full rounded-lg border border-[#e4dccf]/60 bg-white/90 px-3 py-3 text-sm text-gray-700 outline-none transition-all duration-300 hover:border-[#9a7b24]/40 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20"
                     >
                       {statusOptions.map((status) => (
                         <option key={status} value={status}>
@@ -476,7 +480,7 @@ function AdminOrders() {
                               e.target.value
                             )
                           }
-                          className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 outline-none transition focus:border-[#744b4b] focus:ring-1 focus:ring-[#744b4b]"
+                          className="rounded-lg border border-[#e4dccf]/60 bg-white/90 px-3 py-2 text-sm text-gray-700 outline-none transition-all duration-300 hover:border-[#9a7b24]/40 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20"
                         >
                           {statusOptions.map((status) => (
                             <option key={status} value={status}>
@@ -509,7 +513,7 @@ function AdminOrders() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="order-details-title"
-            className="max-h-[90dvh] w-full max-w-2xl overflow-y-auto overscroll-contain rounded-2xl bg-white shadow-2xl"
+            className="max-h-[90dvh] w-full max-w-2xl overflow-y-auto overscroll-contain rounded-2xl border border-[#e4dccf]/40 bg-white shadow-luxury"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-gray-100 bg-white px-4 py-4 sm:px-6">
@@ -609,7 +613,7 @@ function AdminOrders() {
                           e.target.value
                         )
                       }
-                      className="w-full rounded-lg border border-gray-200 bg-white px-3 py-3 text-sm outline-none transition focus:border-[#744b4b] focus:ring-1 focus:ring-[#744b4b] sm:w-52"
+                      className="w-full rounded-lg border border-[#e4dccf]/60 bg-white/90 px-3 py-3 text-sm outline-none transition-all duration-300 hover:border-[#9a7b24]/40 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 sm:w-52"
                     >
                       {statusOptions.map((status) => (
                         <option key={status} value={status}>
@@ -681,7 +685,7 @@ function AdminOrders() {
               <button
                 type="button"
                 onClick={() => setSelectedOrder(null)}
-                className="w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#5f3c3c]"
+                className="w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
               >
                 Close Details
               </button>

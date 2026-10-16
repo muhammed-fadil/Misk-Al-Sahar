@@ -131,7 +131,7 @@ function Shop() {
 
       </section>
 
-      <section className="mx-auto mt-10 max-w-6xl rounded-xl bg-white p-4 shadow-sm sm:p-5">
+      <section className="mx-auto mt-10 max-w-6xl rounded-2xl bg-white/95 p-4 shadow-soft backdrop-blur-sm sm:p-5 border border-[#e4dccf]/30">
 
         <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
 
@@ -146,7 +146,7 @@ function Shop() {
               placeholder="Search perfumes..."
               value={search}
               onChange={handleSearch}
-              className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+              className="w-full rounded-xl border border-[#e1d9cd]/60 bg-[#fdfbf7]/80 px-4 py-3 text-sm text-[#444] outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
             />
 
           </div>
@@ -160,7 +160,7 @@ function Shop() {
             <select
               value={category}
               onChange={handleCategory}
-              className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+              className="w-full rounded-xl border border-[#e1d9cd]/60 bg-[#fdfbf7]/80 px-4 py-3 text-sm text-[#444] outline-none transition-all duration-300 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
             >
               {categories.map((item) => (
                 <option key={item} value={item}>
@@ -180,7 +180,7 @@ function Shop() {
             <select
               value={sort}
               onChange={handleSort}
-              className="w-full rounded-lg border border-[#e1d9cd] bg-[#fdfbf7] px-4 py-3 text-sm text-[#444] outline-none transition focus:border-[#9a7b24] focus:ring-1 focus:ring-[#9a7b24]"
+              className="w-full rounded-xl border border-[#e1d9cd]/60 bg-[#fdfbf7]/80 px-4 py-3 text-sm text-[#444] outline-none transition-all duration-300 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20 hover:border-[#9a7b24]/40"
             >
               <option value=""></option>
               <option value="low">Price: Low to High</option>

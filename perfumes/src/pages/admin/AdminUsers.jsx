@@ -7,9 +7,11 @@ import {
   X,
   Search,
   UserRound,
+  ShieldCheck,
+  ShieldOff,
 } from "lucide-react";
 
-import { getAdminUsers } from "../../services/adminService";
+import { getAdminUsers, updateAdminUser } from "../../services/adminService";
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -17,6 +19,7 @@ function AdminUsers() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [updatingUserId, setUpdatingUserId] = useState(null);
 
   const loadUsers = async () => {
     try {
@@ -31,6 +34,40 @@ function AdminUsers() {
       toast.error("Failed to load users");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleToggleUserStatus = async (user) => {
+    const isBlocked = user.status === "blocked";
+    const nextStatus = isBlocked ? "active" : "blocked";
+    const action = isBlocked ? "unblock" : "block";
+
+    const confirmed = window.confirm(
+      `Are you sure you want to ${action} ${user.name || "this user"}?`
+    );
+    if (!confirmed) return;
+
+    setUpdatingUserId(user.id);
+    try {
+      const response = await updateAdminUser(user.id, { status: nextStatus });
+      const updatedUser = response.data;
+
+      setUsers((currentUsers) =>
+        currentUsers.map((item) =>
+          item.id === user.id ? { ...item, ...updatedUser, status: nextStatus } : item
+        )
+      );
+      setSelectedUser((currentUser) =>
+        currentUser?.id === user.id
+          ? { ...currentUser, ...updatedUser, status: nextStatus }
+          : currentUser
+      );
+      toast.success(`User ${nextStatus === "blocked" ? "blocked" : "unblocked"} successfully`);
+    } catch (requestError) {
+      console.error(requestError);
+      toast.error(`Failed to ${action} user. Please try again.`);
+    } finally {
+      setUpdatingUserId(null);
     }
   };
 
@@ -91,7 +128,7 @@ function AdminUsers() {
               setLoading(true);
               loadUsers();
             }}
-            className="mt-5 w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#5f3c3c] sm:w-auto"
+            className="mt-5 w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury sm:w-auto"
           >
             Try Again
           </button>
@@ -104,12 +141,16 @@ function AdminUsers() {
     <div className="min-h-screen min-w-0 bg-[#f8f5ef] p-3 sm:p-5 md:p-6 lg:p-8">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#744b4b] text-white sm:h-12 sm:w-12">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#744b4b] to-[#5f3c3c] text-white shadow-soft sm:h-12 sm:w-12">
             <Users size={22} />
           </div>
 
           <div className="min-w-0">
-            <h1 className="text-2xl font-bold text-[#744b4b] sm:text-3xl">
+            <p className="text-[10px] font-medium uppercase tracking-[4px] text-[#9a7b24]">
+              Customers
+            </p>
+
+            <h1 className="mt-1 font-serif text-2xl font-bold text-[#744b4b] sm:text-3xl">
               Users
             </h1>
 
@@ -119,7 +160,7 @@ function AdminUsers() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between rounded-xl bg-white px-4 py-3 shadow-sm sm:min-w-40 sm:px-5">
+        <div className="flex items-center justify-between rounded-2xl border border-[#e4dccf]/30 bg-white px-4 py-3 shadow-soft sm:min-w-40 sm:px-5">
           <div>
             <p className="text-xs text-gray-500">
               Total Users
@@ -136,7 +177,7 @@ function AdminUsers() {
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+      <div className="overflow-hidden rounded-2xl border border-[#e4dccf]/30 bg-white shadow-soft">
         <div className="flex flex-col gap-4 border-b border-gray-100 p-4 sm:p-5 lg:flex-row lg:items-center lg:justify-between lg:p-6">
           <div>
             <h2 className="font-semibold text-[#744b4b]">
@@ -159,7 +200,7 @@ function AdminUsers() {
               placeholder="Search name, email or ID..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-lg border border-gray-200 bg-white py-3 pl-10 pr-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-[#744b4b] focus:ring-1 focus:ring-[#744b4b]"
+              className="w-full rounded-xl border border-[#e4dccf]/60 bg-white/90 py-3 pl-10 pr-4 text-sm outline-none transition-all duration-300 placeholder:text-gray-400 hover:border-[#9a7b24]/40 focus:border-[#9a7b24] focus:ring-2 focus:ring-[#9a7b24]/20"
             />
           </div>
         </div>
@@ -195,7 +236,7 @@ function AdminUsers() {
 
             <button
               onClick={() => setSearch("")}
-              className="mt-4 rounded-lg bg-[#744b4b] px-4 py-2 text-sm text-white transition hover:bg-[#5f3c3c]"
+              className="mt-4 rounded-lg bg-[#744b4b] px-4 py-2 text-sm text-white shadow-soft transition-all duration-300 hover:bg-[#9a7b24] hover:shadow-luxury"
             >
               Clear Search
             </button>
@@ -223,9 +264,13 @@ function AdminUsers() {
                         {user.name || "Unnamed User"}
                       </h3>
 
-                      <p className="mt-1 text-xs text-gray-400">
-                        Customer
-                      </p>
+                      <span className={`mt-1 inline-flex rounded-full px-2 py-1 text-xs font-medium ${
+                        user.status === "blocked"
+                          ? "bg-red-100 text-red-700"
+                          : "bg-emerald-100 text-emerald-700"
+                      }`}>
+                        {user.status === "blocked" ? "Blocked" : "Active"}
+                      </span>
                     </div>
 
                     <span className="shrink-0 rounded-lg bg-[#f8f5ef] px-2.5 py-1.5 text-xs font-medium text-[#744b4b]">
@@ -268,6 +313,9 @@ function AdminUsers() {
                     <th className="px-5 py-4 text-xs font-semibold uppercase tracking-wide text-[#744b4b]">
                       User ID
                     </th>
+                    <th className="px-5 py-4 text-xs font-semibold uppercase tracking-wide text-[#744b4b]">
+                      Status
+                    </th>
                   </tr>
                 </thead>
 
@@ -299,9 +347,7 @@ function AdminUsers() {
                               {user.name || "Unnamed User"}
                             </p>
 
-                            <p className="mt-1 text-xs text-gray-400">
-                              Customer
-                            </p>
+                          
                           </div>
                         </div>
                       </td>
@@ -322,6 +368,15 @@ function AdminUsers() {
                       <td className="px-5 py-5">
                         <span className="inline-block rounded-lg bg-[#f8f5ef] px-3 py-1.5 text-sm font-medium text-[#744b4b]">
                           #{user.id}
+                        </span>
+                      </td>
+                      <td className="px-5 py-5">
+                        <span className={`inline-flex rounded-full px-3 py-1.5 text-xs font-semibold ${
+                          user.status === "blocked"
+                            ? "bg-red-100 text-red-700"
+                            : "bg-emerald-100 text-emerald-700"
+                        }`}>
+                          {user.status === "blocked" ? "Blocked" : "Active"}
                         </span>
                       </td>
                     </tr>
@@ -348,7 +403,7 @@ function AdminUsers() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="user-details-title"
-            className="max-h-[90dvh] w-full max-w-md overflow-y-auto overscroll-contain rounded-2xl bg-white shadow-2xl"
+            className="max-h-[90dvh] w-full max-w-md overflow-y-auto overscroll-contain rounded-2xl border border-[#e4dccf]/40 bg-white shadow-luxury"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-gray-100 bg-white px-4 py-4 sm:px-6">
@@ -418,13 +473,42 @@ function AdminUsers() {
                   {selectedUser.email || "No email available"}
                 </p>
               </div>
+              <div className="rounded-xl border border-gray-100 p-4">
+                <p className="text-xs font-medium uppercase tracking-wide text-gray-400">
+                  Account Status
+                </p>
+                <span className={`mt-2 inline-flex rounded-full px-3 py-1.5 text-sm font-semibold ${
+                  selectedUser.status === "blocked"
+                    ? "bg-red-100 text-red-700"
+                    : "bg-emerald-100 text-emerald-700"
+                }`}>
+                  {selectedUser.status === "blocked" ? "Blocked" : "Active"}
+                </span>
+              </div>
             </div>
 
-            <div className="sticky bottom-0 border-t border-gray-100 bg-white p-4 sm:p-6">
+            <div className="sticky bottom-0 space-y-3 border-t border-gray-100 bg-white p-4 sm:p-6">
+              <button
+                type="button"
+                disabled={updatingUserId === selectedUser.id}
+                onClick={() => handleToggleUserStatus(selectedUser)}
+                className={`flex w-full items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60 ${
+                  selectedUser.status === "blocked"
+                    ? "bg-emerald-600 hover:bg-emerald-700"
+                    : "bg-red-600 hover:bg-red-700"
+                }`}
+              >
+                {selectedUser.status === "blocked" ? <ShieldCheck size={18} /> : <ShieldOff size={18} />}
+                {updatingUserId === selectedUser.id
+                  ? "Updating..."
+                  : selectedUser.status === "blocked"
+                    ? "Unblock User"
+                    : "Block User"}
+              </button>
               <button
                 type="button"
                 onClick={() => setSelectedUser(null)}
-                className="w-full rounded-lg bg-[#744b4b] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#5f3c3c]"
+                className="w-full rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-50"
               >
                 Close
               </button>
