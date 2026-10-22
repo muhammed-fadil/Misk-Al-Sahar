@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { to: "/admin/products", label: "Products", icon: Package },
   { to: "/admin/users", label: "Users", icon: Users },
   { to: "/admin/orders", label: "Orders", icon: ShoppingBag },
+  {to:"/admin/Managment",label:"Managment",icon:Package},
 ];
 
 function AdminSidebar() {

@@ -16,7 +16,7 @@ import Wishlist from "./pages/Wishlist";
 import Orders from "./pages/Orders";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-
+import AdminManagement from "./pages/admin/AdminManagment";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminProducts from "./pages/admin/AdminProducts";
@@ -105,6 +105,14 @@ function AppContent() {
             }
           />
         </Route>
+        <Route
+  path="/admin/Managment"
+  element={
+    <AdminLayout>
+      <AdminManagement />
+    </AdminLayout>
+  }
+/>
       </Routes>
 
       {showFooter && <Footer />}

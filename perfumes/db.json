@@ -352,27 +352,6 @@
       "size": "100ml",
       "gender": "Men",
       "occasion": "Night"
-    },
-    {
-      "name": "alf",
-      "slug": "alf",
-      "category": "Oud",
-      "price": 2999,
-      "stock": 20,
-      "rating": 4,
-      "brand": "Misk Al-Sahar",
-      "image": "",
-      "size": "100ml",
-      "gender": "Unisex",
-      "occasion": "Daily Wear",
-      "shortDescription": "sgggssggs",
-      "description": "sgsgsggs",
-      "notes": {
-        "top": [],
-        "heart": [],
-        "base": []
-      },
-      "id": "Z7WgEwX0sH4"
     }
   ],
   "users": [
